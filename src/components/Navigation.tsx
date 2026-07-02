@@ -3,7 +3,6 @@ import { motion, AnimatePresence } from "motion/react";
 import { Menu, X, ArrowUpRight } from "lucide-react";
 import { useLanguage, Language } from "../LanguageContext";
 import { translations } from "../translations";
-import { Logo } from "./Logo";
 
 interface NavigationProps {
   activeSection: string;
@@ -71,8 +70,14 @@ export default function Navigation({ activeSection, onNavigate }: NavigationProp
             onClick={() => handleLinkClick("hero")}
             className="flex items-center space-x-3 group text-left cursor-pointer bg-transparent border-0"
           >
-            <div className="w-8 h-8 rounded-sm border border-studio-primary/30 flex items-center justify-center relative bg-studio-bg" style={{ transform: "translate3d(0,0,0)" }}>
-              <Logo className="w-full h-full" isDecorative={true} />
+            <div className="w-8 h-8 flex items-center justify-center relative" style={{ transform: "translate3d(0,0,0)" }}>
+              <img
+                src="https://res.cloudinary.com/dw4k14vmn/image/upload/v1783013226/Header_d7szhw.png"
+                alt="Deep Brain Reset Logo"
+                className="w-full h-full object-contain"
+                loading="eager"
+                decoding="async"
+              />
             </div>
             <div>
               <span className="text-xs font-display font-medium tracking-[0.3em] uppercase text-studio-primary">
