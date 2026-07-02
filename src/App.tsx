@@ -2,7 +2,6 @@ import { useState, useEffect } from "react";
 import Navigation from "./components/Navigation";
 import Hero from "./components/Hero";
 import AboutPhilosophy from "./components/AboutPhilosophy";
-import FeaturedWork from "./components/FeaturedWork";
 import CreativeProcess from "./components/CreativeProcess";
 import ServicesList from "./components/ServicesList";
 import CaseStudies from "./components/CaseStudies";
@@ -225,7 +224,6 @@ export default function App() {
         <Hero onExploreClick={() => handleNavigate("work")} />
 
         {/* 02. Featured Work Portals & Modular Case Study Record Showcase (Portfolio) */}
-        <FeaturedWork onViewCaseStudy={(id) => setActiveCaseStudy(id)} />
         <CaseStudies onViewCaseStudy={(id) => setActiveCaseStudy(id)} />
 
         {/* 03. Pillars & Capabilities list (Services) */}

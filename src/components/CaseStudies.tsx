@@ -24,6 +24,135 @@ function getInitials(client: string): string {
     .toUpperCase();
 }
 
+function CaseStudyCard({ 
+  cs, 
+  onViewCaseStudy, 
+  setSelectedCase,
+  caseStudyCovers,
+  getInitials,
+  inspectLabel,
+  index
+}: { 
+  key?: any;
+  cs: CaseStudy; 
+  onViewCaseStudy?: (id: string) => void;
+  setSelectedCase: (cs: any) => void;
+  caseStudyCovers: Record<string, string>;
+  getInitials: (name: string) => string;
+  inspectLabel: string;
+  index: number;
+}) {
+  const [isHovered, setIsHovered] = useState(false);
+
+  return (
+    <div
+      id={`case-card-${cs.id}`}
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
+      onClick={() => {
+        if (cs.id === "axon-revolution") {
+          onViewCaseStudy?.("axon-revolution");
+        } else if (cs.id === "axon-drive") {
+          onViewCaseStudy?.("axon-drive");
+        } else if (cs.id === "emilia-marsicano") {
+          onViewCaseStudy?.("emilia-marsicano");
+        } else if (cs.id === "sucupam") {
+          onViewCaseStudy?.("sucupam");
+        } else if (cs.id === "con-la-tuya") {
+          onViewCaseStudy?.("con-la-tuya");
+        } else if (cs.id === "menu-noir") {
+          onViewCaseStudy?.("menu-noir");
+        } else {
+          setSelectedCase(cs);
+        }
+      }}
+      className="group bg-[#090909] border border-white/[0.08] hover:border-white/20 hover:bg-[#0c0c0e] rounded-[12px] cursor-pointer flex flex-col relative overflow-hidden transition-all duration-300 hover:-translate-y-1.5 shadow-sm hover:shadow-xl animate-fade-in"
+    >
+      {/* Traveling Border Highlight SVG */}
+      <svg className="absolute inset-0 w-full h-full pointer-events-none z-20 rounded-[12px]" fill="none">
+        <motion.rect
+          x="0.75"
+          y="0.75"
+          width="calc(100% - 1.5px)"
+          height="calc(100% - 1.5px)"
+          rx="12"
+          stroke="#3B82F6"
+          strokeWidth="1.5"
+          fill="transparent"
+          strokeLinecap="round"
+          initial={{ pathLength: 0, opacity: 0 }}
+          animate={isHovered ? {
+            pathLength: [0, 1, 1],
+            opacity: [0, 1, 1, 0]
+          } : {
+            pathLength: 0,
+            opacity: 0
+          }}
+          transition={isHovered ? {
+            pathLength: { duration: 0.9, ease: "easeInOut" },
+            opacity: { times: [0, 0.1, 0.85, 1], duration: 1.0, ease: "easeInOut" }
+          } : {
+            duration: 0.15
+          }}
+        />
+      </svg>
+
+      {/* 16:9 COVER IMAGE - visual focus */}
+      <div className="relative w-full aspect-[16/9] overflow-hidden bg-[#121212] border-b border-white/[0.04] rounded-t-[12px]">
+        <CaseStudyImage
+          src={caseStudyCovers[cs.id]}
+          alt={cs.client}
+          fallbackInitials={getInitials(cs.client)}
+        />
+      </div>
+
+      {/* Text Section / Content */}
+      <div className="p-6 flex-1 flex flex-col justify-between space-y-5">
+        <div className="space-y-3">
+          {/* PROJECT CATEGORY & YEAR */}
+          <div className="flex justify-between items-center text-[10px] font-mono text-studio-muted uppercase tracking-[0.15em]">
+            <span className="truncate max-w-[70%]">{cs.category}</span>
+            <span>{cs.year}</span>
+          </div>
+
+          {/* PROJECT NAME & Short project description */}
+          <div className="space-y-2">
+            <h3 className="text-base font-display font-medium text-studio-primary uppercase tracking-wider group-hover:text-white transition-colors duration-300">
+              {cs.client}
+            </h3>
+            <p className="text-xs text-studio-secondary font-light line-clamp-2 leading-relaxed min-h-[36px]">
+              {cs.subtitle}
+            </p>
+          </div>
+
+          {/* Technology tags */}
+          <div className="flex flex-wrap gap-1.5 pt-1">
+            {cs.technologyUsed.slice(0, 3).map((tech, idx) => (
+              <span 
+                key={idx} 
+                className="text-[9px] font-mono text-studio-muted px-2 py-0.5 bg-white/[0.02] border border-white/[0.05] rounded-[4px] tracking-wide"
+              >
+                {tech}
+              </span>
+            ))}
+          </div>
+        </div>
+
+        {/* VIEW CASE STUDY CTA */}
+        <div className="pt-4 border-t border-white/[0.06] flex justify-between items-center text-[10px] font-mono">
+          <div className="flex items-center space-x-1.5 text-studio-caption group-hover:text-studio-primary transition-colors duration-300">
+            <span className="uppercase tracking-[0.15em] text-[9px] font-semibold">{inspectLabel}</span>
+            <ArrowUpRight size={12} className="transform group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform duration-300" />
+          </div>
+          <span className="text-studio-muted">
+            /0{index + 1}
+          </span>
+        </div>
+      </div>
+    </div>
+  );
+}
+
 function CaseStudyImage({ src, alt, fallbackInitials }: { src?: string; alt: string; fallbackInitials: string }) {
   const [loaded, setLoaded] = useState(false);
   const [error, setError] = useState(false);
@@ -86,7 +215,10 @@ interface CaseStudy {
 
 export default function CaseStudies({ onViewCaseStudy }: { onViewCaseStudy?: (id: string) => void }) {
   const { language } = useLanguage();
-  const tSection = translations.casesList[language];
+  const tSection = {
+    ...translations.featured[language],
+    inspect: translations.casesList[language].inspect
+  };
   const localizedCaseStudies = getLocalizedCaseStudies(language);
   const [selectedCase, setSelectedCase] = useState<CaseStudy | null>(null);
 
@@ -164,7 +296,7 @@ export default function CaseStudies({ onViewCaseStudy }: { onViewCaseStudy?: (id
   }[language];
 
   return (
-    <section id="cases" className="py-24 md:py-32 bg-studio-bg relative">
+    <section id="work" className="py-24 md:py-32 bg-studio-bg relative">
       <div className="max-w-7xl mx-auto px-6 md:px-12">
         
         {/* Section Header */}
@@ -187,82 +319,17 @@ export default function CaseStudies({ onViewCaseStudy }: { onViewCaseStudy?: (id
 
         {/* Case Studies Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-10 md:gap-12">
-          {localizedCaseStudies.map((cs) => (
-            <div
-              id={`case-card-${cs.id}`}
+          {localizedCaseStudies.map((cs, index) => (
+            <CaseStudyCard
               key={cs.id}
-              onClick={() => {
-                if (cs.id === "axon-revolution") {
-                  onViewCaseStudy?.("axon-revolution");
-                } else if (cs.id === "axon-drive") {
-                  onViewCaseStudy?.("axon-drive");
-                } else if (cs.id === "emilia-marsicano") {
-                  onViewCaseStudy?.("emilia-marsicano");
-                } else if (cs.id === "sucupam") {
-                  onViewCaseStudy?.("sucupam");
-                } else if (cs.id === "con-la-tuya") {
-                  onViewCaseStudy?.("con-la-tuya");
-                } else if (cs.id === "menu-noir") {
-                  onViewCaseStudy?.("menu-noir");
-                } else {
-                  setSelectedCase(cs as CaseStudy);
-                }
-              }}
-              className="group bg-[#090909] border border-white/[0.08] hover:border-white/20 hover:bg-[#0c0c0e] rounded-[12px] cursor-pointer flex flex-col relative overflow-hidden transition-all duration-300 hover:-translate-y-1.5 shadow-sm hover:shadow-xl animate-fade-in"
-            >
-              {/* 16:9 COVER IMAGE - visual focus */}
-              <div className="relative w-full aspect-[16/9] overflow-hidden bg-[#121212] border-b border-white/[0.04] rounded-t-[12px]">
-                <CaseStudyImage
-                  src={caseStudyCovers[cs.id]}
-                  alt={cs.client}
-                  fallbackInitials={getInitials(cs.client)}
-                />
-              </div>
-
-              {/* Text Section / Content */}
-              <div className="p-6 flex-1 flex flex-col justify-between space-y-5">
-                <div className="space-y-3">
-                  {/* PROJECT CATEGORY & YEAR */}
-                  <div className="flex justify-between items-center text-[10px] font-mono text-studio-muted uppercase tracking-[0.15em]">
-                    <span className="truncate max-w-[70%]">{cs.category}</span>
-                    <span>{cs.year}</span>
-                  </div>
-
-                  {/* PROJECT NAME & Short project description */}
-                  <div className="space-y-2">
-                    <h3 className="text-base font-display font-medium text-studio-primary uppercase tracking-wider group-hover:text-white transition-colors duration-300">
-                      {cs.client}
-                    </h3>
-                    <p className="text-xs text-studio-secondary font-light line-clamp-2 leading-relaxed min-h-[36px]">
-                      {cs.subtitle}
-                    </p>
-                  </div>
-
-                  {/* Technology tags */}
-                  <div className="flex flex-wrap gap-1.5 pt-1">
-                    {cs.technologyUsed.slice(0, 3).map((tech, idx) => (
-                      <span 
-                        key={idx} 
-                        className="text-[9px] font-mono text-studio-muted px-2 py-0.5 bg-white/[0.02] border border-white/[0.05] rounded-[4px] tracking-wide"
-                      >
-                        {tech}
-                      </span>
-                    ))}
-                  </div>
-                </div>
-
-                {/* VIEW CASE STUDY CTA */}
-                <div className="pt-4 border-t border-white/[0.06] flex justify-between items-center text-[10px] font-mono">
-                  <div className="flex items-center space-x-1.5 text-studio-caption group-hover:text-studio-primary transition-colors duration-300">
-                    <span className="uppercase tracking-[0.15em] text-[9px] font-semibold">{tSection.inspect}</span>
-                    <ArrowUpRight size={12} className="transform group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform duration-300" />
-                  </div>
-                  <span className="text-studio-muted">
-                    /0{localizedCaseStudies.findIndex((c) => c.id === cs.id) + 1}
-                  </span>
-                </div>
-              </div>
-            </div>
+              cs={cs as CaseStudy}
+              onViewCaseStudy={onViewCaseStudy}
+              setSelectedCase={setSelectedCase}
+              caseStudyCovers={caseStudyCovers}
+              getInitials={getInitials}
+              inspectLabel={tSection.inspect || "INSPECT"}
+              index={index}
+            />
           ))}
         </div>
 
