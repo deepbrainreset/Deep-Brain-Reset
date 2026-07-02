@@ -48,12 +48,14 @@ export default function FinalCTA() {
   }[language];
 
   const handleScrollToContact = () => {
-    const el = document.getElementById("contact");
-    if (el) el.scrollIntoView({ behavior: "smooth" });
+    const el = document.getElementById("consultant");
+    if (el) {
+      el.scrollIntoView({ behavior: "smooth" });
+    }
   };
 
   return (
-    <section id="final-cta" className="py-24 md:py-32 bg-studio-bg relative border-b border-studio-border overflow-hidden">
+    <section id="contact" className="py-24 md:py-32 bg-studio-bg relative border-b border-studio-border overflow-hidden">
       <div className="absolute inset-0 bg-radial from-studio-primary/[0.02] to-transparent pointer-events-none" />
       <div className="absolute inset-0 bg-grid-overlay pointer-events-none opacity-5" />
       

@@ -186,7 +186,7 @@ export default function CaseStudies({ onViewCaseStudy }: { onViewCaseStudy?: (id
         </div>
 
         {/* Case Studies Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-10 md:gap-12">
           {localizedCaseStudies.map((cs) => (
             <div
               id={`case-card-${cs.id}`}
@@ -208,10 +208,10 @@ export default function CaseStudies({ onViewCaseStudy }: { onViewCaseStudy?: (id
                   setSelectedCase(cs as CaseStudy);
                 }
               }}
-              className="group bg-[#090909] border border-white/[0.08] hover:border-white/20 rounded-[12px] cursor-pointer flex flex-col h-[420px] relative overflow-hidden shadow-sm transition-all duration-300 hover:-translate-y-1 animate-fade-in"
+              className="group bg-[#090909] border border-white/[0.08] hover:border-white/20 hover:bg-[#0c0c0e] rounded-[12px] cursor-pointer flex flex-col relative overflow-hidden transition-all duration-300 hover:-translate-y-1.5 shadow-sm hover:shadow-xl animate-fade-in"
             >
-              {/* Image portion: occupies ~55-60% of height (240px is 57.1% of 420px) */}
-              <div className="relative w-full h-[240px] overflow-hidden bg-[#121212] border-b border-white/[0.04]">
+              {/* 16:9 COVER IMAGE - visual focus */}
+              <div className="relative w-full aspect-[16/9] overflow-hidden bg-[#121212] border-b border-white/[0.04] rounded-t-[12px]">
                 <CaseStudyImage
                   src={caseStudyCovers[cs.id]}
                   alt={cs.client}
@@ -219,31 +219,43 @@ export default function CaseStudies({ onViewCaseStudy }: { onViewCaseStudy?: (id
                 />
               </div>
 
-              {/* Content portion */}
-              <div className="p-5 flex-1 flex flex-col justify-between space-y-4">
-                <div className="space-y-2.5">
-                  {/* Category & Year */}
-                  <div className="flex justify-between items-center text-[10px] font-mono text-studio-muted uppercase tracking-widest">
+              {/* Text Section / Content */}
+              <div className="p-6 flex-1 flex flex-col justify-between space-y-5">
+                <div className="space-y-3">
+                  {/* PROJECT CATEGORY & YEAR */}
+                  <div className="flex justify-between items-center text-[10px] font-mono text-studio-muted uppercase tracking-[0.15em]">
                     <span className="truncate max-w-[70%]">{cs.category}</span>
                     <span>{cs.year}</span>
                   </div>
 
-                  {/* Project Name & Short Descriptor */}
-                  <div className="space-y-1">
-                    <h3 className="text-sm font-display font-medium text-studio-primary uppercase tracking-wider group-hover:text-white transition-colors duration-300 truncate">
+                  {/* PROJECT NAME & Short project description */}
+                  <div className="space-y-2">
+                    <h3 className="text-base font-display font-medium text-studio-primary uppercase tracking-wider group-hover:text-white transition-colors duration-300">
                       {cs.client}
                     </h3>
-                    <p className="text-[11px] text-studio-secondary font-light line-clamp-2 leading-relaxed h-[34px]">
+                    <p className="text-xs text-studio-secondary font-light line-clamp-2 leading-relaxed min-h-[36px]">
                       {cs.subtitle}
                     </p>
                   </div>
+
+                  {/* Technology tags */}
+                  <div className="flex flex-wrap gap-1.5 pt-1">
+                    {cs.technologyUsed.slice(0, 3).map((tech, idx) => (
+                      <span 
+                        key={idx} 
+                        className="text-[9px] font-mono text-studio-muted px-2 py-0.5 bg-white/[0.02] border border-white/[0.05] rounded-[4px] tracking-wide"
+                      >
+                        {tech}
+                      </span>
+                    ))}
+                  </div>
                 </div>
 
-                {/* CTA & Index Number */}
-                <div className="pt-3 border-t border-white/[0.06] flex justify-between items-center text-[10px] font-mono">
-                  <div className="flex items-center space-x-1 text-studio-caption group-hover:text-studio-primary transition-colors duration-300">
-                    <span className="uppercase tracking-widest text-[9px] font-semibold">{tSection.inspect}</span>
-                    <ArrowUpRight size={12} className="transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform duration-300" />
+                {/* VIEW CASE STUDY CTA */}
+                <div className="pt-4 border-t border-white/[0.06] flex justify-between items-center text-[10px] font-mono">
+                  <div className="flex items-center space-x-1.5 text-studio-caption group-hover:text-studio-primary transition-colors duration-300">
+                    <span className="uppercase tracking-[0.15em] text-[9px] font-semibold">{tSection.inspect}</span>
+                    <ArrowUpRight size={12} className="transform group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform duration-300" />
                   </div>
                   <span className="text-studio-muted">
                     /0{localizedCaseStudies.findIndex((c) => c.id === cs.id) + 1}

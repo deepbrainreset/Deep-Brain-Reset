@@ -14,6 +14,7 @@ export default function Navigation({ activeSection, onNavigate }: NavigationProp
   const [isScrolled, setIsScrolled] = useState(false);
   const [isLangDropdownOpen, setIsLangDropdownOpen] = useState(false);
   const [isMobileLangOpen, setIsMobileLangOpen] = useState(false);
+  const [isHeaderMobileLangOpen, setIsHeaderMobileLangOpen] = useState(false);
   const { language, changeLanguage } = useLanguage();
 
   const t = translations.navigation[language];
@@ -179,15 +180,60 @@ export default function Navigation({ activeSection, onNavigate }: NavigationProp
             </button>
           </nav>
 
-          {/* Mobile Menu Button */}
-          <div className="xl:hidden flex items-center space-x-4">
-            <button
-              id="mobile-nav-cta"
-              onClick={() => handleLinkClick("contact")}
-              className="px-3 py-1.5 premium-interactive text-[9px] font-mono uppercase tracking-widest rounded-sm bg-transparent"
-            >
-              {t.brief}
-            </button>
+          {/* Mobile Menu Button & Mobile Language Selector */}
+          <div className="xl:hidden flex items-center space-x-3 relative">
+            <div className="relative">
+              <button
+                id="mobile-header-lang-toggle"
+                onClick={() => setIsHeaderMobileLangOpen(!isHeaderMobileLangOpen)}
+                className="px-2.5 py-1.5 rounded-sm border border-white/[0.08] bg-white/[0.02] text-[10px] font-mono uppercase tracking-[0.15em] text-studio-caption hover:text-white hover:border-white/20 transition-all duration-300 flex items-center space-x-1 cursor-pointer"
+              >
+                <span>🌐 {language === "en" ? "EN" : language === "es" ? "ES" : language === "de" ? "DE" : language === "fr" ? "FR" : "IT"}</span>
+                <span className="text-[6px] text-studio-muted transition-transform duration-300" style={{ transform: isHeaderMobileLangOpen ? "rotate(180deg)" : "rotate(0deg)" }}>▼</span>
+              </button>
+
+              <AnimatePresence>
+                {isHeaderMobileLangOpen && (
+                  <>
+                    <div 
+                      className="fixed inset-0 z-40 bg-transparent" 
+                      onClick={() => setIsHeaderMobileLangOpen(false)} 
+                    />
+                    <motion.div
+                      initial={{ opacity: 0, y: 5 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      exit={{ opacity: 0, y: 5 }}
+                      transition={{ duration: 0.2 }}
+                      className="absolute right-0 mt-2 py-1.5 w-32 bg-studio-bg border border-studio-border rounded-sm shadow-xl z-50 flex flex-col"
+                    >
+                      {[
+                        { code: "en", label: "English" },
+                        { code: "es", label: "Español" },
+                        { code: "de", label: "Deutsch" },
+                        { code: "fr", label: "Français" },
+                        { code: "it", label: "Italiano" }
+                      ].map((langObj) => (
+                        <button
+                          key={langObj.code}
+                          onClick={() => {
+                            changeLanguage(langObj.code as Language);
+                            setIsHeaderMobileLangOpen(false);
+                          }}
+                          className={`text-left text-[10px] font-mono uppercase tracking-[0.12em] px-3.5 py-2 transition-colors duration-200 cursor-pointer bg-transparent border-0 w-full hover:bg-white/[0.03] hover:text-white ${
+                            language === langObj.code 
+                              ? "text-studio-primary font-semibold" 
+                              : "text-studio-caption"
+                          }`}
+                        >
+                          {langObj.label}
+                        </button>
+                      ))}
+                    </motion.div>
+                  </>
+                )}
+              </AnimatePresence>
+            </div>
+
             <button
               id="mobile-menu-toggle"
               onClick={() => setIsOpen(!isOpen)}
@@ -247,9 +293,16 @@ export default function Navigation({ activeSection, onNavigate }: NavigationProp
               }}
               initial="hidden"
               animate="visible"
-              className="flex-1 flex flex-col justify-center items-center space-y-6 md:space-y-8 my-auto py-8"
+              className="flex-1 flex flex-col justify-center items-center space-y-5 md:space-y-6 my-auto py-6"
             >
-              {navItems.map((item, index) => (
+              {[
+                { id: "work", label: t.featured },
+                { id: "services", label: t.capabilities },
+                { id: "process", label: t.system },
+                { id: "philosophy", label: t.philosophy },
+                { id: "consultant", label: t.consultant },
+                { id: "contact", label: t.cta }
+              ].map((item, index) => (
                 <motion.button
                   id={`mobile-nav-item-${item.id}`}
                   key={item.id}
@@ -271,73 +324,26 @@ export default function Navigation({ activeSection, onNavigate }: NavigationProp
                   <span>{item.label}</span>
                 </motion.button>
               ))}
+
+              <motion.div
+                variants={{
+                  hidden: { opacity: 0, scale: 0.8 },
+                  visible: { opacity: 0.15, scale: 1 }
+                }}
+                className="w-16 h-[1px] bg-white my-3"
+              />
             </motion.div>
 
-            {/* Bottom section: CTA, Language dropdown & Footer metadata */}
+            {/* Bottom section: CTA & Footer metadata */}
             <div className="flex flex-col items-center space-y-6 w-full max-w-sm mx-auto">
               <button
                 id="mobile-nav-cta-large"
                 onClick={() => handleLinkClick("contact")}
-                className="w-full py-4 bg-studio-primary text-studio-bg font-mono text-xs uppercase tracking-widest text-center rounded-sm hover:bg-[#E5E5E5] transition-all duration-300 border-0 cursor-pointer premium-interactive font-semibold"
+                className="w-full py-4 bg-studio-primary text-studio-bg font-mono text-xs uppercase tracking-[0.2em] text-center rounded-sm hover:bg-[#E5E5E5] transition-all duration-300 border-0 cursor-pointer premium-interactive font-semibold flex items-center justify-center space-x-1.5"
               >
-                {language === "es" ? "Iniciar Propuesta de Proyecto" :
-                 language === "de" ? "Projekt-Briefing Starten" :
-                 language === "fr" ? "Initier un Brief de Projet" :
-                 language === "it" ? "Invia Richiesta di Progetto" :
-                 "Start Custom Project Brief"}
+                <span>{t.brief.toUpperCase()}</span>
+                <ArrowUpRight size={14} className="mt-0.5" />
               </button>
-              
-              {/* Dropdown Language Selector near the bottom */}
-              <div className="relative flex flex-col items-center">
-                <button
-                  onClick={() => setIsMobileLangOpen(!isMobileLangOpen)}
-                  className="text-[10px] font-mono uppercase tracking-[0.2em] text-studio-caption hover:text-white transition-colors duration-300 flex items-center space-x-1 cursor-pointer bg-transparent border border-studio-border/30 px-4 py-2 rounded-sm"
-                >
-                  <span>{language === "en" ? "English" : language === "es" ? "Español" : language === "de" ? "Deutsch" : language === "fr" ? "Français" : "Italiano"}</span>
-                  <span className="text-[7px] text-studio-muted mt-0.5 transition-transform duration-300" style={{ transform: isMobileLangOpen ? "rotate(180deg)" : "rotate(0deg)" }}>▼</span>
-                </button>
-                
-                <AnimatePresence>
-                  {isMobileLangOpen && (
-                    <>
-                      <div 
-                        className="fixed inset-0 z-[10001] bg-transparent" 
-                        onClick={() => setIsMobileLangOpen(false)} 
-                      />
-                      <motion.div
-                        initial={{ opacity: 0, y: 5 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        exit={{ opacity: 0, y: 5 }}
-                        transition={{ duration: 0.2 }}
-                        className="absolute bottom-full mb-2 py-1 w-40 bg-black/95 border border-studio-border/50 rounded-sm shadow-xl z-[10002] flex flex-col items-center"
-                      >
-                        {[
-                          { code: "en", label: "English" },
-                          { code: "es", label: "Español" },
-                          { code: "de", label: "Deutsch" },
-                          { code: "fr", label: "Français" },
-                          { code: "it", label: "Italiano" }
-                        ].map((langObj) => (
-                          <button
-                            key={langObj.code}
-                            onClick={() => {
-                              changeLanguage(langObj.code as Language);
-                              setIsMobileLangOpen(false);
-                            }}
-                            className={`text-center text-[10px] font-mono uppercase tracking-[0.15em] px-4 py-2.5 transition-colors duration-300 cursor-pointer bg-transparent border-0 w-full hover:bg-studio-primary/5 hover:text-white ${
-                              language === langObj.code 
-                                ? "text-studio-primary font-semibold" 
-                                : "text-studio-caption"
-                            }`}
-                          >
-                            {langObj.label}
-                          </button>
-                        ))}
-                      </motion.div>
-                    </>
-                  )}
-                </AnimatePresence>
-              </div>
 
               <div className="flex justify-between items-center text-[9px] font-mono text-studio-caption border-t border-studio-border/30 pt-4 w-full">
                 <span>DEEP BRAIN RESET © 2026</span>
