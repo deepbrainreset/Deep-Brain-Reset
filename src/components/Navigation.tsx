@@ -39,12 +39,10 @@ export default function Navigation({ activeSection, onNavigate }: NavigationProp
   }, []);
 
   const navItems = [
-    { id: "hero", label: t.studio },
-    { id: "philosophy", label: t.philosophy },
     { id: "work", label: t.featured },
-    { id: "process", label: t.system },
     { id: "services", label: t.capabilities },
-    { id: "cases", label: t.cases },
+    { id: "process", label: t.system },
+    { id: "philosophy", label: t.philosophy },
     { id: "consultant", label: t.consultant },
   ];
 

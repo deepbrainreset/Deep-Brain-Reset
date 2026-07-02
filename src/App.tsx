@@ -222,40 +222,32 @@ export default function App() {
       {/* Cinematic Studio Body */}
       <main id="studio-body">
         {/* 01. Studio Hero Screen */}
-        <Hero onExploreClick={() => handleNavigate("philosophy")} />
+        <Hero onExploreClick={() => handleNavigate("work")} />
 
-        {/* 02. Architectural Creative Philosophy */}
-        <AboutPhilosophy />
-
-        {/* 03. Featured Work Portals */}
+        {/* 02. Featured Work Portals & Modular Case Study Record Showcase (Portfolio) */}
         <FeaturedWork onViewCaseStudy={(id) => setActiveCaseStudy(id)} />
-
-        {/* 04. Unified Creative Methodology Stepper */}
-        <CreativeProcess />
-
-        {/* 05. Pillars & Capabilities list */}
-        <ServicesList />
-
-        {/* 06. Modular Case Study Record Showcase */}
         <CaseStudies onViewCaseStudy={(id) => setActiveCaseStudy(id)} />
 
-        {/* 07. Technology Stack Minimal Presentation */}
+        {/* 03. Pillars & Capabilities list (Services) */}
+        <ServicesList />
+
+        {/* 04. Unified Creative Methodology Stepper (Process) */}
+        <CreativeProcess />
+
+        {/* 05. Architectural Creative Philosophy (Studio Philosophy) */}
+        <AboutPhilosophy />
+
+        {/* 06. Technology Stack & Strategic Trust Factors */}
         <TechStack />
-
-        {/* 08. Strategic Value Choice Factors */}
         <WhyChooseUs />
-
-        {/* 09. Verified Partner Testimonials */}
         <Testimonials />
-
-        {/* 10. Frequently Asked Questions (Accordion) */}
         <FAQ />
 
-        {/* 11. Final Call To Action */}
-        <FinalCTA />
-
-        {/* Interactive AI Consultant diagnostic layer */}
+        {/* 07. Interactive AI Consultant diagnostic layer */}
         <BriefConsultant />
+
+        {/* 08. Book Strategy Session (Final Call To Action) */}
+        <FinalCTA />
       </main>
 
       {/* Luxury Editorial Footer */}
@@ -281,13 +273,12 @@ export default function App() {
                 {fT.index}
               </span>
               <div className="flex flex-col space-y-2 text-xs font-mono text-studio-caption">
-                <button onClick={() => handleNavigate("hero")} className="text-left hover:text-studio-primary transition-colors cursor-pointer bg-transparent border-0 p-0">{navT.studio.toUpperCase()}</button>
-                <button onClick={() => handleNavigate("philosophy")} className="text-left hover:text-studio-primary transition-colors cursor-pointer bg-transparent border-0 p-0">{navT.philosophy.toUpperCase()}</button>
                 <button onClick={() => handleNavigate("work")} className="text-left hover:text-studio-primary transition-colors cursor-pointer bg-transparent border-0 p-0">{navT.featured.toUpperCase()}</button>
-                <button onClick={() => handleNavigate("process")} className="text-left hover:text-studio-primary transition-colors cursor-pointer bg-transparent border-0 p-0">{navT.system.toUpperCase()}</button>
                 <button onClick={() => handleNavigate("services")} className="text-left hover:text-studio-primary transition-colors cursor-pointer bg-transparent border-0 p-0">{navT.capabilities.toUpperCase()}</button>
-                <button onClick={() => handleNavigate("cases")} className="text-left hover:text-studio-primary transition-colors cursor-pointer bg-transparent border-0 p-0">{navT.cases.toUpperCase()}</button>
+                <button onClick={() => handleNavigate("process")} className="text-left hover:text-studio-primary transition-colors cursor-pointer bg-transparent border-0 p-0">{navT.system.toUpperCase()}</button>
+                <button onClick={() => handleNavigate("philosophy")} className="text-left hover:text-studio-primary transition-colors cursor-pointer bg-transparent border-0 p-0">{navT.philosophy.toUpperCase()}</button>
                 <button onClick={() => handleNavigate("consultant")} className="text-left hover:text-studio-primary transition-colors cursor-pointer bg-transparent border-0 p-0">{navT.consultant.toUpperCase()}</button>
+                <button onClick={() => handleNavigate("contact")} className="text-left hover:text-studio-primary transition-colors cursor-pointer bg-transparent border-0 p-0">{navT.cta.toUpperCase()}</button>
               </div>
             </div>
 

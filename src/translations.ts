@@ -153,58 +153,58 @@ const rawTranslations: {
   navigation: {
     en: {
       studio: "Studio",
-      philosophy: "Philosophy",
-      featured: "Featured",
-      system: "System",
-      capabilities: "Capabilities",
+      philosophy: "Studio",
+      featured: "Work",
+      system: "Process",
+      capabilities: "Services",
       cases: "Cases",
       consultant: "AI Consultant",
-      cta: "Initiate Brief",
-      brief: "Brief"
+      cta: "Contact",
+      brief: "Book Session"
     },
     es: {
       studio: "Estudio",
-      philosophy: "Filosofía",
-      featured: "Destacado",
-      system: "Sistema",
-      capabilities: "Capacidades",
+      philosophy: "Estudio",
+      featured: "Trabajos",
+      system: "Proceso",
+      capabilities: "Servicios",
       cases: "Proyectos",
       consultant: "Consultor IA",
-      cta: "Iniciar Propuesta",
-      brief: "Propuesta"
+      cta: "Contacto",
+      brief: "Agendar"
     },
     de: {
       studio: "Studio",
-      philosophy: "Philosophie",
-      featured: "Ausgewählt",
-      system: "System",
-      capabilities: "Kompetenzen",
+      philosophy: "Studio",
+      featured: "Projekte",
+      system: "Prozess",
+      capabilities: "Leistungen",
       cases: "Projekte",
       consultant: "KI-Berater",
-      cta: "Briefing Starten",
-      brief: "Briefing"
+      cta: "Kontakt",
+      brief: "Termin"
     },
     fr: {
       studio: "Studio",
-      philosophy: "Philosophie",
-      featured: "Sélection",
-      system: "Système",
-      capabilities: "Expertise",
+      philosophy: "Studio",
+      featured: "Projets",
+      system: "Processus",
+      capabilities: "Services",
       cases: "Études",
       consultant: "Consultant IA",
-      cta: "Initier Brief",
-      brief: "Brief"
+      cta: "Contact",
+      brief: "Rendez-vous"
     },
     it: {
       studio: "Studio",
-      philosophy: "Filosofia",
-      featured: "Selezione",
-      system: "Metodo",
-      capabilities: "Competenze",
+      philosophy: "Studio",
+      featured: "Progetti",
+      system: "Processo",
+      capabilities: "Servizi",
       cases: "Casi",
       consultant: "Consulente IA",
-      cta: "Inizia Brief",
-      brief: "Brief"
+      cta: "Contatti",
+      brief: "Prenota"
     }
   },
   hero: {
@@ -214,12 +214,12 @@ const rawTranslations: {
       titleMid: "ART DIRECTION &",
       titleBot: "HIGH ENGINEERING",
       description: "Operating at the intersection of cinematic creative direction, custom type-safe software development, and deep cognitive process automation. We build high-prestige digital ecosystems.",
-      cta: "Explore Studio Philosophy",
+      cta: "Explore Studio Portfolio",
       title: "WE FUSE ART DIRECTION & HIGH ENGINEERING",
       subtitle: "Operating at the intersection of cinematic creative direction, custom type-safe software development, and deep cognitive process automation.",
-      exploreButton: "Explore Studio Philosophy",
+      exploreButton: "View Selected Work",
       contactButton: "Start Your Project",
-      scrollIndicator: "Scroll To Explore"
+      scrollIndicator: "Featured Case Studies"
     },
     es: {
       badge: "ESTUDIO DE TECNOLOGÍA CREATIVA DE ALTA GAMA",
@@ -227,12 +227,12 @@ const rawTranslations: {
       titleMid: "DIRECCIÓN DE ARTE &",
       titleBot: "ALTA INGENIERÍA",
       description: "Operamos en la intersección de la dirección creativa cinematográfica, el desarrollo de software seguro y la automatización cognitiva profunda de procesos. Diseñamos ecosistemas digitales prestigiosos.",
-      cta: "Explorar Filosofía del Estudio",
+      cta: "Explorar Portafolio del Estudio",
       title: "FUSIONAMOS DIRECCIÓN DE ARTE Y ALTA INGENIERÍA",
       subtitle: "Operamos en la intersección de la dirección creativa cinematográfica, el desarrollo de software seguro y la automatización cognitiva.",
-      exploreButton: "Explorar Filosofía del Estudio",
+      exploreButton: "Ver Trabajos",
       contactButton: "Iniciar Proyecto",
-      scrollIndicator: "Desplazarse para Explorar"
+      scrollIndicator: "Casos de Estudio"
     },
     de: {
       badge: "STUDIO FÜR KREATIVE TECHNOLOGIE",
@@ -240,12 +240,12 @@ const rawTranslations: {
       titleMid: "KREATIVDIREKTION &",
       titleBot: "HIGH-END ENGINEERING",
       description: "Agieren an der Schnittstelle von filmischer Kreativdirektion, typsicherer Softwareentwicklung und tiefer kognitiver Prozessautomatisierung. Wir entwickeln digitale Ökosysteme für höchste Ansprüche.",
-      cta: "Studio-Philosophie entdecken",
+      cta: "Studio-Portfolio entdecken",
       title: "WIR FUSIONIEREN KREATIVDIREKTION & HIGH-END ENGINEERING",
       subtitle: "Agieren an der Schnittstelle von filmischer Kreativdirektion, typsicherer Softwareentwicklung und tiefer kognitiver Prozessautomatisierung.",
-      exploreButton: "Studio-Philosophie entdecken",
+      exploreButton: "Projekte ansehen",
       contactButton: "Projekt Starten",
-      scrollIndicator: "Nach unten scrollen"
+      scrollIndicator: "Ausgewählte Fallstudien"
     },
     fr: {
       badge: "STUDIO DE TECHNOLOGIE CRÉATIVE DE LUXE",
@@ -253,12 +253,12 @@ const rawTranslations: {
       titleMid: "DIRECTION ARTISTIQUE &",
       titleBot: "HAUTE INGÉNIERIE",
       description: "Opérant à la confluence d'une direction artistique cinématographique, d'un développement logiciel hautement sécurisé et d'une automatisation cognitive des processus d'affaires. Nous créons des pièces maîtresses.",
-      cta: "Découvrir notre Philosophie",
+      cta: "Découvrir notre Portfolio",
       title: "NOUS FUSIONNONS DIRECTION ARTISTIQUE & HAUTE INGÉNIERIE",
       subtitle: "Opérant à la confluence d'une direction artistique cinématographique, d'un développement logiciel hautement sécurisé et d'une automatisation cognitive.",
-      exploreButton: "Découvrir notre Philosophie",
+      exploreButton: "Voir les Projets",
       contactButton: "Lancer un Projet",
-      scrollIndicator: "Faire défiler"
+      scrollIndicator: "Études de Cas"
     },
     it: {
       badge: "STUDIO DI TECNOLOGIA CREATIVA",
@@ -266,12 +266,12 @@ const rawTranslations: {
       titleMid: "DIREZIONE ARTISTICA &",
       titleBot: "ALTO INGEGNERIA",
       description: "Operiamo all'intersezione tra direzione creativa cinematografica, ingegneria del software orientata alla sicurezza e automazione profonda dei flussi operativi. Sviluppiamo ecosistemi di assoluto prestigio.",
-      cta: "Scopri la Filosofia dello Studio",
+      cta: "Scopri il Portfolio dello Studio",
       title: "FONDIAMO DIREZIONE ARTISTICA & ALTO INGEGNERIA",
       subtitle: "Operiamo all'intersezione tra direzione creativa cinematografica, ingegneria del software e automazione dei flussi.",
-      exploreButton: "Scopri la Filosofia",
+      exploreButton: "Vedi Progetti",
       contactButton: "Inizia Progetto",
-      scrollIndicator: "Scorri per Esplorare"
+      scrollIndicator: "Casi di Studio"
     }
   },
   philosophy: {
