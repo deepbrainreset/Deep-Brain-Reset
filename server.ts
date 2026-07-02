@@ -1,7 +1,7 @@
 import express from "express";
 import path from "path";
 import dotenv from "dotenv";
-import { GoogleGenAI } from "@google/genai";
+import { GoogleGenAI, Type } from "@google/genai";
 
 dotenv.config();
 
@@ -10,14 +10,20 @@ const PORT = 3000;
 
 app.use(express.json());
 
-// Secure API endpoint for Gemini-powered proposal synthesis
+// Secure API endpoint for Gemini-powered proposal synthesis with strict response schema
 app.post("/api/gemini/proposal", async (req, res) => {
   try {
-    const { businessName, industry, bottleneck, additionalNotes } = req.body;
+    const company = req.body.company || req.body.businessName;
+    const industry = req.body.industry;
+    const bottleneck = req.body.bottleneck;
+    const goals = req.body.goals || req.body.additionalNotes || "Operational refinement";
+    const timeline = req.body.timeline || "Immediate";
+    const budget = req.body.budget || "Flexible / Not specified";
+    const positioning = req.body.positioning || "Premium and modern";
 
-    if (!businessName || !industry || !bottleneck) {
+    if (!company || !industry || !bottleneck) {
       return res.status(400).json({
-        error: "Missing required fields: businessName, industry, and bottleneck are required.",
+        error: "Missing required fields: company, industry, and bottleneck are required.",
       });
     }
 
@@ -50,35 +56,22 @@ Our core philosophy:
 
 Your task is to analyze the client's business challenge and synthesize an exceptionally thorough, highly strategic, custom Studio Proposal & Technical Brief. It must demonstrate rigorous conceptual thinking and technical feasibility, making the client feel confident that we can execute complex ideas that traditional marketing agencies or standard software companies cannot.
 
-Write the proposal in clear, elegant, readable Markdown. Use markdown tables, technical listings (using monospaced text for folder layouts or schema designs), and precise steps where helpful.
+You must output a structured JSON response matching the provided schema. The "fullMarkdownReport" property must contain a complete, thorough, premium Markdown document of the consulting brief, containing detailed strategic narratives and technical breakdowns. Use markdown tables, technical listings, and bullet points where helpful. No introductory conversational fluff outside of the requested JSON structure.`;
 
-Structure the proposal exactly as follows:
-# DEEP BRAIN RESET // CLIENT STRATEGY & PRODUCTION BRIEF
-For: ${businessName} [${industry}]
-Theme: [A bespoke, elegant, poetic 3-5 word artistic conceptual title for the transformation]
-
-## 1. STRATEGIC NARRATIVE & POSITIONING
-Explain the true transformation we are building for them. Move past the surface-level request. What is the growth or perception shift they actually buy? Frame this with a luxurious, high-end creative philosophy.
-
-## 2. CREATIVE DIRECTION & VISUAL STORYTELLING
-Describe the cinematic visual identity, tone, and brand experience. Explain how we will conceptualize visual assets (films, 3D elements, typography pairing, layouts) inspired by premium Swiss design (e.g., Apple, Porsche, Leica) before generating any pixel.
-
-## 3. FULL-STACK PLATFORM ARCHITECTURE
-Define a concrete, custom software stack tailored to solve their core bottleneck (e.g. React/Vite, Express, TypeScript, database strategy, real-time sync, performance standards). Outline the system diagram or key components with technical precision.
-
-## 4. PROCESS AUTOMATION & INTUITIVE AI WORKFLOWS
-Outline a step-by-step workflow automation mapping how AI/APIs and workflows will eliminate their specific bottleneck (${bottleneck}) to save human labor or amplify creative output. Provide a structured diagram or layout of the automated steps.
-
-## 5. EXECUTIVE DELIVERY ROADMAP
-Provide a timeline of phases (Phase 1: Strategize, Phase 2: Design, Phase 3: Build, Phase 4: Deploy & Optimize) with measurable business deliverables. Present this as a guarantee of quality and predictability.`;
-
-    const userPrompt = `Synthesize a Studio Proposal and Technical Brief for:
-Company: ${businessName}
+    const userPrompt = `Synthesize a luxury executive consulting report and proposal for the following client:
+Company: ${company}
 Industry: ${industry}
-Core Bottleneck/Challenge: ${bottleneck}
-Additional Strategic Context: ${additionalNotes || "None provided."}
+Current Bottleneck: ${bottleneck}
+Business Goals: ${goals}
+Timeline: ${timeline}
+Budget: ${budget}
+Brand Positioning / Creative Tone: ${positioning}
 
-Begin the markdown immediately. Do not include any introductory fluff outside of the requested markdown brief.`;
+Analyze their constraints and produce an elite strategic response. Make sure to:
+1. Formulate a bespoke 3-5 word conceptual "artistic title" for their project.
+2. Outline a concrete proposed architecture solving their bottleneck.
+3. Define estimated implementation phases in the roadmap.
+4. Output the result in the requested JSON structure.`;
 
     const response = await ai.models.generateContent({
       model: "gemini-3.5-flash",
@@ -86,10 +79,58 @@ Begin the markdown immediately. Do not include any introductory fluff outside of
       config: {
         systemInstruction,
         temperature: 0.7,
+        responseMimeType: "application/json",
+        responseSchema: {
+          type: Type.OBJECT,
+          properties: {
+            executiveOverview: { 
+              type: Type.STRING, 
+              description: "A summary of the strategic narrative, positioning, and overall business transformation they are purchasing." 
+            },
+            coreProblem: { 
+              type: Type.STRING, 
+              description: "An intellectual dissection of their core operational bottleneck and system friction." 
+            },
+            proposedArchitecture: { 
+              type: Type.STRING, 
+              description: "The proposed technical architecture, software stack, and technical system blueprint." 
+            },
+            recommendedServices: { 
+              type: Type.STRING, 
+              description: "The specific services and practice solutions we recommend for their operations." 
+            },
+            estimatedTimeline: { 
+              type: Type.STRING, 
+              description: "A professional estimate of the timeline, aligned with their parameters." 
+            },
+            estimatedImplementationPhases: { 
+              type: Type.STRING, 
+              description: "A breakdown of delivery milestones across Phase 1: Strategize, Phase 2: Design, Phase 3: Build, Phase 4: Deploy & Optimize." 
+            },
+            fullMarkdownReport: { 
+              type: Type.STRING, 
+              description: "The full executive consulting report formatted in elegant, high-prestige Markdown." 
+            }
+          },
+          required: [
+            "executiveOverview",
+            "coreProblem",
+            "proposedArchitecture",
+            "recommendedServices",
+            "estimatedTimeline",
+            "estimatedImplementationPhases",
+            "fullMarkdownReport"
+          ]
+        }
       },
     });
 
-    res.json({ proposal: response.text });
+    const parsedData = JSON.parse(response.text);
+    res.json({
+      success: true,
+      proposal: parsedData.fullMarkdownReport,
+      data: parsedData
+    });
   } catch (error: any) {
     console.error("Gemini proposal synthesis error:", error);
     res.status(500).json({

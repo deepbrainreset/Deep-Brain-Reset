@@ -35,8 +35,11 @@ export interface ProcessPhase {
 }
 
 export interface InquiryInput {
-  businessName: string;
+  company: string;
   industry: string;
   bottleneck: string;
-  additionalNotes?: string;
+  goals: string;
+  timeline: string;
+  budget?: string;
+  positioning: string;
 }

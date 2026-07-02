@@ -1,190 +1,306 @@
 import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "motion/react";
 import { useLanguage } from "../LanguageContext";
-import { translations } from "../translations";
-import { Cpu, RefreshCw, Clipboard, Check, HelpCircle, FileText, ArrowRight } from "lucide-react";
+import { 
+  Cpu, 
+  RefreshCw, 
+  Clipboard, 
+  Check, 
+  ArrowRight, 
+  Calendar, 
+  ExternalLink, 
+  Briefcase, 
+  AlertCircle, 
+  Layers, 
+  Clock, 
+  Wrench,
+  FileText
+} from "lucide-react";
 import { InquiryInput } from "../types";
 
 interface BriefConsultantProps {
-  onBriefGenerated: (briefText: string, companyInfo: { name: string; industry: string; bottleneck: string }) => void;
+  onBriefGenerated?: (briefText: string, companyInfo: { name: string; industry: string; bottleneck: string }) => void;
+}
+
+interface GeneratedData {
+  executiveOverview: string;
+  coreProblem: string;
+  proposedArchitecture: string;
+  recommendedServices: string;
+  estimatedTimeline: string;
+  estimatedImplementationPhases: string;
+  fullMarkdownReport: string;
 }
 
 export default function BriefConsultant({ onBriefGenerated }: BriefConsultantProps) {
   const { language } = useLanguage();
-  const data = translations.aiConsultant[language];
 
   const [inputs, setInputs] = useState<InquiryInput>({
-    businessName: "",
+    company: "",
     industry: "",
     bottleneck: "",
-    additionalNotes: ""
+    goals: "",
+    timeline: "",
+    budget: "",
+    positioning: ""
   });
 
   const [loading, setLoading] = useState(false);
   const [logs, setLogs] = useState<string[]>([]);
   const [resultBrief, setResultBrief] = useState<string | null>(null);
+  const [generatedData, setGeneratedData] = useState<GeneratedData | null>(null);
   const [copied, setCopied] = useState(false);
-
-  // Simulated diagnostic sequences to entertain and reinforce studio capability
-  const loadingSequences = {
-    en: [
-      "[SYSTEM] Initiating Deep Brain Diagnostics engine...",
-      "[STRATEGY] Evaluating target industry operating parameters...",
-      "[ENGINEERING] Auditing logical bottlenecks and schema friction...",
-      "[NARRATIVE] Storyboarding abstract creative themes...",
-      "[SYSTEM] Structuring custom background microservice architectures...",
-      "[STRATEGY] Syncing digital strategy with executive growth targets...",
-      "[SYSTEM] Finalizing proposal compilation and delivery brief..."
-    ],
-    es: [
-      "[SISTEMA] Iniciando motor de diagnóstico Deep Brain...",
-      "[ESTRATEGIA] Evaluando parámetros operativos de la industria...",
-      "[INGENIERÍA] Auditando cuellos de botella lógicos y fricción de esquemas...",
-      "[NARRATIVO] Creando guion gráfico para temas creativos...",
-      "[SISTEMA] Estructurando microservicios personalizados...",
-      "[ESTRATEGIA] Sincronizando estrategia digital con metas ejecutivas...",
-      "[SISTEMA] Finalizando compilación de propuesta y pliego técnico..."
-    ],
-    de: [
-      "[SYSTEM] Deep Brain Diagnose-Engine wird gestartet...",
-      "[STRATEGIE] Bewertung der Branchen-Betriebsparameter...",
-      "[ENGINEERING] Prüfung von logischen Engpässen und Schema-Friction...",
-      "[NARRATIVE] Storyboard abstrakter kreativer Themen...",
-      "[SYSTEM] Strukturierung maßgeschneiderter Microservice-Architekturen...",
-      "[STRATEGIE] Synchronisierung der Digitalstrategie mit Wachstumszielen...",
-      "[SYSTEM] Finalisierung der Zusammenstellung und Übergabe des Entwurfs..."
-    ],
-    fr: [
-      "[SYSTÈME] Initialisation du moteur de diagnostic de Deep Brain...",
-      "[STRATÉGIE] Évaluation des paramètres opérationnels du secteur...",
-      "[INGÉNIERIE] Audit des goulots d'étranglement logiques et structurels...",
-      "[NARRATIF] Scénarisation des thèmes créatifs abstraits...",
-      "[SYSTÈME] Structuration des architectures de microservices sur mesure...",
-      "[STRATÉGIE] Synchronisation de la stratégie avec les objectifs de croissance...",
-      "[SYSTÈME] Finalisation de la compilation du dossier technique..."
-    ],
-    it: [
-      "[SISTEMA] Inizializzazione motore diagnostico Deep Brain...",
-      "[STRATEGIA] Valutazione dei parametri operativi del settore...",
-      "[INGEGNERIA] Verifica dei colli di bottiglia logici e attriti strutturali...",
-      "[NARRATIVO] Sviluppo dello storyboard per temi creativi astratti...",
-      "[SISTEMA] Strutturazione architettura microservizi su misura...",
-      "[STRATEGIA] Sincronizzazione della strategia digitale con obiettivi esecutivi...",
-      "[SISTEMA] Completamento sintesi brief e specifiche tecniche..."
-    ]
-  }[language];
 
   const labels = {
     en: {
-      badge: "06 // COGNITIVE DIAGNOSTICS",
-      title: "AI Consultant",
-      description: "We conceptualize before producing. Use our native Strategic Engine to outline potential directions for your business challenge. This uses Gemini to immediately synthesize a comprehensive Creative Direction and full-stack software strategy.",
-      leftPanelTitle: "Parametric Diagnostic Inputs",
-      label01: "01. Business Name",
-      label02: "02. Industry / Sector",
-      label03: "03. Operational Bottleneck",
-      label04: "04. Brand Tone or Aesthetic Focus (Optional)",
-      placeholder04: "e.g. Highly minimal, Swiss editorial, tactile...",
-      placeholder03: "Describe your current business bottleneck (e.g. 'reconciling manual guest preference spreadsheets across reservations takes hours each week.')",
+      badge: "06 // COGNITIVE DIAGNOSTICS & INGESTION",
+      title: "Client Consultation Pipeline",
+      description: "Operate our Unified Parametric Strategic Engine to diagnose your business bottleneck, formulate a pristine architectural strategy, and book an executive review session directly with our engineering team.",
+      leftPanelTitle: "Parametric Diagnostic Inputs (Step 01)",
+      labelCompany: "01. Company / Brand Name",
+      labelIndustry: "02. Industry / Sector",
+      labelBottleneck: "03. Current Operational Bottleneck",
+      labelGoals: "04. Core Business Goals",
+      labelTimeline: "05. Desired Timeline",
+      labelBudget: "06. Budget (Optional)",
+      labelPositioning: "07. Brand Positioning / Creative Tone",
+      placeholderCompany: "e.g. Acme Corp",
+      placeholderIndustry: "e.g. Luxury Hospitality, Fintech SaaS",
+      placeholderBottleneck: "e.g. Manual data reconciliation takes 15 hours every week...",
+      placeholderGoals: "e.g. Streamline delivery, expand to 3 international locations...",
+      placeholderTimeline: "e.g. Within 3 Months, Immediate...",
+      placeholderBudget: "e.g. $100k - $200k",
+      placeholderPositioning: "e.g. Ultra-minimalist, Swiss-modern, editorial typography...",
+      btnSynthesize: "Synthesize Strategy",
       btnAnalyzing: "Analyzing Parameters...",
-      btnSynthesize: "Synthesize Studio Brief",
+      queryingNodes: "Generating Custom Strategic Summary...",
       sleepingTitle: "System Offline // Waiting for Diagnostic Input",
-      sleepingDesc: "Configure your company parameters and core bottlenecks in the panel to synthesize a customized tactical architecture.",
+      sleepingDesc: "Configure your parameters in the panel to synthesize a customized tactical architecture report.",
+      schedulingTitle: "Schedule Your Strategy Session (Step 03)",
+      schedulingDesc: "Your strategic diagnosis is complete. Book a private consultation to review the proposed solution and define the execution roadmap.",
+      schedulingCta: "Book Strategy Session",
+      consoleTitle: "STRATEGIC SUMMARY // CLIENT CONSOLE",
+      consolePending: "PENDING PARAMETERS INGESTION",
+      consoleActive: "DIAGNOSTICS EXTRACTED & ACTIVE",
+      cardBusiness: "Business Profile",
+      cardBottleneck: "Identified Bottleneck",
+      cardArchitecture: "Recommended Architecture",
+      cardTimeline: "Estimated Timeline",
+      cardServices: "Recommended Services",
+      cardPendingValue: "Waiting for diagnostic parameters...",
+      cardLoadingValue: "Analyzing and generating system design...",
       copyBrief: "Copy Brief",
       copiedBrief: "Brief Copied",
-      integrationTitle: "System Integration Option",
-      integrationDesc: "This custom brief has been synced with the booking queue below.",
-      btnConfirm: "Confirm Brief & Book Consultation",
-      queryingNodes: "Querying server-side model nodes... please remain active..."
     },
     es: {
-      badge: "06 // DIAGNÓSTICO COGNITIVO",
-      title: "Asistente de IA",
-      description: "Conceptualizamos antes de producir. Utilice nuestro Motor Estratégico nativo para delinear direcciones potenciales para su desafío empresarial. Esto utiliza Gemini para sintetizar inmediatamente una Dirección Creativa integral y una estrategia de software full-stack.",
-      leftPanelTitle: "Entradas Paramétricas de Diagnóstico",
-      label01: "01. Nombre de la Empresa",
-      label02: "02. Industria / Sector",
-      label03: "03. Cuello de Botella Operativo",
-      label04: "04. Tono de Marca o Enfoque Estético (Opcional)",
-      placeholder04: "ej. Muy minimalista, editorial suizo, táctil...",
-      placeholder03: "Describa su cuello de botella operativo actual (ej. 'reconciliar las hojas de cálculo de reservas manuales toma horas cada semana')",
+      badge: "06 // DIAGNÓSTICO COGNITIVO E INGESTIÓN DE SISTEMAS",
+      title: "Trayectoria de Consulta Unificada",
+      description: "Utilice nuestro Motor Estratégico Paramétrico Unificado para diagnosticar los cuellos de botella de su negocio, formular una estrategia arquitectónica de software de alta gama y agendar una sesión ejecutiva de revisión.",
+      leftPanelTitle: "Entradas Paramétricas de Diagnóstico (Paso 01)",
+      labelCompany: "01. Nombre de la Empresa / Marca",
+      labelIndustry: "02. Industria / Sektor",
+      labelBottleneck: "03. Cuello de Botella Operativo Actual",
+      labelGoals: "04. Metas de Negocio Principales",
+      labelTimeline: "05. Cronograma Deseado",
+      labelBudget: "06. Presupuesto (Opcional)",
+      labelPositioning: "07. Posicionamiento de Marca / Tono Creativo",
+      placeholderCompany: "ej. Acme Corp",
+      placeholderIndustry: "ej. Hospitalidad de Lujo, SaaS Fintech",
+      placeholderBottleneck: "ej. La conciliación de datos manual toma 15 horas semanales...",
+      placeholderGoals: "ej. Optimizar entregas, expandir a 3 ubicaciones internacionales...",
+      placeholderTimeline: "ej. Dentro de 3 Meses, Inmediato...",
+      placeholderBudget: "ej. $100k - $200k",
+      placeholderPositioning: "ej. Ultra-minimalista, moderno suizo, tipografía editorial...",
+      btnSynthesize: "Sintetizar Estratégia",
       btnAnalyzing: "Analizando Parámetros...",
-      btnSynthesize: "Sintetizar Pliego Técnico",
+      queryingNodes: "Generando Resumen Estratégico Personalizado...",
       sleepingTitle: "Sistema Fuera de Línea // Esperando Entrada",
-      sleepingDesc: "Configure los parámetros de su empresa y cuellos de botella clave en el panel para sintetizar una arquitectura táctica personalizada.",
+      sleepingDesc: "Configure los parámetros de su empresa en el panel para sintetizar un informe de arquitectura táctica personalizado.",
+      schedulingTitle: "Programe su Sesión de Estratégia (Paso 03)",
+      schedulingDesc: "Su diagnóstico estratégico está completo. Reserve una consulta privada para revisar la solución propuesta y definir el mapa de ruta de ejecución.",
+      schedulingCta: "Agendar Sesión de Estratégia",
+      consoleTitle: "RESUMEN ESTRATÉGICO // CONSOLA DEL CLIENTE",
+      consolePending: "INGESTIÓN DE PARÁMETROS PENDIENTE",
+      consoleActive: "DIAGNÓSTICOS EXTRAÍDOS Y ACTIVOS",
+      cardBusiness: "Perfil de la Empresa",
+      cardBottleneck: "Cuello de Botella Detectado",
+      cardArchitecture: "Arquitectura Recomendada",
+      cardTimeline: "Cronograma Estimado",
+      cardServices: "Servicios Recomendados",
+      cardPendingValue: "Esperando parámetros de diagnóstico...",
+      cardLoadingValue: "Analizando y diseñando el sistema...",
       copyBrief: "Copiar Pliego",
       copiedBrief: "Pliego Copiado",
-      integrationTitle: "Opción de Integración del Sistema",
-      integrationDesc: "Este pliego personalizado ha sido sincronizado con la cola de reserva de abajo.",
-      btnConfirm: "Confirmar Pliego y Agendar Sesión",
-      queryingNodes: "Consultando nodos del modelo en el servidor... por favor permanezca activo..."
     },
     de: {
-      badge: "06 // KOGNITATIVE DIAGNOSE",
-      title: "KI-Berater",
-      description: "Wir konzipieren, bevor wir produzieren. Nutzen Sie unsere native Strategie-Engine, um potenzielle Wege für Ihre geschäftliche Herausforderung aufzuzeigen. Hierbei wird Gemini genutzt, um sofort eine umfassende Kreativdirektion und Full-Stack-Softwarestrategie zu entwickeln.",
-      leftPanelTitle: "Parametrische Diagnose-Eingaben",
-      label01: "01. Name des Unternehmens",
-      label02: "02. Branche / Sektor",
-      label03: "03. Operativer Engpass",
-      label04: "04. Marken-Tonalität oder Designfokus (Optional)",
-      placeholder04: "z. B. Sehr minimalistisch, Schweizer Typografie, haptisch...",
-      placeholder03: "Beschreiben Sie Ihren aktuellen Engpass (z. B. 'Die manuelle Abstimmung von Reservierungslisten kostet jede Woche Stunden.')",
+      badge: "06 // KOGNITATIVE DIAGNOSTIK & INGESTION-SYSTEM",
+      title: "Integrierte Kunden-Pipeline",
+      description: "Nutzen Sie unsere integrierte parametrische Strategie-Engine, um geschäftliche Engpässe zu analysieren, eine erstklassige Softwarearchitektur zu entwerfen und direkt ein Erstgespräch mit unserem Entwicklungsteam zu buchen.",
+      leftPanelTitle: "Parametrische Diagnose-Eingaben (Schritt 01)",
+      labelCompany: "01. Name des Unternehmens",
+      labelIndustry: "02. Branche / Sektor",
+      labelBottleneck: "03. Aktueller operativer Engpass",
+      labelGoals: "04. Zentrale Wachstumsziele",
+      labelTimeline: "05. Gewünschter Zeitrahmen",
+      labelBudget: "06. Budget (Optional)",
+      labelPositioning: "07. Markenpositionierung / Design-Tonalität",
+      placeholderCompany: "z. B. Acme Corp",
+      placeholderIndustry: "z. B. Luxus-Hotellerie, Fintech SaaS",
+      placeholderBottleneck: "z. B. Manueller Datenabgleich dauert jede Woche 15 Stunden...",
+      placeholderGoals: "z. B. Abläufe optimieren, Expansion in 3 neue Länder...",
+      placeholderTimeline: "z. B. Innerhalb von 3 Monaten, Sofort...",
+      placeholderBudget: "z. B. 100k - 200k €",
+      placeholderPositioning: "z. B. Ultra-minimalistisch, Schweizer Moderne, Editorial-Typografie...",
+      btnSynthesize: "Strategie Synthetisieren",
       btnAnalyzing: "Parameter werden analysiert...",
-      btnSynthesize: "Briefing Synthetisieren",
-      sleepingTitle: "System Offline // Wartet auf Diagnose-Eingaben",
-      sleepingDesc: "Konfigurieren Sie Ihre Unternehmensparameter und zentralen Engpässe, um eine maßgeschneiderte taktische Architektur zu erstellen.",
+      queryingNodes: "Strategische Zusammenfassung wird erstellt...",
+      sleepingTitle: "System Offline // Wartet auf Eingabe",
+      sleepingDesc: "Konfigurieren Sie Ihre Unternehmensparameter im Panel, um einen maßgeschneiderten Architektur-Report zu erstellen.",
+      schedulingTitle: "Erstgespräch Vereinbaren (Schritt 03)",
+      schedulingDesc: "Ihre strategische Diagnose ist abgeschlossen. Buchen Sie ein vertrauliches Gespräch, um die vorgeschlagene Lösung zu bewerten und den Fahrplan festzulegen.",
+      schedulingCta: "Erstgespräch buchen",
+      consoleTitle: "STRATEGISCHE DIAGNOSE // CLIENT CONSOLE",
+      consolePending: "WARTE AUF PARAMETER-EINGABE",
+      consoleActive: "DIAGNOSEBEREIT & AKTIV",
+      cardBusiness: "Unternehmensprofil",
+      cardBottleneck: "Ermittelter Engpass",
+      cardArchitecture: "Empfohlene Architektur",
+      cardTimeline: "Geschätzter Zeitrahmen",
+      cardServices: "Empfohlene Services",
+      cardPendingValue: "Warte auf Diagnose-Eingaben...",
+      cardLoadingValue: "Systemarchitektur wird berechnet...",
       copyBrief: "Briefing Kopieren",
       copiedBrief: "Briefing Kopiert",
-      integrationTitle: "Systemintegrationsoption",
-      integrationDesc: "Dieses Briefing wurde mit dem untenstehenden Buchungsformular synchronisiert.",
-      btnConfirm: "Briefing bestätigen & Beratung buchen",
-      queryingNodes: "Server-Knoten werden abgefragt... bitte aktiv bleiben..."
     },
     fr: {
-      badge: "06 // DIAGNOSTIC COGNITIF",
-      title: "Conseiller IA",
-      description: "Nous conceptualisons avant de produire. Utilisez notre Moteur de Diagnostic natif pour tracer les lignes directrices de votre projet. Gemini synthétise instantanément une Direction Artistique complète et une architecture logicielle adaptée.",
-      leftPanelTitle: "Données de Diagnostic Paramétriques",
-      label01: "01. Nom de l'Entreprise",
-      label02: "02. Secteur d'Activité",
-      label03: "03. Goulot d'Étranglement",
-      label04: "04. Ton de Marque ou Approche Esthétique (Optionnel)",
-      placeholder04: "ex: Grand luxe, style suisse, minimaliste, tactile...",
-      placeholder03: "Décrivez votre goulot d'étranglement opérationnel actuel (ex: 'réconcilier manuellement les préférences clients à chaque réservation prend des heures')",
+      badge: "06 // DIAGNOSTIC COGNITIF & INGESTION SYSTÈMES",
+      title: "Parcours de Consultation Unifié",
+      description: "Utilisez notre moteur stratégique unifié pour analyser vos goulots d'étranglement opérationnels, concevoir votre architecture logicielle sur mesure et réserver votre entretien d'évaluation technique.",
+      leftPanelTitle: "Données de Diagnostic Paramétriques (Étape 01)",
+      labelCompany: "01. Nom de l'Entreprise / Marque",
+      labelIndustry: "02. Secteur d'Activité",
+      labelBottleneck: "03. Goulot d'Étranglement Opérationnel Actual",
+      labelGoals: "04. Objectifs Commerciaux Clés",
+      labelTimeline: "05. Calendrier Souhaité",
+      labelBudget: "06. Budget (Optionnel)",
+      labelPositioning: "07. Positionnement de Marque / Identité Graphique",
+      placeholderCompany: "ex: Acme Corp",
+      placeholderIndustry: "ex: Hôtellerie de Luxe, SaaS Fintech",
+      placeholderBottleneck: "ex: La réconciliation manuelle prend 15 heures chaque semaine...",
+      placeholderGoals: "ex: Fluidifier la logistique, expansion internationale...",
+      placeholderTimeline: "ex: Sous 3 mois, Immédiat...",
+      placeholderBudget: "ex: 100k - 200k €",
+      placeholderPositioning: "ex: Style suisse ultra-épuré, typographie éditoriale d'auteur...",
+      btnSynthesize: "Synthétiser la Stratégie",
       btnAnalyzing: "Analyse en cours...",
-      btnSynthesize: "Synthétiser le Brief de Projet",
-      sleepingTitle: "Système Hors Ligne // En attente de données",
-      sleepingDesc: "Configurez les paramètres de votre entreprise et vos principaux goulots d'étranglement pour synthétiser votre architecture sur mesure.",
+      queryingNodes: "Génération de la synthèse stratégique...",
+      sleepingTitle: "Système Hors Ligne // En attente d'ingestion",
+      sleepingDesc: "Renseignez vos paramètres d'activité dans le panneau pour compiler votre rapport technique personnalisé.",
+      schedulingTitle: "Planifier votre Entretien (Étape 03)",
+      schedulingDesc: "Votre diagnostic stratégique est finalisé. Réservez un entretien privé pour étudier notre proposition et planifier la mise en production.",
+      schedulingCta: "Réserver mon Entretien",
+      consoleTitle: "SYNTHÈSE STRATÉGIQUE // CONSOLE CLIENT",
+      consolePending: "EN ATTENTE D'INGESTION DES PARAMÈTRES",
+      consoleActive: "DIAGNOSTICS EXTRAITS & ACTIFS",
+      cardBusiness: "Profil de l'Entreprise",
+      cardBottleneck: "Goulot Identifié",
+      cardArchitecture: "Architecture Recommandée",
+      cardTimeline: "Calendrier Estimé",
+      cardServices: "Services Conseillés",
+      cardPendingValue: "En attente des paramètres opérationnels...",
+      cardLoadingValue: "Modélisation de l'architecture logicielle...",
       copyBrief: "Copier le Brief",
       copiedBrief: "Brief Copié",
-      integrationTitle: "Option d'Intégration Système",
-      integrationDesc: "Ce brief personnalisé a été synchronisé avec la file de réservation ci-dessous.",
-      btnConfirm: "Confirmer le Brief & Réserver",
-      queryingNodes: "Requête vers les serveurs du modèle... veuillez patienter..."
     },
     it: {
-      badge: "06 // DIAGNOSTICA COGNITIVA",
-      title: "Consulente IA",
-      description: "Sviluppiamo il concept prima di produrre. Utilizzate il nostro Assistente Strategico per definire potenziali percorsi operativi. Gemini analizzerà le risposte e formulerà una bozza strategica e tecnica all'istante.",
-      leftPanelTitle: "Dati Diagnostici Parametrici",
-      label01: "01. Nome dell'Azienda",
-      label02: "02. Settore / Ambito",
-      label03: "03. Sfida / Collo di Bottiglia",
-      label04: "04. Tono del Brand o Focus Estetico (Opzionale)",
-      placeholder04: "es: Estremamente minimale, stile svizzero, editoriale...",
-      placeholder03: "Descrivete la vostra sfida operativa (es: 'la riconciliazione manuale delle prenotazioni richiede diverse ore ogni settimana')",
-      btnAnalyzing: "Analisi in corso...",
-      btnSynthesize: "Sintetizza Brief di Progetto",
+      badge: "06 // DIAGNOSTICA COGNITIVA & INGESTIONE SISTEMI",
+      title: "Percorso Clienti Unificato",
+      description: "Sfruttate il nostro Assistente Strategico Unificato per analizzare i vostri colli di bottiglia operativi, tracciare l'architettura tecnica e prenotare un incontro di revisione con i nostri ingegneri.",
+      leftPanelTitle: "Dati Diagnostici Parametrici (Fase 01)",
+      labelCompany: "01. Nome dell'Azienda / Brand",
+      labelIndustry: "02. Settore / Ambito di Attività",
+      labelBottleneck: "03. Collo di Bottiglia Operativo Corrente",
+      labelGoals: "04. Obiettivi Aziendali Principali",
+      labelTimeline: "05. Tempistiche Desiderate",
+      labelBudget: "06. Budget (Opzionale)",
+      labelPositioning: "07. Posicionamento del Brand / Tono Creativo",
+      placeholderCompany: "es: Acme Corp",
+      placeholderIndustry: "es: Ospitalità di Lusso, SaaS Fintech",
+      placeholderBottleneck: "es: La riconciliazione manuale richiede 15 ore settimanali...",
+      placeholderGoals: "es: Semplificare le spedizioni, espandersi in 3 nuove sedi...",
+      placeholderTimeline: "es: Entro 3 Mesi, Immediato...",
+      placeholderBudget: "es: 100k - 200k €",
+      placeholderPositioning: "es: Minimalismo su misura, stile svizzero, design d'autore...",
+      btnSynthesize: "Sintetizza Strategia",
+      btnAnalyzing: "Analisi parametri...",
+      queryingNodes: "Sintesi strategica in corso...",
       sleepingTitle: "Sistema Offline // In attesa di dati",
-      sleepingDesc: "Configurate i parametri aziendali e i colli di bottiglia nel pannello per sintetizzare un'architettura tattica su misura.",
+      sleepingDesc: "Configurate i parametri aziendali nel pannello per sintetizzare un report architetturale su misura.",
+      schedulingTitle: "Prenotate la Sessione Strategica (Fase 03)",
+      schedulingDesc: "La diagnosi strategica è completata. Prenotate una consulenza privata per valutare la soluzione proposta e definire la pianificazione esecutiva.",
+      schedulingCta: "Prenota Sessione Strategica",
+      consoleTitle: "SINTESI STRATEGICA // CONSOLE CLIENTE",
+      consolePending: "IN ATTESA DI DATI DIAGNOSTICI",
+      consoleActive: "DIAGNOSTICA ESTRATTA E ATTIVA",
+      cardBusiness: "Profilo Aziendale",
+      cardBottleneck: "Sfida Individuata",
+      cardArchitecture: "Architettura Raccomandata",
+      cardTimeline: "Tempistiche Stimate",
+      cardServices: "Servizi Raccomandati",
+      cardPendingValue: "In attesa di parametri diagnostici...",
+      cardLoadingValue: "Elaborazione dell'architettura tecnica...",
       copyBrief: "Copia Brief",
       copiedBrief: "Brief Copiato",
-      integrationTitle: "Opzione di Integrazione di Sistema",
-      integrationDesc: "Questo brief personalizzato è stato sincronizzato con il modulo di contatto sottostante.",
-      btnConfirm: "Conferma Brief e Prenota",
-      queryingNodes: "Interrogazione dei nodi server in corso... si prega di attendere..."
     }
+  }[language];
+
+  // Animated loader steps to showcase capability and process rigor
+  const loadingSequences = {
+    en: [
+      "[SYSTEM] Initializing Deep Brain Ingestion engine...",
+      "[INGESTION] Verifying brand positioning and growth goals...",
+      "[DIAGNOSTICS] Evaluating target industry bottlenecks...",
+      "[ENGINEERING] Synthesizing custom server-side component architecture...",
+      "[AUTOMATION] Drafting cognitive API background pipelines...",
+      "[NARRATIVE] Defining visual editorial aesthetics...",
+      "[SYSTEM] Finalizing proposal compilation & structured summary..."
+    ],
+    es: [
+      "[SISTEMA] Inicializando motor de ingesta Deep Brain...",
+      "[INGESTA] Verificando posicionamiento de marca y metas...",
+      "[DIAGNÓSTICO] Evaluando cuellos de botella de la industria...",
+      "[INGENIERÍA] Sintetizando arquitectura de componentes...",
+      "[AUTOMATIZACIÓN] Creando flujos cognitivos de API en segundo plano...",
+      "[NARRATIVA] Definiendo estética visual y tipografía...",
+      "[SISTEMA] Finalizando compilación de propuesta y pliego técnico..."
+    ],
+    de: [
+      "[SYSTEM] Deep Brain Ingest-Engine wird initialisiert...",
+      "[INGEST] Überprüfung von Markenpositionierung und Wachstumszielen...",
+      "[DIAGNOSTICS] Branchenspezifische Engpässe werden analysiert...",
+      "[ENGINEERING] Strukturierung maßgeschneiderter Server-Architekturen...",
+      "[AUTOMATION] Erstellung kognitiver API-Hintergrundprozesse...",
+      "[NARRATIVE] Definition visueller Design-Ästhetiken...",
+      "[SYSTEM] Finalisierung der Zusammenstellung und Strategie-Synthese..."
+    ],
+    fr: [
+      "[SYSTÈME] Initialisation du moteur d'ingestion de Deep Brain...",
+      "[INGESTION] Vérification du positionnement de marque et des objectifs...",
+      "[DIAGNOSTIC] Évaluation des goulots d'étranglement opérationnels...",
+      "[INGÉNIERIE] Modélisation de l'architecture logicielle sur mesure...",
+      "[AUTOMATISATION] Conception des pipelines d'automatisation cognitive...",
+      "[NARRATIF] Choix de la direction artistique et typographique...",
+      "[SYSTÈME] Finalisation de la compilation du dossier stratégique..."
+    ],
+    it: [
+      "[SISTEMA] Inizializzazione modulo di ingestione Deep Brain...",
+      "[INGESTIONE] Verifica del posizionamento e degli obiettivi di crescita...",
+      "[DIAGNOSTICA] Analisi dei vincoli del settore operativo...",
+      "[INGEGNERIA] Sintesi dell'architettura software personalizzata...",
+      "[AUTOMAZIONE] Pianificazione delle pipeline di servizi integrati...",
+      "[NARRATIVO] Definizione della direzione visiva ed editoriale...",
+      "[SISTEMA] Completamento sintesi e pliego strategico..."
+    ]
   }[language];
 
   useEffect(() => {
@@ -199,7 +315,7 @@ export default function BriefConsultant({ onBriefGenerated }: BriefConsultantPro
       } else {
         clearInterval(interval);
       }
-    }, 2500);
+    }, 1500);
 
     return () => clearInterval(interval);
   }, [loading]);
@@ -211,10 +327,11 @@ export default function BriefConsultant({ onBriefGenerated }: BriefConsultantPro
 
   const handleSynthesize = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (!inputs.businessName || !inputs.industry || !inputs.bottleneck) return;
+    if (!inputs.company || !inputs.industry || !inputs.bottleneck || !inputs.goals || !inputs.timeline || !inputs.positioning) return;
 
     setLoading(true);
     setResultBrief(null);
+    setGeneratedData(null);
 
     try {
       const response = await fetch("/api/gemini/proposal", {
@@ -226,17 +343,20 @@ export default function BriefConsultant({ onBriefGenerated }: BriefConsultantPro
       });
 
       const data = await response.json();
-      if (data.error) {
-        throw new Error(data.error);
+      if (!data.success || data.error) {
+        throw new Error(data.error || "Synthesis failed");
       }
 
       setResultBrief(data.proposal);
-      // Callback to pass the generated brief to the parent so the contact form can sync it
-      onBriefGenerated(data.proposal, {
-        name: inputs.businessName,
-        industry: inputs.industry,
-        bottleneck: inputs.bottleneck
-      });
+      setGeneratedData(data.data);
+
+      if (onBriefGenerated) {
+        onBriefGenerated(data.proposal, {
+          name: inputs.company,
+          industry: inputs.industry,
+          bottleneck: inputs.bottleneck
+        });
+      }
     } catch (err: any) {
       console.error(err);
       setResultBrief(`### DIAGNOSTICS FAILURE
@@ -258,7 +378,6 @@ ${err.message || "Failed to establish a secure connection with Deep Brain Reset 
     setTimeout(() => setCopied(false), 2000);
   };
 
-  // Robust custom markdown formatter to display editorial-looking pages cleanly without external packages
   const renderFormattedBrief = (text: string) => {
     const lines = text.split("\n");
     return lines.map((line, idx) => {
@@ -266,14 +385,14 @@ ${err.message || "Failed to establish a secure connection with Deep Brain Reset 
 
       if (trimmed.startsWith("# ")) {
         return (
-          <h1 key={idx} className="text-xl md:text-2xl font-display font-bold text-studio-primary uppercase tracking-widest border-b border-studio-border pb-4 mb-6 mt-4">
+          <h1 key={idx} className="text-xl md:text-2xl font-display font-bold text-white uppercase tracking-widest border-b border-studio-border pb-4 mb-6 mt-4">
             {trimmed.substring(2)}
           </h1>
         );
       }
       if (trimmed.startsWith("## ")) {
         return (
-          <h2 key={idx} className="text-sm md:text-base font-display font-semibold text-studio-primary uppercase tracking-widest mt-8 mb-4 border-l-2 border-studio-caption pl-3">
+          <h2 key={idx} className="text-sm md:text-base font-display font-semibold text-white uppercase tracking-widest mt-8 mb-4 border-l-2 border-studio-caption pl-3">
             {trimmed.substring(3)}
           </h2>
         );
@@ -304,7 +423,6 @@ ${err.message || "Failed to establish a secure connection with Deep Brain Reset 
         return <div key={idx} className="h-2" />;
       }
       
-      // Handle generic text paragraphs
       return (
         <p key={idx} className="text-xs md:text-sm text-studio-secondary font-light leading-relaxed mb-4">
           {trimmed}
@@ -314,247 +432,476 @@ ${err.message || "Failed to establish a secure connection with Deep Brain Reset 
   };
 
   return (
-    <section id="consultant" className="py-24 md:py-32 bg-studio-panel border-t border-b border-studio-border relative">
+    <section id="consultant" className="py-24 md:py-32 bg-studio-panel border-t border-b border-studio-border relative overflow-hidden">
       <div className="absolute inset-0 bg-grid-overlay pointer-events-none opacity-20" />
       
       <div className="max-w-7xl mx-auto px-6 md:px-12 relative z-10">
         
         {/* Section Header */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-start mb-16">
-          <div className="lg:col-span-3">
+          <div className="lg:col-span-4">
             <span className="text-xs font-mono tracking-widest text-studio-caption uppercase">
               {labels.badge}
             </span>
-            <h2 className="text-2xl md:text-3xl font-display font-light text-studio-primary uppercase mt-4 tracking-tight">
+            <h2 className="text-2xl md:text-3xl font-display font-light text-studio-primary uppercase mt-4 tracking-tight leading-tight">
               {labels.title}
             </h2>
           </div>
 
-          <div className="lg:col-span-9 max-w-3xl">
+          <div className="lg:col-span-8 max-w-3xl">
             <p className="text-sm md:text-base text-studio-secondary font-light leading-relaxed">
               {labels.description}
             </p>
           </div>
         </div>
 
-        {/* Workspace: Left Input Form, Right Generative Brief Frame */}
+        {/* Workspace: Left Input Form / Report, Right Client Console Cards */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 pt-6">
           
-          {/* Left Panel: Brief Inputs */}
-          <div className="lg:col-span-5 bg-studio-bg border border-studio-border p-8 rounded-sm space-y-6">
-            <div className="flex items-center space-x-3 text-studio-caption border-b border-studio-border pb-4">
-              <Cpu size={16} />
-              <span className="text-xs font-mono uppercase tracking-widest">
-                {labels.leftPanelTitle}
-              </span>
-            </div>
-
-            <form onSubmit={handleSynthesize} className="space-y-5">
-              
-              {/* Business Name */}
-              <div className="space-y-1.5">
-                <label className="text-[10px] font-mono uppercase tracking-wider text-studio-caption flex items-center space-x-1">
-                  <span>{labels.label01}</span>
-                  <span className="text-studio-muted">*</span>
-                </label>
-                <input
-                  type="text"
-                  name="businessName"
-                  value={inputs.businessName}
-                  onChange={handleInputChange}
-                  required
-                  placeholder={data.placeholderBusiness}
-                  className="w-full px-4 py-3 bg-studio-panel border border-studio-border text-xs text-studio-primary placeholder-studio-muted focus:outline-none focus:border-studio-caption rounded-sm font-light"
-                />
-              </div>
-
-              {/* Industry */}
-              <div className="space-y-1.5">
-                <label className="text-[10px] font-mono uppercase tracking-wider text-studio-caption flex items-center space-x-1">
-                  <span>{labels.label02}</span>
-                  <span className="text-studio-muted">*</span>
-                </label>
-                <input
-                  type="text"
-                  name="industry"
-                  value={inputs.industry}
-                  onChange={handleInputChange}
-                  required
-                  placeholder={data.placeholderIndustry}
-                  className="w-full px-4 py-3 bg-studio-panel border border-studio-border text-xs text-studio-primary placeholder-studio-muted focus:outline-none focus:border-studio-caption rounded-sm font-light"
-                />
-              </div>
-
-              {/* Operating Bottleneck */}
-              <div className="space-y-1.5">
-                <label className="text-[10px] font-mono uppercase tracking-wider text-studio-caption flex items-center space-x-1">
-                  <span>{labels.label03}</span>
-                  <span className="text-studio-muted">*</span>
-                </label>
-                <textarea
-                  name="bottleneck"
-                  value={inputs.bottleneck}
-                  onChange={handleInputChange}
-                  required
-                  rows={4}
-                  placeholder={labels.placeholder03}
-                  className="w-full px-4 py-3 bg-studio-panel border border-studio-border text-xs text-studio-primary placeholder-studio-muted focus:outline-none focus:border-studio-caption rounded-sm font-light leading-relaxed resize-none"
-                />
-              </div>
-
-              {/* Strategic Context */}
-              <div className="space-y-1.5">
-                <label className="text-[10px] font-mono uppercase tracking-wider text-studio-caption flex items-center space-x-1">
-                  <span>{labels.label04}</span>
-                </label>
-                <input
-                  type="text"
-                  name="additionalNotes"
-                  value={inputs.additionalNotes}
-                  onChange={handleInputChange}
-                  placeholder={labels.placeholder04}
-                  className="w-full px-4 py-3 bg-studio-panel border border-studio-border text-xs text-studio-primary placeholder-studio-muted focus:outline-none focus:border-studio-caption rounded-sm font-light"
-                />
-              </div>
-
-              <button
-                id="synthesize-brief-btn"
-                type="submit"
-                disabled={loading || !inputs.businessName || !inputs.industry || !inputs.bottleneck}
-                className="w-full py-4 premium-interactive font-mono text-xs uppercase tracking-widest text-center rounded-sm flex items-center justify-center space-x-2 cursor-pointer disabled:opacity-50 disabled:pointer-events-none"
-              >
-                {loading ? (
-                  <>
-                    <RefreshCw className="animate-spin" size={14} />
-                    <span>{labels.btnAnalyzing}</span>
-                  </>
-                ) : (
-                  <>
-                    <span>{labels.btnSynthesize}</span>
-                    <ArrowRight size={14} />
-                  </>
-                )}
-              </button>
-            </form>
-          </div>
-
-          {/* Right Panel: Cinematic Output / Console Loader */}
-          <div className="lg:col-span-7 flex flex-col justify-between">
-            <div className="bg-studio-panel border border-studio-border rounded-sm h-full flex flex-col min-h-[480px]">
-              
-              {/* Output Header */}
-              <div className="flex justify-between items-center px-6 py-4 bg-studio-bg border-b border-studio-border">
-                <div className="flex items-center space-x-2.5">
-                  <div className="flex space-x-1.5">
-                    <div className="w-2.5 h-2.5 rounded-full bg-studio-border" />
-                    <div className="w-2.5 h-2.5 rounded-full bg-studio-border" />
-                    <div className="w-2.5 h-2.5 rounded-full bg-studio-border" />
+          {/* Left Column: Form Intake (Step 01), Loading Progress, or Strategize Report & Booking (Step 02 & Step 03) */}
+          <div className="lg:col-span-7 space-y-8">
+            <AnimatePresence mode="wait">
+              {loading ? (
+                /* STEP 02: Cinematic Node Processing Loading Logs */
+                <motion.div
+                  key="loading-panel"
+                  initial={{ opacity: 0, y: 15 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -15 }}
+                  transition={{ duration: 0.35 }}
+                  className="bg-studio-bg border border-studio-border p-8 rounded-[12px] shadow-sm space-y-6 min-h-[480px] flex flex-col justify-between"
+                >
+                  <div className="flex items-center space-x-3 text-studio-caption border-b border-studio-border pb-4">
+                    <Cpu className="animate-spin text-studio-primary" size={16} />
+                    <span className="text-xs font-mono uppercase tracking-widest">
+                      {labels.queryingNodes}
+                    </span>
                   </div>
-                  <span className="text-[10px] font-mono tracking-widest text-studio-caption uppercase">
-                    PROPOSAL_COMPILER.SH // PREVIEW
-                  </span>
-                </div>
-                {resultBrief && !loading && (
-                  <button
-                    id="copy-brief-btn"
-                    onClick={copyToClipboard}
-                    className="text-xs font-mono tracking-wide text-studio-caption hover:text-studio-primary flex items-center space-x-1.5 transition-colors cursor-pointer bg-transparent border-0"
-                  >
-                    {copied ? (
-                      <>
-                        <Check size={12} className="text-studio-caption" />
-                        <span>{labels.copiedBrief}</span>
-                      </>
-                    ) : (
-                      <>
-                        <Clipboard size={12} />
-                        <span>{labels.copyBrief}</span>
-                      </>
-                    )}
-                  </button>
-                )}
-              </div>
 
-              {/* Dynamic Panel Frame Body */}
-              <div className="flex-grow p-8 overflow-y-auto max-h-[420px] bg-studio-bg">
-                <AnimatePresence mode="wait">
-                  {loading ? (
-                    /* Tech Logger Loading Screen */
-                    <motion.div
-                      key="loading-frame"
-                      initial={{ opacity: 0 }}
-                      animate={{ opacity: 1 }}
-                      exit={{ opacity: 0 }}
-                      className="space-y-4 font-mono text-[11px] text-studio-secondary leading-normal"
-                    >
-                      {logs.map((log, idx) => (
-                        <div key={idx} className="flex items-start space-x-2">
-                          <span className="text-studio-muted">&gt;&gt;</span>
-                          <span>{log}</span>
-                        </div>
-                      ))}
-                      <div className="flex items-center space-x-2 text-studio-caption pt-4 italic">
-                        <RefreshCw className="animate-spin shrink-0" size={12} />
-                        <span>{labels.queryingNodes}</span>
+                  <div className="flex-grow space-y-3.5 font-mono text-[11px] text-zinc-400 leading-normal py-6 overflow-y-auto max-h-[300px]">
+                    {logs.map((log, idx) => (
+                      <div key={idx} className="flex items-start space-x-2">
+                        <span className="text-studio-muted shrink-0">&gt;&gt;</span>
+                        <span>{log}</span>
                       </div>
-                    </motion.div>
-                  ) : resultBrief ? (
-                    /* Custom Framed Beautiful Editorial Render */
-                    <motion.article
-                      key="result-frame"
-                      initial={{ opacity: 0, y: 10 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      className="prose prose-invert max-w-none text-left"
-                    >
-                      <div className="border border-studio-border bg-studio-panel p-6 md:p-8 rounded-sm">
-                        {renderFormattedBrief(resultBrief)}
-                      </div>
+                    ))}
+                  </div>
 
-                      {/* Interactive prompt to proceed with contact */}
-                      <div className="mt-8 p-6 bg-studio-panel border border-studio-border rounded-sm flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 sm:gap-0">
-                        <div className="space-y-0.5">
-                          <span className="text-[9px] font-mono text-studio-caption uppercase tracking-widest block">
-                            {labels.integrationTitle}
-                          </span>
-                          <p className="text-xs text-studio-primary">
-                            {labels.integrationDesc}
-                          </p>
+                  <div className="text-center py-4 border-t border-studio-border/30">
+                    <span className="text-[10px] font-mono tracking-widest text-studio-muted animate-pulse uppercase">
+                      SYSTEM COMPILING SECURE BLUEPRINTS... PLEASE REMAIN ACTIVE
+                    </span>
+                  </div>
+                </motion.div>
+              ) : resultBrief ? (
+                /* STEP 02 & STEP 03 COMPLETE: Strategic Report Display + Strategy Session Booking Section */
+                <motion.div
+                  key="report-panel"
+                  initial={{ opacity: 0, y: 15 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.45 }}
+                  className="space-y-8"
+                >
+                  {/* Generated Executive Consulting Report Card */}
+                  <div className="bg-studio-bg border border-studio-border rounded-[12px] shadow-sm flex flex-col overflow-hidden">
+                    {/* Header */}
+                    <div className="flex justify-between items-center px-6 py-4 bg-studio-panel border-b border-studio-border">
+                      <div className="flex items-center space-x-2.5">
+                        <div className="flex space-x-1.5">
+                          <div className="w-2.5 h-2.5 rounded-full bg-studio-muted" />
+                          <div className="w-2.5 h-2.5 rounded-full bg-studio-muted" />
+                          <div className="w-2.5 h-2.5 rounded-full bg-studio-muted" />
                         </div>
-                        <button
-                          id="proceed-brief-btn"
-                          onClick={() => {
-                            const el = document.getElementById("contact");
-                            if (el) el.scrollIntoView({ behavior: "smooth" });
-                          }}
-                          className="px-4 py-2 premium-interactive text-[10px] font-mono uppercase tracking-widest rounded-sm flex items-center space-x-1 cursor-pointer"
-                        >
-                          <span>{labels.btnConfirm}</span>
-                          <ArrowRight size={12} />
-                        </button>
-                      </div>
-                    </motion.article>
-                  ) : (
-                    /* Initial Sleeping State */
-                    <motion.div
-                      key="sleeping-frame"
-                      initial={{ opacity: 0 }}
-                      animate={{ opacity: 1 }}
-                      className="h-full flex flex-col items-center justify-center text-center space-y-4 py-12"
-                    >
-                      <div className="w-12 h-12 rounded-full border border-studio-border bg-studio-panel flex items-center justify-center text-studio-muted">
-                        <FileText size={20} className="stroke-1" />
-                      </div>
-                      <div className="max-w-md space-y-1">
                         <span className="text-[10px] font-mono tracking-widest text-studio-caption uppercase">
-                          {labels.sleepingTitle}
+                          DBR_EXECUTIVE_REPORT.PDF // SECURE PREVIEW
                         </span>
-                        <p className="text-xs text-studio-muted font-light max-w-sm">
-                          {labels.sleepingDesc}
+                      </div>
+                      
+                      <button
+                        id="copy-report-btn"
+                        onClick={copyToClipboard}
+                        className="text-xs font-mono tracking-wide text-studio-caption hover:text-white flex items-center space-x-1.5 transition-colors cursor-pointer bg-transparent border-0"
+                      >
+                        {copied ? (
+                          <>
+                            <Check size={12} className="text-green-500" />
+                            <span>{labels.copiedBrief}</span>
+                          </>
+                        ) : (
+                          <>
+                            <Clipboard size={12} />
+                            <span>{labels.copyBrief}</span>
+                          </>
+                        )}
+                      </button>
+                    </div>
+
+                    {/* Report Text Content Container */}
+                    <div className="p-6 md:p-8 overflow-y-auto max-h-[500px] bg-studio-bg">
+                      <article className="prose prose-invert max-w-none text-left">
+                        {renderFormattedBrief(resultBrief)}
+                      </article>
+                    </div>
+                  </div>
+
+                  {/* STEP 03: Premium Booking Section (Replacing "Initiate Brief" Contact Form) */}
+                  <div className="bg-studio-bg border border-studio-primary/20 p-8 rounded-[12px] shadow-lg relative overflow-hidden group">
+                    <div className="absolute inset-0 bg-radial from-studio-primary/[0.02] to-transparent pointer-events-none" />
+                    
+                    <div className="space-y-6 relative z-10">
+                      <div className="flex items-center space-x-3 text-studio-primary">
+                        <Calendar size={18} />
+                        <span className="text-[11px] font-mono uppercase tracking-[0.25em] font-semibold">
+                          {labels.schedulingTitle}
+                        </span>
+                      </div>
+
+                      <div className="space-y-3">
+                        <h3 className="text-xl font-display font-light text-white uppercase tracking-wide">
+                          {labels.schedulingTitle.split(" (")[0]}
+                        </h3>
+                        <p className="text-xs md:text-sm text-zinc-400 font-light leading-relaxed max-w-xl">
+                          {labels.schedulingDesc}
                         </p>
                       </div>
-                    </motion.div>
-                  )}
-                </AnimatePresence>
+
+                      <div className="pt-2">
+                        <a
+                          id="book-session-cta-btn"
+                          href="https://calendar.app.google/KxqkRxocP421jXka7"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="inline-flex items-center space-x-2.5 px-6 py-3.5 bg-studio-primary text-studio-bg font-mono text-xs uppercase tracking-widest rounded-sm hover:bg-white transition-all duration-300 font-semibold shadow-md group-hover:scale-[1.01]"
+                        >
+                          <span>{labels.schedulingCta}</span>
+                          <ExternalLink size={12} />
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+                </motion.div>
+              ) : (
+                /* STEP 01: Interactive Parametric Input Form */
+                <motion.div
+                  key="form-panel"
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  exit={{ opacity: 0 }}
+                  className="bg-studio-bg border border-studio-border p-8 rounded-[12px] shadow-sm space-y-6"
+                >
+                  <div className="flex items-center space-x-3 text-studio-caption border-b border-studio-border pb-4">
+                    <Cpu size={16} />
+                    <span className="text-xs font-mono uppercase tracking-widest">
+                      {labels.leftPanelTitle}
+                    </span>
+                  </div>
+
+                  <form onSubmit={handleSynthesize} className="space-y-6">
+                    
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+                      {/* Company Name */}
+                      <div className="space-y-1.5">
+                        <label className="text-[10px] font-mono uppercase tracking-wider text-studio-caption flex items-center space-x-1">
+                          <span>{labels.labelCompany}</span>
+                          <span className="text-studio-muted">*</span>
+                        </label>
+                        <input
+                          type="text"
+                          name="company"
+                          value={inputs.company}
+                          onChange={handleInputChange}
+                          required
+                          placeholder={labels.placeholderCompany}
+                          className="w-full px-4 py-3 bg-studio-panel border border-studio-border text-xs text-white placeholder-studio-muted focus:outline-none focus:border-zinc-500 rounded-sm font-light"
+                        />
+                      </div>
+
+                      {/* Industry */}
+                      <div className="space-y-1.5">
+                        <label className="text-[10px] font-mono uppercase tracking-wider text-studio-caption flex items-center space-x-1">
+                          <span>{labels.labelIndustry}</span>
+                          <span className="text-studio-muted">*</span>
+                        </label>
+                        <input
+                          type="text"
+                          name="industry"
+                          value={inputs.industry}
+                          onChange={handleInputChange}
+                          required
+                          placeholder={labels.placeholderIndustry}
+                          className="w-full px-4 py-3 bg-studio-panel border border-studio-border text-xs text-white placeholder-studio-muted focus:outline-none focus:border-zinc-500 rounded-sm font-light"
+                        />
+                      </div>
+                    </div>
+
+                    {/* Operational Bottleneck */}
+                    <div className="space-y-1.5">
+                      <label className="text-[10px] font-mono uppercase tracking-wider text-studio-caption flex items-center space-x-1">
+                        <span>{labels.labelBottleneck}</span>
+                        <span className="text-studio-muted">*</span>
+                      </label>
+                      <textarea
+                        name="bottleneck"
+                        value={inputs.bottleneck}
+                        onChange={handleInputChange}
+                        required
+                        rows={3}
+                        placeholder={labels.placeholderBottleneck}
+                        className="w-full px-4 py-3 bg-studio-panel border border-studio-border text-xs text-white placeholder-studio-muted focus:outline-none focus:border-zinc-500 rounded-sm font-light leading-relaxed resize-none"
+                      />
+                    </div>
+
+                    {/* Business Goals */}
+                    <div className="space-y-1.5">
+                      <label className="text-[10px] font-mono uppercase tracking-wider text-studio-caption flex items-center space-x-1">
+                        <span>{labels.labelGoals}</span>
+                        <span className="text-studio-muted">*</span>
+                      </label>
+                      <textarea
+                        name="goals"
+                        value={inputs.goals}
+                        onChange={handleInputChange}
+                        required
+                        rows={2}
+                        placeholder={labels.placeholderGoals}
+                        className="w-full px-4 py-3 bg-studio-panel border border-studio-border text-xs text-white placeholder-studio-muted focus:outline-none focus:border-zinc-500 rounded-sm font-light leading-relaxed resize-none"
+                      />
+                    </div>
+
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+                      {/* Timeline */}
+                      <div className="space-y-1.5">
+                        <label className="text-[10px] font-mono uppercase tracking-wider text-studio-caption flex items-center space-x-1">
+                          <span>{labels.labelTimeline}</span>
+                          <span className="text-studio-muted">*</span>
+                        </label>
+                        <input
+                          type="text"
+                          name="timeline"
+                          value={inputs.timeline}
+                          onChange={handleInputChange}
+                          required
+                          placeholder={labels.placeholderTimeline}
+                          className="w-full px-4 py-3 bg-studio-panel border border-studio-border text-xs text-white placeholder-studio-muted focus:outline-none focus:border-zinc-500 rounded-sm font-light"
+                        />
+                      </div>
+
+                      {/* Budget */}
+                      <div className="space-y-1.5">
+                        <label className="text-[10px] font-mono uppercase tracking-wider text-studio-caption">
+                          <span>{labels.labelBudget}</span>
+                        </label>
+                        <input
+                          type="text"
+                          name="budget"
+                          value={inputs.budget}
+                          onChange={handleInputChange}
+                          placeholder={labels.placeholderBudget}
+                          className="w-full px-4 py-3 bg-studio-panel border border-studio-border text-xs text-white placeholder-studio-muted focus:outline-none focus:border-zinc-500 rounded-sm font-light"
+                        />
+                      </div>
+                    </div>
+
+                    {/* Brand Positioning */}
+                    <div className="space-y-1.5">
+                      <label className="text-[10px] font-mono uppercase tracking-wider text-studio-caption flex items-center space-x-1">
+                        <span>{labels.labelPositioning}</span>
+                        <span className="text-studio-muted">*</span>
+                      </label>
+                      <textarea
+                        name="positioning"
+                        value={inputs.positioning}
+                        onChange={handleInputChange}
+                        required
+                        rows={2}
+                        placeholder={labels.placeholderPositioning}
+                        className="w-full px-4 py-3 bg-studio-panel border border-studio-border text-xs text-white placeholder-studio-muted focus:outline-none focus:border-zinc-500 rounded-sm font-light leading-relaxed resize-none"
+                      />
+                    </div>
+
+                    {/* CTA Submit Button */}
+                    <button
+                      id="synthesize-pipeline-btn"
+                      type="submit"
+                      disabled={!inputs.company || !inputs.industry || !inputs.bottleneck || !inputs.goals || !inputs.timeline || !inputs.positioning}
+                      className="w-full py-4 premium-interactive font-mono text-xs uppercase tracking-widest text-center rounded-sm flex items-center justify-center space-x-2 cursor-pointer disabled:opacity-40 disabled:pointer-events-none"
+                    >
+                      <span>{labels.btnSynthesize}</span>
+                      <ArrowRight size={14} />
+                    </button>
+                  </form>
+                </motion.div>
+              )}
+            </AnimatePresence>
+          </div>
+
+          {/* Right Column: STRATEGIC SUMMARY CLIENT CONSOLE (Target for both contact/consultant scrolling) */}
+          <div id="contact" className="lg:col-span-5 flex flex-col justify-between space-y-6">
+            <div className="bg-studio-bg border border-studio-border p-6 md:p-8 rounded-[12px] h-full flex flex-col justify-between shadow-sm relative overflow-hidden min-h-[480px]">
+              
+              {/* Header block of Console */}
+              <div className="space-y-4">
+                <div className="flex items-center justify-between border-b border-studio-border pb-4">
+                  <span className="text-[10px] font-mono tracking-widest text-studio-primary uppercase">
+                    {labels.consoleTitle}
+                  </span>
+                  <div className="flex items-center space-x-1.5">
+                    <span className="relative flex h-1.5 w-1.5">
+                      <span className={`animate-ping absolute inline-flex h-full w-full rounded-full opacity-75 ${generatedData ? "bg-green-400" : "bg-amber-400"}`}></span>
+                      <span className={`relative inline-flex rounded-full h-1.5 w-1.5 ${generatedData ? "bg-green-500" : "bg-amber-500"}`}></span>
+                    </span>
+                    <span className="text-[8px] font-mono text-studio-muted uppercase tracking-wider">
+                      {generatedData ? labels.consoleActive : labels.consolePending}
+                    </span>
+                  </div>
+                </div>
+
+                {/* Elegant Cards showing Strategic Summary fields */}
+                <div className="space-y-4 pt-2">
+                  
+                  {/* Card 01: Business */}
+                  <div className={`p-4 rounded-sm border transition-all duration-300 bg-studio-panel ${
+                    generatedData 
+                      ? "border-green-500/20 shadow-[0_0_15px_rgba(34,197,94,0.02)]" 
+                      : "border-studio-border/60 hover:border-studio-border"
+                  }`}>
+                    <div className="flex items-start space-x-3">
+                      <Briefcase className={`shrink-0 mt-0.5 ${generatedData ? "text-green-400" : "text-studio-muted"}`} size={14} />
+                      <div className="space-y-1">
+                        <span className="text-[9px] font-mono text-studio-caption uppercase tracking-wider block">
+                          {labels.cardBusiness}
+                        </span>
+                        <p className={`text-xs ${generatedData ? "text-white font-medium" : "text-studio-muted font-light"}`}>
+                          {generatedData ? (
+                            <>
+                              <strong className="text-white">{inputs.company}</strong>
+                              <span className="text-zinc-400"> // {inputs.industry}</span>
+                              <span className="block mt-1 text-[10px] text-zinc-500 italic font-mono">"{inputs.positioning}"</span>
+                            </>
+                          ) : (
+                            inputs.company ? `${inputs.company} // ${inputs.industry}` : labels.cardPendingValue
+                          )}
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Card 02: Bottleneck */}
+                  <div className={`p-4 rounded-sm border transition-all duration-300 bg-studio-panel ${
+                    generatedData 
+                      ? "border-green-500/20 shadow-[0_0_15px_rgba(34,197,94,0.02)]" 
+                      : "border-studio-border/60 hover:border-studio-border"
+                  }`}>
+                    <div className="flex items-start space-x-3">
+                      <AlertCircle className={`shrink-0 mt-0.5 ${generatedData ? "text-green-400" : "text-studio-muted"}`} size={14} />
+                      <div className="space-y-1">
+                        <span className="text-[9px] font-mono text-studio-caption uppercase tracking-wider block">
+                          {labels.cardBottleneck}
+                        </span>
+                        <p className={`text-xs ${generatedData ? "text-zinc-300 font-light" : "text-studio-muted font-light"} leading-relaxed`}>
+                          {generatedData ? (
+                            <>
+                              <strong className="text-white block mb-0.5">Bottleneck:</strong>
+                              {inputs.bottleneck}
+                              <strong className="text-white block mt-1.5 mb-0.5 font-mono text-[9px] uppercase tracking-wider">Strategic Goals:</strong>
+                              {inputs.goals}
+                            </>
+                          ) : (
+                            inputs.bottleneck ? inputs.bottleneck : labels.cardPendingValue
+                          )}
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Card 03: Recommended Architecture */}
+                  <div className={`p-4 rounded-sm border transition-all duration-300 bg-studio-panel ${
+                    generatedData 
+                      ? "border-green-500/30 shadow-[0_0_15px_rgba(34,197,94,0.05)] bg-green-500/[0.01]" 
+                      : "border-studio-border/60 hover:border-studio-border"
+                  }`}>
+                    <div className="flex items-start space-x-3">
+                      <Layers className={`shrink-0 mt-0.5 ${generatedData ? "text-green-400" : "text-studio-muted"}`} size={14} />
+                      <div className="space-y-1 w-full">
+                        <span className="text-[9px] font-mono text-studio-caption uppercase tracking-wider block">
+                          {labels.cardArchitecture}
+                        </span>
+                        <div className="text-xs">
+                          {loading ? (
+                            <span className="text-studio-caption font-mono text-[10px] animate-pulse flex items-center gap-1">
+                              <RefreshCw className="animate-spin" size={10} /> {labels.cardLoadingValue}
+                            </span>
+                          ) : generatedData ? (
+                            <p className="text-white font-medium whitespace-pre-line leading-relaxed text-[11px] font-mono bg-black/40 p-2.5 rounded-sm border border-studio-border/40">
+                              {generatedData.proposedArchitecture}
+                            </p>
+                          ) : (
+                            <span className="text-studio-muted font-light">{labels.cardPendingValue}</span>
+                          )}
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Card 04: Estimated Timeline */}
+                  <div className={`p-4 rounded-sm border transition-all duration-300 bg-studio-panel ${
+                    generatedData 
+                      ? "border-green-500/20 shadow-[0_0_15px_rgba(34,197,94,0.02)]" 
+                      : "border-studio-border/60 hover:border-studio-border"
+                  }`}>
+                    <div className="flex items-start space-x-3">
+                      <Clock className={`shrink-0 mt-0.5 ${generatedData ? "text-green-400" : "text-studio-muted"}`} size={14} />
+                      <div className="space-y-1">
+                        <span className="text-[9px] font-mono text-studio-caption uppercase tracking-wider block">
+                          {labels.cardTimeline}
+                        </span>
+                        <p className={`text-xs ${generatedData ? "text-white font-medium" : "text-studio-muted font-light"}`}>
+                          {loading ? (
+                            <span className="text-studio-caption font-mono text-[10px] animate-pulse">{labels.cardLoadingValue}</span>
+                          ) : generatedData ? (
+                            <>
+                              <span className="font-semibold text-green-400">{generatedData.estimatedTimeline}</span>
+                              <span className="block text-[10px] text-zinc-400 mt-1">{generatedData.estimatedImplementationPhases}</span>
+                            </>
+                          ) : (
+                            inputs.timeline ? inputs.timeline : labels.cardPendingValue
+                          )}
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Card 05: Recommended Services */}
+                  <div className={`p-4 rounded-sm border transition-all duration-300 bg-studio-panel ${
+                    generatedData 
+                      ? "border-green-500/20 shadow-[0_0_15px_rgba(34,197,94,0.02)]" 
+                      : "border-studio-border/60 hover:border-studio-border"
+                  }`}>
+                    <div className="flex items-start space-x-3">
+                      <Wrench className={`shrink-0 mt-0.5 ${generatedData ? "text-green-400" : "text-studio-muted"}`} size={14} />
+                      <div className="space-y-1">
+                        <span className="text-[9px] font-mono text-studio-caption uppercase tracking-wider block">
+                          {labels.cardServices}
+                        </span>
+                        <p className={`text-xs ${generatedData ? "text-zinc-300 font-light" : "text-studio-muted font-light"} leading-relaxed`}>
+                          {loading ? (
+                            <span className="text-studio-caption font-mono text-[10px] animate-pulse">{labels.cardLoadingValue}</span>
+                          ) : generatedData ? (
+                            generatedData.recommendedServices
+                          ) : (
+                            labels.cardPendingValue
+                          )}
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+
+                </div>
+              </div>
+
+              {/* Bottom Decorative SSL Tag */}
+              <div className="pt-6 border-t border-studio-border/30 text-[9px] font-mono text-studio-muted uppercase tracking-widest text-center">
+                STUDIO CORE // SECURE PARAMETRIC LINKED DESK
               </div>
 
             </div>

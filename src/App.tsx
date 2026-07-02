@@ -12,7 +12,6 @@ import Testimonials from "./components/Testimonials";
 import FAQ from "./components/FAQ";
 import FinalCTA from "./components/FinalCTA";
 import BriefConsultant from "./components/BriefConsultant";
-import ContactForm from "./components/ContactForm";
 import { ArrowUp, MapPin } from "lucide-react";
 import { AnimatePresence } from "motion/react";
 import { useLanguage } from "./LanguageContext";
@@ -27,12 +26,6 @@ import MenuNoirCaseStudy from "./components/MenuNoirCaseStudy";
 export default function App() {
   const [activeSection, setActiveSection] = useState("hero");
   const [activeCaseStudy, setActiveCaseStudy] = useState<string | null>(null);
-  const [briefText, setBriefText] = useState("");
-  const [companyInfo, setCompanyInfo] = useState<{
-    name: string;
-    industry: string;
-    bottleneck: string;
-  } | null>(null);
 
   const { language } = useLanguage();
   const navT = translations.navigation[language];
@@ -123,11 +116,6 @@ export default function App() {
       el.scrollIntoView({ behavior: "smooth" });
       setActiveSection(id);
     }
-  };
-
-  const handleBriefGenerated = (text: string, info: { name: string; industry: string; bottleneck: string }) => {
-    setBriefText(text);
-    setCompanyInfo(info);
   };
 
   // Localized Footer Static Strings
@@ -267,10 +255,7 @@ export default function App() {
         <FinalCTA />
 
         {/* Interactive AI Consultant diagnostic layer */}
-        <BriefConsultant onBriefGenerated={handleBriefGenerated} />
-
-        {/* Secure Project Ingestion Intake Form */}
-        <ContactForm initialBriefText={briefText} companyInfo={companyInfo} />
+        <BriefConsultant />
       </main>
 
       {/* Luxury Editorial Footer */}
