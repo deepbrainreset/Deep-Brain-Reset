@@ -1,0 +1,6 @@
+{
+  "name": "Deep Brain Reset",
+  "description": "The official digital headquarters of Deep Brain Reset, a premium Creative Technology Studio operating at the intersection of creative advertising, software engineering, and business automation.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
