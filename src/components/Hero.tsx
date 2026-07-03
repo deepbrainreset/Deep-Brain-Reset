@@ -236,14 +236,8 @@ export default function Hero({ onExploreClick }: HeroProps) {
         </div>
       </div>
 
-      {/* Bottom Informational coordinate bar */}
-      <div className="max-w-7xl mx-auto w-full z-40 relative px-6 md:px-12 pb-12 flex flex-col sm:flex-row justify-between items-start sm:items-center text-[9px] font-mono tracking-[0.35em] text-zinc-500 uppercase gap-4 sm:gap-0 select-none pointer-events-none">
-        <div className="flex items-center space-x-6 pointer-events-auto">
-          <span>// TOKYO</span>
-          <span>// GENEVA</span>
-          <span>// NEW YORK</span>
-        </div>
-        
+      {/* Bottom Informational bar */}
+      <div className="max-w-7xl mx-auto w-full z-40 relative px-6 md:px-12 pb-12 flex flex-col sm:flex-row justify-end items-start sm:items-center text-[9px] font-mono tracking-[0.35em] text-zinc-500 uppercase gap-4 sm:gap-0 select-none pointer-events-none">
         <div 
           className="flex items-center space-x-2 text-zinc-400 hover:text-white transition-colors cursor-pointer pointer-events-auto" 
           onClick={onExploreClick}

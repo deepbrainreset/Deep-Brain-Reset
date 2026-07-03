@@ -6,7 +6,7 @@ export default function TechStack() {
 
   const labels = {
     en: {
-      badge: "08 // TECHNOLOGY",
+      badge: "TECHNOLOGY",
       title: "Technology.",
       description: "We de-emphasize technical vanity. Below is a minimal presentation of the architectural components, libraries, and frameworks actively deployed in our operations. No fluff, only verified tech.",
       categories: {
@@ -32,7 +32,7 @@ export default function TechStack() {
       status: "VERIFIED_DEP // STATUS_OK"
     },
     es: {
-      badge: "08 // TECNOLOGÍA",
+      badge: "TECNOLOGÍA",
       title: "Tecnología.",
       description: "Dejamos de lado la vanidad técnica. A continuación, se presenta de forma minimalista los componentes de arquitectura, librerías y marcos de trabajo activos en nuestras operaciones. Sin rodeos, solo tecnología verificada.",
       categories: {
@@ -58,7 +58,7 @@ export default function TechStack() {
       status: "DEP_VERIFICADA // ESTADO_OK"
     },
     de: {
-      badge: "08 // TECHNOLOGIE",
+      badge: "TECHNOLOGIE",
       title: "Technologie.",
       description: "Wir verzichten auf technische Prahlerei. Unten finden Sie eine minimalistische Übersicht der architektonischen Komponenten, Bibliotheken und Frameworks, die in unseren Projekten aktiv im Einsatz sind. Keine heiße Luft, nur bewährte Technik.",
       categories: {
@@ -84,7 +84,7 @@ export default function TechStack() {
       status: "VERIFIZIERTE_DEP // STATUS_OK"
     },
     fr: {
-      badge: "08 // TECHNOLOGIE",
+      badge: "TECHNOLOGIE",
       title: "Technologie.",
       description: "Nous évitons l'ostentation technique. Voici une présentation minimale des composants d'architecture, des bibliothèques et des frameworks activement déployés dans nos opérations. Pas de superflu, uniquement de la technologie validée.",
       categories: {
@@ -110,13 +110,13 @@ export default function TechStack() {
       status: "DEP_VALIDÉE // STATUT_OK"
     },
     it: {
-      badge: "08 // TECNOLOGIA",
+      badge: "TECNOLOGIA",
       title: "Tecnologia.",
       description: "Evitiamo l'autocelebrazione tecnica. Di seguito è riportata una sintesi minimalista dei componenti di architettura, librerie e framework attivamente impiegati nelle nostre attività operative. Solo tecnologia verificata.",
       categories: {
         frontend: "Architettura Frontend",
         backend: "Servizi Backend",
-        ai: "Intelligenza Artificiale",
+        ai: "Inteligenza Artificiale",
         automation: "Automazione dei Flussi",
         cloud: "Servizi Cloud",
         video: "Produzione Video",

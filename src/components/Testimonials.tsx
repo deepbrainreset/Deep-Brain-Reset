@@ -9,117 +9,82 @@ export default function Testimonials() {
   const localizedReviews = {
     en: [
       {
-        name: "Marc Audemars",
-        company: "Aethelgard Watchmakers",
-        role: "Strategic Brand Director",
-        initials: "MA",
-        quote: "Deep Brain Reset did not simply build a configurator; they redefined how mechanical horology is conceptualized digitally. The campaign drove complete timepiece allotments in 72 hours, demonstrating complete mastery of both brand luxury and real-time 3D codebases."
+        name: "Pamela Claramunt",
+        company: "Succupam",
+        role: "Founder",
+        initials: "PC",
+        quote: "Working with Deep Brain Reset was a highly professional experience from start to finish. They truly understood our brand identity and translated it into a clear, elegant, and functional platform, with meticulous attention to both design and user experience. Communication was outstanding throughout, and the final result exceeded our expectations. Today, we have a website that fully reflects the caliber of our work and presents our company with a significantly stronger, more cohesive image."
       },
       {
-        name: "Sabine de Chalon",
-        company: "L'Étoile Reserve",
-        role: "Managing Director",
-        initials: "SC",
-        quote: "We avoided generic reservation platforms because they failed to reflect our physical Michelin hospitality. Deep Brain Reset engineered an custom guest portal with deep, editorial layout transitions that achieved a 38% increase in direct bookings."
-      },
-      {
-        name: "Arthur Vance",
-        company: "Apex-Flow Logistics",
-        role: "VP of Operations",
-        initials: "AV",
-        quote: "Replacing manual dispatch spreadsheets with context-aware microservice processing turned our worst logistics bottlenecks into self-healing loops. Manual overhead fell by 82% in twelve days. This is true operational leverage."
+        name: "Emilia Marsicano",
+        company: "Marsicano Legal",
+        role: "Attorney at Law",
+        initials: "EM",
+        quote: "I needed a website that would convey trust, professionalism, and clarity from the very first moment. Deep Brain Reset captured that need perfectly, developing a digital identity that truly reflects my way of working. The process was highly structured, with meticulous attention to detail and an exceptional level of aesthetic judgment. The result is a modern, elegant online presence perfectly aligned with the professional image I wanted to project to my clients."
       }
     ],
     es: [
       {
-        name: "Marc Audemars",
-        company: "Aethelgard Watchmakers",
-        role: "Director Estratégico de Marca",
-        initials: "MA",
-        quote: "Deep Brain Reset no solo construyó un configurador; redefinieron cómo se conceptualiza la relojería mecánica digitalmente. La campaña agotó todos los lotes de piezas en 72 horas, demostrando maestría absoluta tanto en lujo de marca como en bases de código 3D en tiempo real."
+        name: "Pamela Claramunt",
+        company: "Succupam",
+        role: "Fundadora",
+        initials: "PC",
+        quote: "Trabajar con Deep Brain Reset fue un proceso muy profesional de principio a fin. Supieron entender la identidad de nuestra marca y convertirla en una plataforma clara, elegante y funcional, cuidando tanto el diseño como la experiencia del usuario. La comunicación fue excelente durante todo el proyecto y el resultado final superó nuestras expectativas. Hoy contamos con una web que representa la calidad de nuestro trabajo y nos permite presentar la empresa con una imagen mucho más sólida."
       },
       {
-        name: "Sabine de Chalon",
-        company: "L'Étoile Reserve",
-        role: "Directora General",
-        initials: "SC",
-        quote: "Evitamos las plataformas de reserva genéricas porque no reflejaban nuestra hospitalidad física Michelin. Deep Brain Reset diseñó un portal de huéspedes a medida con transiciones editoriales que logró un aumento del 38% en reservas directas."
-      },
-      {
-        name: "Arthur Vance",
-        company: "Apex-Flow Logistics",
-        role: "Vicepresidente de Operaciones",
-        initials: "AV",
-        quote: "Reemplazar las hojas de cálculo de despacho manuales con procesamiento de microservicios conscientes del contexto convirtió nuestros peores cuellos de botella en bucles autocorregibles. Los costos manuales cayeron un 82% en doce días. Esto es verdadero apalancamiento operativo."
+        name: "Emilia Marsicano",
+        company: "Marsicano Legal",
+        role: "Abogada",
+        initials: "EM",
+        quote: "Necesitaba un sitio que transmitiera confianza, profesionalismo y claridad desde el primer momento. Deep Brain Reset logró interpretar exactamente esa necesidad y desarrolló una identidad digital que refleja mi forma de trabajar. El proceso fue ordenado, con mucha atención a los detalles y un alto nivel de criterio estético. El resultado es una presencia online moderna, elegante y alineada con la imagen que quería proyectar a mis clientes."
       }
     ],
     de: [
       {
-        name: "Marc Audemars",
-        company: "Aethelgard Watchmakers",
-        role: "Strategischer Markendirektor",
-        initials: "MA",
-        quote: "Deep Brain Reset hat nicht nur einen Konfigurator gebaut, sondern die digitale Konzeptualisierung mechanischer Uhrmacherkunst völlig neu definiert. Die Kampagne führte innerhalb von 72 Stunden zum vollständigen Ausverkauf der Zeitmesser-Kontingente – ein Beweis für absolute Meisterschaft in Markenluxus und Echtzeit-3D."
+        name: "Pamela Claramunt",
+        company: "Succupam",
+        role: "Gründerin",
+        initials: "PC",
+        quote: "Die Zusammenarbeit mit Deep Brain Reset war von Anfang bis Ende äußerst professionell. Sie haben unsere Markenidentität perfekt erfasst und sie in eine klare, elegante und funktionale Plattform übersetzt, bei der sowohl dem Design als auch der Benutzererfahrung höchste Aufmerksamkeit geschenkt wurde. Die Kommunikation war während des gesamten Projekts hervorragend und das Endergebnis hat unsere Erwartungen übertroffen. Heute verfügen wir über eine Website, die die Qualität unserer Arbeit perfekt widerspiegelt und unserem Unternehmen einen erstklassigen, soliden Auftritt verleiht."
       },
       {
-        name: "Sabine de Chalon",
-        company: "L'Étoile Reserve",
-        role: "Geschäftsführerin",
-        initials: "SC",
-        quote: "Wir haben generische Buchungsplattformen gemieden, weil sie unsere physische Michelin-Gastfreundschaft nicht widerspiegeln konnten. Deep Brain Reset entwickelte ein maßgeschneidertes Gästeportal mit edlen, redaktionellen Layout-Übergängen, das die Direktbuchungen um 38 % steigerte."
-      },
-      {
-        name: "Arthur Vance",
-        company: "Apex-Flow Logistics",
-        role: "Leiter Operatives Geschäft",
-        initials: "AV",
-        quote: "Das Ersetzen manueller Versandtabellen durch kontextsensitive Microservice-Prozesse verwandelte unsere größten Logistikengpässe in selbstkorrigierende Abläufe. Der manuelle Aufwand sank in nur zwölf Tagen um 82 %. Das ist echte operative Effizienz."
+        name: "Emilia Marsicano",
+        company: "Marsicano Legal",
+        role: "Rechtsanwältin",
+        initials: "EM",
+        quote: "Ich benötigte eine Website, die vom ersten Augenblick an Vertrauen, Professionalität und Klarheit vermittelt. Deep Brain Reset hat dieses Bedürfnis exakt erfasst und eine digitale Identität geschaffen, die meine Arbeitsweise widerspiegelt. Der Prozess war hervorragend strukturiert, mit viel Liebe zum Detail und einem feinen Gespür für Ästhetik. Das Ergebnis ist eine moderne, elegante Online-Präsenz, die perfekt auf das Image abgestimmt ist, das ich meinen Mandanten vermitteln möchte."
       }
     ],
     fr: [
       {
-        name: "Marc Audemars",
-        company: "Aethelgard Watchmakers",
-        role: "Directeur de Marque Stratégique",
-        initials: "MA",
-        quote: "Deep Brain Reset n'a pas simplement créé un configurateur ; ils ont redéfini la conceptualisation numérique de la haute horlogerie. La campagne a permis de vendre l'intégralité des pièces disponibles en 72 heures, témoignant d'une maîtrise absolue du luxe de marque et de la 3D en temps réel."
+        name: "Pamela Claramunt",
+        company: "Succupam",
+        role: "Fondatrice",
+        initials: "PC",
+        quote: "Travailler avec Deep Brain Reset a été un parcours d'une grande rigueur professionnelle de bout en bout. Ils ont su appréhender l'essence de notre identité de marque pour la transcrire dans une plateforme claire, élégante et parfaitement fonctionnelle, alliant design d'exception et expérience utilisateur fluide. La communication a été exemplaire tout au long du projet, et le livrable final a largement dépassé nos attentes. Nous disposons désormais d'un site web qui incarne l'excellence de notre savoir-faire et offre à notre entreprise une vitrine institutionnelle d'une grande solidité."
       },
       {
-        name: "Sabine de Chalon",
-        company: "L'Étoile Reserve",
-        role: "Directrice Générale",
-        initials: "SC",
-        quote: "Nous évitions les plateformes de réservation génériques, inadaptées à notre sens de l'accueil étoilé Michelin. Deep Brain Reset a développé un portail client sur mesure aux animations fluides et éditoriales, augmentant nos réservations directes de 38 %."
-      },
-      {
-        name: "Arthur Vance",
-        company: "Apex-Flow Logistics",
-        role: "VP Opérations",
-        initials: "AV",
-        quote: "Remplacer les fichiers de répartition manuelle par des microservices intelligents a transformé nos pires blocages logistiques en processus automatiques stables. Les coûts administratifs ont chuté de 82 % en douze jours. Un véritable levier de croissance."
+        name: "Emilia Marsicano",
+        company: "Marsicano Cabinet",
+        role: "Avocate",
+        initials: "EM",
+        quote: "J'avais besoin d'un site internet capable d'inspirer confiance, professionnalisme et clarté dès le premier regard. Deep Brain Reset a parfaitement saisi ce besoin et a développé une identité numérique qui reflète fidèlement ma rigueur de travail. Le processus s'est déroulé de manière fluide et ordonnée, avec un grand souci du détail et un sens esthétique particulièrement aiguisé. Le résultat se traduit par une présence en ligne moderne, élégante et idéalement alignée avec l'image que je souhaitais projeter auprès de mes clients."
       }
     ],
     it: [
       {
-        name: "Marc Audemars",
-        company: "Aethelgard Watchmakers",
-        role: "Direttore Strategico Brand",
-        initials: "MA",
-        quote: "Deep Brain Reset non ha creato un semplice configuratore, ha ridefinito la fruizione digitale dell'alta orologeria. La campagna ha esaurito i lotti disponibili in sole 72 ore, confermando una profonda competenza nel settore del lusso e nello sviluppo 3D in tempo reale."
+        name: "Pamela Claramunt",
+        company: "Succupam",
+        role: "Fondatrice",
+        initials: "PC",
+        quote: "Collaborare con Deep Brain Reset è stata un'esperienza estremamente professionale dall'inizio alla fine. Hanno compreso appieno l'identità del nostro marchio, traducendola in una piattaforma chiara, elegante e funzionale, curando meticolosamente sia il design che l'esperienza utente. La comunicazione è stata eccellente durante tutto il progetto e il risultato finale ha superato ogni nostra aspettativa. Oggi disponiamo di un sito web che rispecchia la qualità del nostro lavoro e ci permette di presentare l'azienda con un'immagine decisamente più solida."
       },
       {
-        name: "Sabine de Chalon",
-        company: "L'Étoile Reserve",
-        role: "Direttore Amministrativo",
-        initials: "SC",
-        quote: "Evitavamo i portali di prenotazione tradizionali poiché incapaci di esprimere la nostra ospitalità stellata. Deep Brain Reset ha sviluppato un sistema esclusivo per gli ospiti, con transizioni fluide, portando un aumento del 38% nelle prenotazioni dirette."
-      },
-      {
-        name: "Arthur Vance",
-        company: "Apex-Flow Logistics",
-        role: "VP Operativo",
-        initials: "AV",
-        quote: "Sostituire la gestione manuale delle spedizioni con microservizi intelligenti ha trasformato i nostri colli di bottiglia logistici in flussi automatizzati. Le attività manuali sono diminuite dell'82% in soli dodici giorni. Questa è vera efficienza operativa."
+        name: "Emilia Marsicano",
+        company: "Marsicano Studio",
+        role: "Avvocato",
+        initials: "EM",
+        quote: "Avevo bisogno di un sito web che trasmettesse fiducia, professionalità e chiarezza fin dal primo istante. Deep Brain Reset ha saputo interpretare esattamente questa esigenza, sviluppando un'identità digitale che riflette il mio metodo di lavoro. Il processo è stato lineare e strutturato, con grande attenzione ai dettagli e un elevato rigore estetico. Il risultato è una presenza online moderna, elegante e perfettamente in linea con l'immagine professionale che desideravo proiettare ai miei clienti."
       }
     ]
   }[language];
@@ -149,7 +114,7 @@ export default function Testimonials() {
         </div>
 
         {/* Testimonials Editorial Spread Cards */}
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 max-w-5xl mx-auto">
           {localizedReviews.map((rev, i) => (
             <div
               id={`review-card-${i}`}

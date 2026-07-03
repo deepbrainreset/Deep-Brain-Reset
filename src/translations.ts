@@ -276,116 +276,116 @@ const rawTranslations: {
   },
   philosophy: {
     en: {
-      badge: "01 // PHILOSOPHY",
+      badge: "PHILOSOPHY",
       title: "An architectural approach to design and code.",
       paragraph1: "We do not believe in disposable web pages, superficial graphics, or standard templates. Deep Brain Reset operates as a highly specialized creative technology studio. We approach digital construction with the same mathematical precision and spatial gravity as physical architecture.",
       paragraph2: "Every brand strategy we deliver is anchored in absolute functional truth. Every line of backend code we deploy is statically analyzed and compiled to ensure total resilience. We design before we write, conceptualize before we generate AI, and audit before we deploy.",
-      sectionLabel: "01 // PHILOSOPHY",
+      sectionLabel: "PHILOSOPHY",
       systemMatrix: "SYSTEM MATRIX // INTEGRITY VERIFIED",
       titleMain: "An architectural approach",
       titleSub: "to design and code.",
       bodyText: "We do not believe in disposable web pages, superficial graphics, or standard templates. Deep Brain Reset operates as a highly specialized creative technology studio. We approach digital construction with the same mathematical precision and spatial gravity as physical architecture. Every brand strategy we deliver is anchored in absolute functional truth. Every line of backend code we deploy is statically analyzed and compiled to ensure total resilience. We design before we write, conceptualize before we generate AI, and audit before we deploy.",
       creativeTitle: "Art Direction",
       creativeDesc: "We storyboard, compose, and master campaigns that command attention and project unyielding authority.",
-      creativeTag: "01 // CINEMATIC IDENTITY",
+      creativeTag: "CINEMATIC IDENTITY",
       engTitle: "Systems Engineering",
       engDesc: "Type-safe compiled codebases with sub-100ms load times and total uptime resilience.",
-      engTag: "02 // STATIC SYSTEMS",
+      engTag: "STATIC SYSTEMS",
       aiTitle: "Process Automation",
       aiDesc: "Custom server-side AI integrations and background pipelines to eliminate manual bottlenecks.",
-      aiTag: "03 // COGNITIVE AGENTS",
+      aiTag: "COGNITIVE AGENTS",
       pillar01: "PILLAR 01",
       pillar02: "PILLAR 02",
       pillar03: "PILLAR 03"
     },
     es: {
-      badge: "01 // FILOSOFÍA",
+      badge: "FILOSOFÍA",
       title: "Un enfoque arquitectónico del diseño y el código.",
       paragraph1: "No creemos en páginas web desechables, gráficos superficiales o plantillas preestablecidas. Deep Brain Reset opera como un estudio de tecnología creativa de especialización rigurosa. Abordamos la construcción digital con la misma precisión matemática y gravedad espacial que la arquitectura física.",
       paragraph2: "Cada estrategia de marca que entregamos está anclada en la verdad funcional absoluta. Cada línea de código que desplegamos es analizada estáticamente y compilada para garantizar una resiliencia total. Diseñamos antes de escribir, conceptualizamos antes de generar IA y auditamos antes de implementar.",
-      sectionLabel: "01 // FILOSOFÍA",
+      sectionLabel: "FILOSOFÍA",
       systemMatrix: "MATRIZ DEL SISTEMA // INTEGRIDAD VERIFICADA",
       titleMain: "Un enfoque arquitectónico",
       titleSub: "del diseño y el código.",
       bodyText: "No creemos en páginas web desechables, gráficos superficiales o plantillas preestablecidas. Deep Brain Reset opera como un estudio de tecnología creativa de especialización rigurosa. Abordamos la construcción digital con la misma precisión matemática y gravedad espacial que la arquitectura física. Cada estrategia de marca que entregamos está anclada en la verdad funcional absoluta. Cada línea de código que desplegamos es analizada estáticamente y compilada para garantizar una resiliencia total. Diseñamos antes de escribir, conceptualizamos antes de generar IA y auditamos antes de implementar.",
       creativeTitle: "Dirección de Arte",
       creativeDesc: "Elaboramos guiones gráficos, componemos y masterizamos campaigns que capturan la atención y proyectan autoridad absoluta.",
-      creativeTag: "01 // IDENTIDAD CINEMATOGRÁFICA",
+      creativeTag: "IDENTIDAD CINEMATOGRÁFICA",
       engTitle: "Ingeniería de Sistemas",
       engDesc: "Bases de código compiladas y con tipado seguro, tiempos de carga inferiores a 100 ms y resiliencia de actividad total.",
-      engTag: "02 // SISTEMAS ESTÁTICOS",
+      engTag: "SISTEMAS ESTÁTICOS",
       aiTitle: "Automatización de Procesos",
       aiDesc: "Integraciones de IA personalizadas en el servidor y flujos en segundo plano para eliminar cuellos de botella manuales.",
-      aiTag: "03 // AGENTES COGNITIVOS",
+      aiTag: "AGENTES COGNITIVOS",
       pillar01: "PILAR 01",
       pillar02: "PILAR 02",
       pillar03: "PILAR 03"
     },
     de: {
-      badge: "01 // PHILOSOPHIE",
+      badge: "PHILOSOPHIE",
       title: "Ein architektonischer Ansatz für Design und Code.",
       paragraph1: "Wir glauben weder an kurzlebige Websites noch an oberflächliche Grafiken oder Standard-Templates. Deep Brain Reset agiert als hochspezialisiertes Studio für kreative Technologie. Wir nähern uns der digitalen Konstruktion mit derselben mathematischen Präzision und räumlichen Tiefe wie der physischen Architektur.",
       paragraph2: "Jede von uns entwickelte Markenstrategie beruht auf absoluter funktionaler Wahrheit. Jede Codezeile wird statisch analysiert und kompiliert, um maximale Robustheit zu gewährleisten. Wir entwerfen, bevor wir programmieren, konzipieren, bevor wir KI generieren, und prüfen, bevor wir deployen.",
-      sectionLabel: "01 // PHILOSOPHIE",
+      sectionLabel: "PHILOSOPHIE",
       systemMatrix: "SYSTEM-MATRIX // INTEGRITÄT VERIFIZIERT",
       titleMain: "Ein architektonischer Ansatz",
       titleSub: "für Design und Code.",
       bodyText: "Wir glauben weder an kurzlebige Websites noch an oberflächliche Grafiken oder Standard-Templates. Deep Brain Reset agiert als hochspezialisiertes Studio für kreative Technologie. Wir nähern uns der digitalen Konstruktion mit derselben mathematischen Präzision und räumlichen Tiefe wie der physischen Architektur. Jede von uns entwickelte Markenstrategie beruht auf absoluter funktionaler Wahrheit. Jede Codezeile wird statisch analysiert und kompiliert, um maximale Robustheit zu gewährleisten. Wir entwerfen, bevor wir programmieren, konzipieren, bevor wir KI generieren, und prüfen, bevor wir deployen.",
       creativeTitle: "Kreativdirektion",
       creativeDesc: "Wir erstellen Storyboards, entwerfen und realisieren Kampagnen, die Aufmerksamkeit fesseln und unumstößliche Autorität vermitteln.",
-      creativeTag: "01 // FILMISCHE IDENTITÄT",
+      creativeTag: "FILMISCHE IDENTITÄT",
       engTitle: "Systementwicklung",
       engDesc: "Typsichere, kompilierte Codebasen mit Ladezeiten unter 100 ms und vollständiger Ausfallsicherheit.",
-      engTag: "02 // STATISCHE SYSTEME",
+      engTag: "STATISCHE SYSTEME",
       aiTitle: "Prozessautomatisierung",
       aiDesc: "Spezialisierte serverseitige KI-Integrationen und Hintergrundprozesse zur Beseitigung manueller Engpässe.",
-      aiTag: "03 // KOGNITIVE AGENTEN",
+      aiTag: "KOGNITIVE AGENTEN",
       pillar01: "SÄULE 01",
       pillar02: "SÄULE 02",
       pillar03: "SÄULE 03"
     },
     fr: {
-      badge: "01 // PHILOSOPHIE",
+      badge: "PHILOSOPHIE",
       title: "Une approche architecturale du design et du code.",
       paragraph1: "Nous rejetons les pages web éphémères, le graphisme superficiel et les gabarits préconçus. Deep Brain Reset opère comme un atelier de technologie créative de haute spécialisation. Nous abordons la construction numérique avec la rigueur mathématique et la gravité spatiale de l'architecture physique.",
       paragraph2: "Chaque stratégie de marque est ancrée dans une vérité fonctionnelle absolue. Chaque ligne de code est analysée de manière statique et compilée pour garantir une résilience totale. Nous concevons avant d'écrire, conceptualisons avant d'employer l'IA, et auditons avant de déployer.",
-      sectionLabel: "01 // PHILOSOPHIE",
+      sectionLabel: "PHILOSOPHIE",
       systemMatrix: "MATRICE DU SYSTÈME // INTÉGRITÉ VÉRIFIÉE",
       titleMain: "Une approche architecturale",
       titleSub: "du design et du code.",
       bodyText: "Nous rejetons les pages web éphémères, le graphisme superficiel et les gabarits préconçus. Deep Brain Reset opère comme un atelier de technologie créative de haute spécialisation. Nous abordons la construction numérique avec la rigueur mathématique et la gravité spatiale de l'architecture physique. Chaque stratégie de marque est ancrée dans une vérité fonctionnelle absolue. Chaque ligne de code est analysée de manière statique et compilée pour garantir une résilience totale. Nous concevons avant d'écrire, conceptualisons avant d'employer l'IA, et auditons avant de déployer.",
       creativeTitle: "Direction Artistique",
       creativeDesc: "Nous dessinons des scénarios, composons et finalisons des campagnes qui captent le regard et affirment votre respectabilité.",
-      creativeTag: "01 // IDENTITÉ CINÉMATOGRAPHIQUE",
+      creativeTag: "IDENTITÉ CINÉMATOGRAPHIQUE",
       engTitle: "Ingénierie de Systèmes",
       engDesc: "Bases de code compilées avec typage statique, temps de chargement inférieurs à 100 ms et résilience totale du système.",
-      engTag: "02 // SYSTÈMES STATIQUES",
+      engTag: "SYSTÈMES STATIQUES",
       aiTitle: "Automatisation",
       aiDesc: "Intégrations IA personnalisées côté serveur et pipelines automatisés pour éliminer les tâches manuelles.",
-      aiTag: "03 // AGENTS COGNITIFS",
+      aiTag: "AGENTS COGNITIFS",
       pillar01: "PILIER 01",
       pillar02: "PILIER 02",
       pillar03: "PILIER 03"
     },
     it: {
-      badge: "01 // FILOSOFIA",
+      badge: "FILOSOFIA",
       title: "Un approccio architettonico al design e al codice.",
       paragraph1: "Non crediamo in pagine web usa e getta, grafiche superficiali o template standardizzati. Deep Brain Reset opera como uno studio altamente specializzato in tecnologia creativa. Affrontiamo la progettazione digitale con la stessa precisione matematica e gravità spaziale che caratterizzano l'architettura fisica.",
       paragraph2: "Ogni strategia di brand che realizziamo è ancorata a una verità funzionale assoluta. Ogni singola riga di codice viene analizzata staticamente e compilata per assicurare la totale stabilità del sistema. Progettiamo prima di scrivere, concettualizziamo prima di integrare l'IA, e verifichiamo prima del rilascio.",
-      sectionLabel: "01 // FILOSOFIA",
+      sectionLabel: "FILOSOFIA",
       systemMatrix: "MATRICE DEL SISTEMA // INTEGRITÀ VERIFICATA",
       titleMain: "Un approccio architettonico",
       titleSub: "al design e al codice.",
       bodyText: "Non crediamo in pagine web usa e getta, grafiche superficiali o template standardizzati. Deep Brain Reset opera come uno studio altamente specializzato in tecnologia creativa. Affrontiamo la progettazione digitale con la stessa precisione matematica e gravità spaziale che caratterizzano l'architettura fisica. Ogni strategia di brand che realizziamo è ancorata a una verità funzionale assoluta. Ogni singola riga di codice viene analizzata staticamente e compilata per assicurare la totale stabilità del sistema. Progettiamo prima di scrivere, concettualizziamo prima di integrare l'IA, e verifichiamo prima del rilascio.",
       creativeTitle: "Direzione Artistica",
       creativeDesc: "Progettiamo storyboard, componiamo e perfezioniamo campagne in grado di catturare l'attenzione e riflettere immediata affidabilità.",
-      creativeTag: "01 // IDENTITÀ CINEMATOGRAFICA",
+      creativeTag: "IDENTITÀ CINEMATOGRAFICA",
       engTitle: "Ingegneria dei Sistemi",
       engDesc: "Basi di codice compilate e tipizzate, tempi di caricamento inferiori a 100 ms e massima stabilità del sistema.",
-      engTag: "02 // SISTEMI STATICI",
+      engTag: "SISTEMI STATICI",
       aiTitle: "Automazione dei Processi",
       aiDesc: "Integrazioni IA dedicate lato server e flussi automatizzati per eliminare completamente le operazioni ripetitive.",
-      aiTag: "03 // AGENTI COGNITIVI",
+      aiTag: "AGENTI COGNITIVI",
       pillar01: "PILASTRO 01",
       pillar02: "PILASTRO 02",
       pillar03: "PILASTRO 03"
@@ -393,31 +393,31 @@ const rawTranslations: {
   },
   featured: {
     en: {
-      badge: "02 // SELECTED PRODUCTIONS",
+      badge: "SELECTED PRODUCTIONS",
       title: "Curated Exhibition.",
       description: "We design and engineer digital masterworks. Rather than a random portfolio of websites, this collection represents a curated progressive exhibition of the studio's diverse disciplines—from cinematic AI art direction and high-stakes civic software platforms, to vertical SaaS ecosystems, corporate commerce systems, and premium editorial digital design.",
       cta: "Inspect Case Study"
     },
     es: {
-      badge: "02 // PRODUCCIONES SELECCIONADAS",
+      badge: "PRODUCCIONES SELECCIONADAS",
       title: "Exposición Curada.",
       description: "Diseñamos y construimos obras de arte digitales. En lugar de un catálogo aleatorio de sitios web, esta colección representa una exhibición progresiva y curada de las disciplinas del estudio: desde dirección de arte con IA cinematográfica y plataformas cívicas de alta complejidad, hasta sistemas SaaS verticales, portales corporativos de comercio electrónico y diseño editorial premium.",
       cta: "Inspeccionar Caso de Estudio"
     },
     de: {
-      badge: "02 // AUSGEWÄHLTE PRODUKTIONEN",
+      badge: "AUSGEWÄHLTE PRODUKTIONEN",
       title: "Kuratierte Ausstellung.",
       description: "Wir entwerfen und realisieren digitale Meisterwerke. Anstelle eines willkürlichen Portfolios von Websites zeigt diese Sammlung eine kuratierte, anspruchsvolle Leistungsschau unserer verschiedenen Disziplinen – von filmischer KI-Bildgestaltung über hochkomplexe Civic-Tech-Plattformen bis hin zu Branchen-SaaS, B2B-Commerce und edlem Editorial-Design.",
       cta: "Fallstudie Prüfen"
     },
     fr: {
-      badge: "02 // CRÉATIONS REPRÉSENTATIVES",
+      badge: "CRÉATIONS REPRÉSENTATIVES",
       title: "Exposition Exclusive.",
       description: "Nous concevons et façonnons des chefs-d'œuvre numériques. Loin d'être un simple répertoire de sites, cette collection constitue un parcours éditorial progressif à travers nos expertises : de la direction artistique par IA cinématographique aux plateformes civiques d'envergure, en passant par les architectures SaaS verticales, le e-commerce industriel et le design d'auteur.",
       cta: "Analyser l'Étude de Cas"
     },
     it: {
-      badge: "02 // SELEZIONE DELLE OPERE",
+      badge: "SELEZIONE DELLE OPERE",
       title: "Mostra Curata.",
       description: "Progettiamo e sviluppiamo capolavori digitali. Piuttosto che una galleria disordinata di siti web, questa collezione rappresenta un percorso espositivo progressivo delle nostre discipline: dalla direzione artistica cinematografica assistita da IA a piattaforme civiche ad alto impatto, fino a sistemi SaaS verticali, e-commerce industriali e design d'autore raffinato.",
       cta: "Esamina Caso di Studio"
@@ -425,7 +425,7 @@ const rawTranslations: {
   },
   process: {
     en: {
-      badge: "03 // METHODOLOGY",
+      badge: "METHODOLOGY",
       title: "The Unified Production Pipeline.",
       description: "Our operational pipeline is structured to eliminate risk, maximize throughput, and achieve mathematical predictability across every stage of creative production.",
       phases: [
@@ -460,7 +460,7 @@ const rawTranslations: {
       ]
     },
     es: {
-      badge: "03 // METODOLOGÍA",
+      badge: "METODOLOGÍA",
       title: "El Pipeline Unificado de Producción.",
       description: "Nuestro flujo de trabajo está estructurado para eliminar riesgos, maximizar el rendimiento y alcanzar una predictibilidad matemática en cada etapa de la producción creativa.",
       phases: [
@@ -495,7 +495,7 @@ const rawTranslations: {
       ]
     },
     de: {
-      badge: "03 // METHODIK",
+      badge: "METHODIK",
       title: "Die integrierte Produktionspipeline.",
       description: "Unsere Pipeline is so strukturiert, dass Risiken eliminiert, Durchsätze maximiert und mathematische Vorhersagbarkeit in jeder Phase der kreativen Produktion erreicht wird.",
       phases: [
@@ -530,7 +530,7 @@ const rawTranslations: {
       ]
     },
     fr: {
-      badge: "03 // MÉTHODOLOGIE",
+      badge: "MÉTHODOLOGIE",
       title: "Le Pipeline de Production Unifié.",
       description: "Notre processus opérationnel est structuré pour éradiquer les risques de livraison, maximiser l'efficacité opérationnelle et atteindre une prévisibilité mathématique à chaque étape de la création.",
       phases: [
@@ -565,7 +565,7 @@ const rawTranslations: {
       ]
     },
     it: {
-      badge: "03 // METODOLOGIA",
+      badge: "METODOLOGIA",
       title: "Il Flusso di Produzione Unificato.",
       description: "Il nostro metodo operativo è strutturato per eliminare i rischi di sviluppo, ottimizzare le prestazioni e assicurare la massima prevedibilità in ogni fase della creazione digitale.",
       phases: [
@@ -602,58 +602,58 @@ const rawTranslations: {
   },
   services: {
     en: {
-      badge: "04 // CAPABILITIES",
+      badge: "CAPABILITIES",
       title: "Engineered Solutions.",
       description: "We organize our production capabilities into four specialized practices, ensuring absolute focus and technical mastery in every engagement."
     },
     es: {
-      badge: "04 // CAPACIDADES",
+      badge: "CAPACIDADES",
       title: "Soluciones de Ingeniería.",
       description: "Organizamos nuestras capacidades en cuatro disciplinas de alta especialización, garantizando un enfoque riguroso y maestría técnica en cada proyecto."
     },
     de: {
-      badge: "04 // KOMPETENZEN",
+      badge: "KOMPETENZEN",
       title: "Engineering-Lösungen.",
-      description: "Wir gliedern unsere Kompetenzen in vier spezialisierte Bereiche, um in jedem Projekt absolute Fokussierung und technologische Exzellenz zu sichern."
+      description: "Wir gliedern unsere Kompetenzen in vier spezialisierte Bereiche, um in jedem Projekt absolute Fokussierung und technologische Eszellenz zu sichern."
     },
     fr: {
-      badge: "04 // EXPERTISE",
+      badge: "EXPERTISE",
       title: "Solutions d'Ingénierie.",
       description: "Nous structurons nos compétences autour de quatre pôles d'excellence, assurant une concentration maximale et une maîtrise technique absolue."
     },
     it: {
-      badge: "04 // COMPETENZE",
+      badge: "COMPETENZE",
       title: "Soluzioni Tecnologiche.",
       description: "Strutturiamo la nostra azione in quattro aree di eccellenza tecnologica e di design, garantendo un'attenzione rigorosa e massima competenza."
     }
   },
   casesList: {
     en: {
-      badge: "05 // PORTFOLIO RECORDS",
+      badge: "PORTFOLIO RECORDS",
       title: "Case Studies.",
       description: "We present our achievements not through shallow screenshots, but through rigorous breakdowns of thinking, architectures, and financial validation.",
       inspect: "INSPECT CASE STUDY"
     },
     es: {
-      badge: "05 // HISTORIAL DE PORTAFOLIO",
+      badge: "HISTORIAL DE PORTAFOLIO",
       title: "Casos de Estudio.",
       description: "Presentamos nuestros logros no con simples capturas de pantalla, sino a través de análisis rigurosos de nuestra estrategia, arquitectura de software e impacto real.",
       inspect: "INSPECCIONAR PROYECTO"
     },
     de: {
-      badge: "05 // PROJEKTARCHIV",
+      badge: "PROJEKTARCHIV",
       title: "Fallstudien.",
       description: "Wir präsentieren unsere Erfolge nicht durch oberflächliche Bilder, sondern durch fundierte Analysen von Denkprozessen, Softwarearchitekturen und geschäftlichem Nutzen.",
       inspect: "FALLSTUDIE ANALYSIEREN"
     },
     fr: {
-      badge: "05 // ÉTUDES DE CAS",
+      badge: "ÉTUDES DE CAS",
       title: "Rapports d'Étude.",
       description: "Nous démontrons nos accomplissements non pas via de simples images, mais par une dissection approfondie de notre réflexion stratégique, technique et opérationnelle.",
       inspect: "ANALYSER LE PROJET"
     },
     it: {
-      badge: "05 // ARCHIVIO CASI",
+      badge: "ARCHIVIO CASI",
       title: "Casi di Studio.",
       description: "Presentiamo le nostre soluzioni non attraverso semplici gallerie d'immagini, ma tramite approfondimenti rigorosi di logica, architettura e validazione commerciale.",
       inspect: "ESAMINA CASO DI STUDIO"
@@ -661,7 +661,7 @@ const rawTranslations: {
   },
   whyUs: {
     en: {
-      badge: "06 // STRATEGIC VALUE",
+      badge: "STRATEGIC VALUE",
       title: "Why Deep Brain Reset?",
       description: "Traditional agencies do not understand code. Conventional software houses do not understand art direction. We exist because complex business problems require both disciplines running on a single production pipeline.",
       cards: [
@@ -684,7 +684,7 @@ const rawTranslations: {
       ]
     },
     es: {
-      badge: "06 // VALOR ESTRATÉGICO",
+      badge: "VALOR ESTRATÉGICO",
       title: "¿Por Qué Deep Brain Reset?",
       description: "Las agencias tradicionales no entienden de desarrollo. Las consultoras de software convencionales no entienden de dirección de arte. Existimos porque los problemas de negocio complejos exigen ambas disciplinas coordinadas bajo una sola ingeniería.",
       cards: [
@@ -707,7 +707,7 @@ const rawTranslations: {
       ]
     },
     de: {
-      badge: "06 // STRATEGISCHER MEHRWERT",
+      badge: "STRATEGISCHER MEHRWERT",
       title: "Warum Deep Brain Reset?",
       description: "Klassische Agenturen verstehen keinen Code. Traditionelle Softwarehäuser verstehen keine Designästhetik. Wir existieren, weil anspruchsvolle geschäftliche Herausforderungen beide Disziplinen in einer einzigen Pipeline verlangen.",
       cards: [
@@ -730,7 +730,7 @@ const rawTranslations: {
       ]
     },
     fr: {
-      badge: "06 // VALEUR STRATÉGIQUE",
+      badge: "VALEUR STRATÉGIQUE",
       title: "Pourquoi Deep Brain Reset ?",
       description: "Les agences traditionnelles ne maîtrisent pas le code. Les ssii conventionnelles ignorent tout de la direction artistique. Nous existons car les problématiques d'affaires complexes exigent l'union de ces deux disciplines sous un même pipeline de production.",
       cards: [
@@ -753,7 +753,7 @@ const rawTranslations: {
       ]
     },
     it: {
-      badge: "06 // VALORE STRATEGICO",
+      badge: "VALORE STRATEGICO",
       title: "Perché Deep Brain Reset?",
       description: "Le agenzie tradizionali non conoscono lo sviluppo software. Le software house convenzionali non comprendono la direzione artistica. Esistiamo perché problemi operativi complessi richiedono entrambe le discipline in un unico flusso coordinato.",
       cards: [
@@ -840,7 +840,7 @@ const rawTranslations: {
   },
   contactForm: {
     en: {
-      badge: "08 // SECURE PROJECT INTAKE",
+      badge: "SECURE PROJECT INTAKE",
       title: "Initiate Production.",
       description: "We work with a highly limited group of partners. Share your core challenge, and our architects will reach out to schedule an executive strategy session within 24 hours.",
       labelBusiness: "Company / Project Name",
@@ -854,7 +854,7 @@ const rawTranslations: {
       successDesc: "Our partners and lead software architects have registered your strategic brief. We will reach out within 24 hours to schedule an executive diagnostic call."
     },
     es: {
-      badge: "08 // INGRESO DE PROYECTO SEGURO",
+      badge: "INGRESO DE PROYECTO SEGURO",
       title: "Iniciar Producción.",
       description: "Trabajamos con un grupo selecto de socios de negocio. Comparta su desafío operativo y nuestros directores de proyecto lo contactarán para programar una sesión estratégica dentro de las próximas 24 horas.",
       labelBusiness: "Nombre de la Empresa / Proyecto",
@@ -868,7 +868,7 @@ const rawTranslations: {
       successDesc: "Nuestros ingenieros de software y directores creativos han recibido su pliego estratégico. Nos comunicaremos con usted en menos de 24 horas para agendar un diagnóstico ejecutivo."
     },
     de: {
-      badge: "08 // SICHERES PROJEKTBRIEFING",
+      badge: "SICHERES PROJEKTBRIEFING",
       title: "Produktion Einleiten.",
       description: "Wir arbeiten mit einer streng limitierten Anzahl von Partnern zusammen. Beschreiben Sie Ihre Herausforderung, und unsere Systemarchitekten werden sich innerhalb von 24 Stunden bei Ihnen melden.",
       labelBusiness: "Name des Unternehmens / Projekts",
@@ -882,7 +882,7 @@ const rawTranslations: {
       successDesc: "Unsere leitenden Softwarearchitekten und Designer haben Ihr Briefing registriert. Wir werden uns innerhalb von 24 Stunden mit Ihnen in Verbindung setzen, um einen Termin zu vereinbaren."
     },
     fr: {
-      badge: "08 // ENREGISTREMENT SÉCURISÉ DE BRIEF",
+      badge: "ENREGISTREMENT SÉCURISÉ DE BRIEF",
       title: "Initier la Production.",
       description: "Nous collaborons avec un cercle très restreint de partenaires de confiance. Présentez-nous votre défi, et nos architectes d'affaires prendront contact sous 24 heures pour convenir d'un rendez-vous stratégique.",
       labelBusiness: "Nom de l'Entreprise / Projet",
@@ -896,7 +896,7 @@ const rawTranslations: {
       successDesc: "Nos concepteurs et architectes principaux ont validé l'enregistrement de votre brief de projet. Nous vous recontacterons sous 24 heures afin de planifier un entretien de diagnostic."
     },
     it: {
-      badge: "08 // ARCHIVIAZIONE SICURA BRIEF DI PROGETTO",
+      badge: "ARCHIVIAZIONE SICURA BRIEF DI PROGETTO",
       title: "Inizia la Produzione.",
       description: "Collaboriamo esclusivamente con un grupo ristretto di partner commerciali. Condividete il vostro obiettivo e i nostri ingegneri principali si metteranno in contatto per definire un incontro strategico entro 24 ore.",
       labelBusiness: "Nome dell'Azienda / Progetto",
@@ -912,27 +912,27 @@ const rawTranslations: {
   },
   testimonials: {
     en: {
-      badge: "07 // TRUST VERIFICATION",
+      badge: "TRUST VERIFICATION",
       title: "Executive Endorsements.",
       description: "Rigorous testimonies from executive partners across high-tech manufacturing, corporate law, public services, and luxury commercial brands."
     },
     es: {
-      badge: "07 // VERIFICACIÓN DE CONFIANZA",
+      badge: "VERIFICACIÓN DE CONFIANZA",
       title: "Respaldo Ejecutivo.",
       description: "Testimonios de socios ejecutivos en manufactura de alta tecnología, firmas legales corporativas, servicios públicos y marcas comerciales de lujo."
     },
     de: {
-      badge: "07 // VERTRAUENSBEWEIS",
+      badge: "VERTRAUENSBEWEIS",
       title: "Referenzen von Entscheidern.",
       description: "Aussagekräftige Berichte von Führungskräften aus den Bereichen High-Tech-Produktion, Wirtschaftsrecht, öffentlicher Sektor und Luxusmarken."
     },
     fr: {
-      badge: "07 // VALIDATION ET RECONNAISSANCE",
+      badge: "VALIDATION ET RECONNAISSANCE",
       title: "Recommandations Exécutives.",
       description: "Témoignages de nos partenaires issus de la haute technologie industrielle, du droit des affaires, des administrations publiques et de l'univers du luxe."
     },
     it: {
-      badge: "07 // VERIFICA DELLA FIDUCIA",
+      badge: "VERIFICA DELLA FIDUCIA",
       title: "Apprezzamenti dei Partner.",
       description: "Testimonianze di partner esecutivi operanti nel settore industriale ad alta tecnologia, studi legali societari, istituzioni pubbliche e marchi commerciali di pregio."
     }

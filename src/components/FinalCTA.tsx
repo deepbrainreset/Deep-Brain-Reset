@@ -6,44 +6,39 @@ export default function FinalCTA() {
 
   const labels = {
     en: {
-      badge: "11 // FINAL CALL TO ACTION",
+      badge: "FINAL CALL TO ACTION",
       title: "Ready to Reset Your Operation?",
       description: "We only accept a limited number of projects each quarter to ensure absolute focus and exceptional quality. Secure your discovery call today.",
       btnStart: "Start Your Project",
       btnSchedule: "Schedule A Discovery Call",
-      footer: "ESTABLISHED OPERATING CHANNELS // SECURE SSL TRANSMISSION ACTIVE"
     },
     es: {
-      badge: "11 // ACCIÓN DE CIERRE",
+      badge: "ACCIÓN DE CIERRE",
       title: "¿Listo para Reiniciar su Operación?",
       description: "Solo aceptamos un número limitado de proyectos cada trimestre para asegurar un enfoque absoluto y calidad excepcional. Reserve su llamada de diagnóstico hoy.",
       btnStart: "Iniciar Proyecto",
       btnSchedule: "Programar llamada",
-      footer: "CANALES OPERATIVOS ESTABLECIDOS // TRANSMISIÓN SSL SEGURA ACTIVA"
     },
     de: {
-      badge: "11 // ABSCHLIESSENDER AUFRUF",
+      badge: "ABSCHLIESSENDER AUFRUF",
       title: "Bereit für den operativen Reset?",
       description: "Wir nehmen pro Quartal nur eine begrenzte Anzahl von Projekten an, um absolute Fokussierung und außergewöhnliche Qualität zu garantieren. Sichern Sie sich noch heute Ihr Erstgespräch.",
       btnStart: "Projekt Starten",
       btnSchedule: "Erstgespräch Vereinbaren",
-      footer: "ETABLIERTE BETRIEBSKANÄLE // SICHERE SSL-ÜBERTRAGUNG AKTIV"
     },
     fr: {
-      badge: "11 // APPEL À L'ACTION FINAL",
+      badge: "APPEL À L'ACTION",
       title: "Prêt à réinitialiser votre organisation ?",
       description: "Nous n'acceptons qu'un nombre très restreint de projets par trimestre afin de garantir une concentration absolue et une qualité exceptionnelle. Réservez votre entretien aujourd'hui.",
       btnStart: "Lancer un Projet",
       btnSchedule: "Planifier un Entretien",
-      footer: "CANAUX OPÉRATIONNELS ÉTABLIS // TRANSMISSION SSL SÉCURISÉE ACTIVE"
     },
     it: {
-      badge: "11 // INVITO ALL'AZIONE",
+      badge: "INVITO ALL'AZIONE",
       title: "Pronti a ottimizzare i vostri flussi?",
       description: "Accettiamo un numero limitato di progetti a trimestre per garantire un focus totale e una qualità straordinaria. Prenotate oggi stesso il vostro colloquio conoscitivo.",
       btnStart: "Inizia Progetto",
       btnSchedule: "Prenota una Chiamata",
-      footer: "CANALI OPERATIVI ATTIVI // TRASMISSIONE CRITTOGRAFATA SSL ATTIVA"
     }
   }[language];
 
@@ -91,10 +86,6 @@ export default function FinalCTA() {
             <PhoneCall size={12} />
             <span>{labels.btnSchedule}</span>
           </button>
-        </div>
- 
-        <div className="pt-8 text-[9px] font-mono text-studio-muted">
-          {labels.footer}
         </div>
  
       </div>

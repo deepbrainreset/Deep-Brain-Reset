@@ -46,9 +46,6 @@ export default function AboutPhilosophy() {
             <span className="text-xs font-mono tracking-widest text-studio-caption uppercase block">
               {t.sectionLabel}
             </span>
-            <span className="text-[10px] font-mono tracking-widest text-studio-muted block mt-1">
-              {t.systemMatrix}
-            </span>
           </div>
 
           <div className="lg:col-span-9 max-w-4xl space-y-8">

@@ -50,10 +50,11 @@ export default function BriefConsultant({ onBriefGenerated }: BriefConsultantPro
   const [resultBrief, setResultBrief] = useState<string | null>(null);
   const [generatedData, setGeneratedData] = useState<GeneratedData | null>(null);
   const [copied, setCopied] = useState(false);
+  const [error, setError] = useState(false);
 
   const labels = {
     en: {
-      badge: "06 // COGNITIVE DIAGNOSTICS & INGESTION",
+      badge: "COGNITIVE DIAGNOSTICS & INGESTION",
       title: "Client Consultation Pipeline",
       description: "Operate our Unified Parametric Strategic Engine to diagnose your business bottleneck, formulate a pristine architectural strategy, and book an executive review session directly with our engineering team.",
       leftPanelTitle: "Parametric Diagnostic Inputs (Step 01)",
@@ -91,9 +92,14 @@ export default function BriefConsultant({ onBriefGenerated }: BriefConsultantPro
       cardLoadingValue: "Analyzing and generating system design...",
       copyBrief: "Copy Brief",
       copiedBrief: "Brief Copied",
+      errorTitle: "Strategic Engine Temporarily Unavailable",
+      errorSub: "Your project data has been received successfully.",
+      errorDesc: "Our automated analysis engine is temporarily unavailable.",
+      errorAction: "Please schedule a strategy session and we will personally review your project.",
+      btnRetry: "Retry Synthesis",
     },
     es: {
-      badge: "06 // DIAGNÓSTICO COGNITIVO E INGESTIÓN DE SISTEMAS",
+      badge: "DIAGNÓSTICO COGNITIVO E INGESTIÓN DE SISTEMAS",
       title: "Trayectoria de Consulta Unificada",
       description: "Utilice nuestro Motor Estratégico Paramétrico Unificado para diagnosticar los cuellos de botella de su negocio, formular una estrategia arquitectónica de software de alta gama y agendar una sesión ejecutiva de revisión.",
       leftPanelTitle: "Entradas Paramétricas de Diagnóstico (Paso 01)",
@@ -131,9 +137,14 @@ export default function BriefConsultant({ onBriefGenerated }: BriefConsultantPro
       cardLoadingValue: "Analizando y diseñando el sistema...",
       copyBrief: "Copiar Pliego",
       copiedBrief: "Pliego Copiado",
+      errorTitle: "Motor Estratégico Temporalmente No Disponible",
+      errorSub: "Los datos de su proyecto se han recibido correctamente.",
+      errorDesc: "Nuestro motor de análisis automatizado no está disponible temporalmente.",
+      errorAction: "Por favor, programe una sesión estratégica y revisaremos personalmente su proyecto.",
+      btnRetry: "Reintentar Síntesis",
     },
     de: {
-      badge: "06 // KOGNITATIVE DIAGNOSTIK & INGESTION-SYSTEM",
+      badge: "KOGNITATIVE DIAGNOSTIK & INGESTION-SYSTEM",
       title: "Integrierte Kunden-Pipeline",
       description: "Nutzen Sie unsere integrierte parametrische Strategie-Engine, um geschäftliche Engpässe zu analysieren, eine erstklassige Softwarearchitektur zu entwerfen und direkt ein Erstgespräch mit unserem Entwicklungsteam zu buchen.",
       leftPanelTitle: "Parametrische Diagnose-Eingaben (Schritt 01)",
@@ -171,9 +182,14 @@ export default function BriefConsultant({ onBriefGenerated }: BriefConsultantPro
       cardLoadingValue: "Systemarchitektur wird berechnet...",
       copyBrief: "Briefing Kopieren",
       copiedBrief: "Briefing Kopiert",
+      errorTitle: "Strategisches System vorübergehend nicht verfügbar",
+      errorSub: "Ihre Projektdaten wurden erfolgreich empfangen.",
+      errorDesc: "Unsere automatisierte Analyse-Engine ist vorübergehend nicht verfügbar.",
+      errorAction: "Bitte vereinbaren Sie ein Erstgespräch, und wir werden Ihr Projekt persönlich prüfen.",
+      btnRetry: "Synthese wiederholen",
     },
     fr: {
-      badge: "06 // DIAGNOSTIC COGNITIF & INGESTION SYSTÈMES",
+      badge: "DIAGNOSTIC COGNITIF & INGESTION SYSTÈMES",
       title: "Parcours de Consultation Unifié",
       description: "Utilisez notre moteur stratégique unifié pour analyser vos goulots d'étranglement opérationnels, concevoir votre architecture logicielle sur mesure et réserver votre entretien d'évaluation technique.",
       leftPanelTitle: "Données de Diagnostic Paramétriques (Étape 01)",
@@ -211,9 +227,14 @@ export default function BriefConsultant({ onBriefGenerated }: BriefConsultantPro
       cardLoadingValue: "Modélisation de l'architecture logicielle...",
       copyBrief: "Copier le Brief",
       copiedBrief: "Brief Copié",
+      errorTitle: "Moteur Stratégique Temporairement Indisponible",
+      errorSub: "Les données de votre projet ont été reçues avec succès.",
+      errorDesc: "Notre moteur d'analyse automatisé est temporairement indisponible.",
+      errorAction: "Veuillez planifier un entretien stratégique et nous étudierons personnellement votre projet.",
+      btnRetry: "Réessayer la Synthèse",
     },
     it: {
-      badge: "06 // DIAGNOSTICA COGNITIVA & INGESTIONE SISTEMI",
+      badge: "DIAGNOSTICA COGNITIVA & INGESTIONE SISTEMI",
       title: "Percorso Clienti Unificato",
       description: "Sfruttate il nostro Assistente Strategico Unificato per analizzare i vostri colli di bottiglia operativi, tracciare l'architettura tecnica e prenotare un incontro di revisione con i nostri ingegneri.",
       leftPanelTitle: "Dati Diagnostici Parametrici (Fase 01)",
@@ -251,6 +272,11 @@ export default function BriefConsultant({ onBriefGenerated }: BriefConsultantPro
       cardLoadingValue: "Elaborazione dell'architettura tecnica...",
       copyBrief: "Copia Brief",
       copiedBrief: "Brief Copiato",
+      errorTitle: "Motore Strategico Temporaneamente Non Disponibile",
+      errorSub: "I dati del tuo progetto sono stati ricevuti correttamente.",
+      errorDesc: "Il nostro motore di analisi automatizzato è temporaneamente non disponibile.",
+      errorAction: "Ti invitiamo a prenotare una sessione strategica e valuteremo personalmente il tuo progetto.",
+      btnRetry: "Riprova Sintesi",
     }
   }[language];
 
@@ -332,6 +358,7 @@ export default function BriefConsultant({ onBriefGenerated }: BriefConsultantPro
     setLoading(true);
     setResultBrief(null);
     setGeneratedData(null);
+    setError(false);
 
     try {
       const response = await fetch("/api/gemini/proposal", {
@@ -358,14 +385,46 @@ export default function BriefConsultant({ onBriefGenerated }: BriefConsultantPro
         });
       }
     } catch (err: any) {
-      console.error(err);
-      setResultBrief(`### DIAGNOSTICS FAILURE
-An error occurred during strategy synthesis. 
+      console.error("[Cognitive Diagnostics Engine Error]:", err);
+      setError(true);
+    } finally {
+      setLoading(false);
+    }
+  };
 
-**Root Cause:**
-${err.message || "Failed to establish a secure connection with Deep Brain Reset server. Please confirm that your GEMINI_API_KEY is configured in Settings > Secrets."}
+  const handleRetry = async () => {
+    setLoading(true);
+    setResultBrief(null);
+    setGeneratedData(null);
+    setError(false);
 
-*Please resolve the environment configuration and re-trigger.*`);
+    try {
+      const response = await fetch("/api/gemini/proposal", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify(inputs)
+      });
+
+      const data = await response.json();
+      if (!data.success || data.error) {
+        throw new Error(data.error || "Synthesis failed");
+      }
+
+      setResultBrief(data.proposal);
+      setGeneratedData(data.data);
+
+      if (onBriefGenerated) {
+        onBriefGenerated(data.proposal, {
+          name: inputs.company,
+          industry: inputs.industry,
+          bottleneck: inputs.bottleneck
+        });
+      }
+    } catch (err: any) {
+      console.error("[Cognitive Diagnostics Engine Retry Error]:", err);
+      setError(true);
     } finally {
       setLoading(false);
     }
@@ -488,6 +547,75 @@ ${err.message || "Failed to establish a secure connection with Deep Brain Reset 
                     <span className="text-[10px] font-mono tracking-widest text-studio-muted animate-pulse uppercase">
                       SYSTEM COMPILING SECURE BLUEPRINTS... PLEASE REMAIN ACTIVE
                     </span>
+                  </div>
+                </motion.div>
+              ) : error ? (
+                /* ELEGANT PRODUCTION-GRADE ERROR VIEW */
+                <motion.div
+                  key="error-panel"
+                  initial={{ opacity: 0, y: 15 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -15 }}
+                  transition={{ duration: 0.35 }}
+                  className="bg-studio-bg border border-red-500/20 p-8 rounded-[12px] shadow-lg space-y-8 relative overflow-hidden text-left"
+                >
+                  <div className="absolute inset-0 bg-radial from-red-500/[0.01] to-transparent pointer-events-none" />
+                  
+                  <div className="space-y-6 relative z-10">
+                    <div className="flex items-center space-x-3 text-red-500">
+                      <AlertCircle size={20} />
+                      <span className="text-[11px] font-mono uppercase tracking-[0.25em] font-semibold">
+                        {labels.errorTitle}
+                      </span>
+                    </div>
+
+                    <div className="space-y-4">
+                      <h3 className="text-xl md:text-2xl font-display font-light text-white uppercase tracking-wide">
+                        {labels.errorTitle}
+                      </h3>
+                      <p className="text-xs md:text-sm font-mono text-studio-caption uppercase tracking-wider">
+                        {labels.errorSub}
+                      </p>
+                      <p className="text-xs md:text-sm text-zinc-400 font-light leading-relaxed">
+                        {labels.errorDesc}
+                      </p>
+                      <p className="text-xs md:text-sm text-zinc-300 font-medium leading-relaxed">
+                        {labels.errorAction}
+                      </p>
+                    </div>
+
+                    <div className="pt-4 flex flex-col sm:flex-row gap-4">
+                      {/* Booking Button */}
+                      <a
+                        id="error-book-session-cta"
+                        href="https://calendar.app.google/KxqkRxocP421jXka7"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center justify-center space-x-2.5 px-6 py-3.5 bg-studio-primary text-studio-bg font-mono text-xs uppercase tracking-widest rounded-sm hover:bg-white transition-all duration-300 font-semibold shadow-md"
+                      >
+                        <span>{labels.schedulingCta}</span>
+                        <ExternalLink size={12} />
+                      </a>
+
+                      {/* Retry Button */}
+                      <button
+                        id="error-retry-btn"
+                        onClick={handleRetry}
+                        className="inline-flex items-center justify-center space-x-2.5 px-6 py-3.5 bg-transparent border border-studio-border text-white font-mono text-xs uppercase tracking-widest rounded-sm hover:border-zinc-500 hover:bg-zinc-800/25 transition-all duration-300 font-semibold cursor-pointer"
+                      >
+                        <RefreshCw size={12} className="animate-pulse" />
+                        <span>{labels.btnRetry}</span>
+                      </button>
+
+                      {/* Back/Modify Button */}
+                      <button
+                        id="error-back-btn"
+                        onClick={() => setError(false)}
+                        className="inline-flex items-center justify-center space-x-2.5 px-6 py-3.5 bg-transparent text-studio-muted font-mono text-xs uppercase tracking-widest hover:text-white transition-all duration-300 cursor-pointer border-0"
+                      >
+                        <span>&lt; Modify Parameters</span>
+                      </button>
+                    </div>
                   </div>
                 </motion.div>
               ) : resultBrief ? (

@@ -9,7 +9,7 @@ export default function FAQ() {
 
   const labels = {
     en: {
-      badge: "10 // FREQUENTLY ASKED QUESTIONS",
+      badge: "FREQUENTLY ASKED QUESTIONS",
       title: "Diagnostic FAQ",
       description: "Resolve structural uncertainties. Below are objective breakdowns of our pricing structures, remote work parameters, and AI-creative collaboration policies.",
       faqs: [
@@ -40,7 +40,7 @@ export default function FAQ() {
       ]
     },
     es: {
-      badge: "10 // PREGUNTAS FRECUENTES",
+      badge: "PREGUNTAS FRECUENTES",
       title: "Preguntas Frecuentes",
       description: "Resuelva incertidumbres estructurales. A continuación, se desglosan de forma objetiva nuestras estructuras de precios, parámetros de trabajo remoto y políticas de colaboración creativa con IA.",
       faqs: [
@@ -71,7 +71,7 @@ export default function FAQ() {
       ]
     },
     de: {
-      badge: "10 // HÄUFIG GESTELLTE FRAGEN",
+      badge: "HÄUFIG GESTELLTE FRAGEN",
       title: "Häufig Gestellte Fragen",
       description: "Lösen Sie strukturelle Unklarheiten. Unten finden Sie sachliche Erklärungen zu unseren Preisstrukturen, Arbeitsmodellen und Richtlinien zur kreativen KI-Zusammenarbeit.",
       faqs: [
@@ -102,7 +102,7 @@ export default function FAQ() {
       ]
     },
     fr: {
-      badge: "10 // QUESTIONS FRÉQUENTES",
+      badge: "QUESTIONS FRÉQUENTES",
       title: "FAQ de Diagnostic",
       description: "Levez toutes les incertitudes opérationnelles. Voici une présentation objective de nos modèles de tarification, de notre organisation à distance et de nos politiques de création assistée par IA.",
       faqs: [
@@ -133,7 +133,7 @@ export default function FAQ() {
       ]
     },
     it: {
-      badge: "10 // DOMANDE FREQUENTI",
+      badge: "DOMANDE FREQUENTI",
       title: "FAQ di Diagnostica",
       description: "Risolvete i dubbi strutturali. Di seguito sono riportati i dettagli sulle nostre tariffe, sulle modalità di lavoro a distanza e sulle politiche di collaborazione creativa con l'IA.",
       faqs: [

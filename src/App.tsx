@@ -11,7 +11,7 @@ import Testimonials from "./components/Testimonials";
 import FAQ from "./components/FAQ";
 import FinalCTA from "./components/FinalCTA";
 import BriefConsultant from "./components/BriefConsultant";
-import { ArrowUp, MapPin } from "lucide-react";
+import { ArrowUp } from "lucide-react";
 import { AnimatePresence } from "motion/react";
 import { useLanguage } from "./LanguageContext";
 import { translations } from "./translations";
@@ -253,7 +253,7 @@ export default function App() {
         <div className="absolute inset-0 bg-grid-overlay pointer-events-none opacity-10" />
         
         <div className="max-w-7xl mx-auto px-6 md:px-12 relative z-10 space-y-16">
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-12">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
             
             {/* Column 1: Brand Anchor */}
             <div className="space-y-4">
@@ -280,28 +280,7 @@ export default function App() {
               </div>
             </div>
 
-            {/* Column 3: Global Coordinates */}
-            <div className="space-y-4">
-              <span className="text-[10px] font-mono text-studio-caption tracking-widest uppercase block">
-                {fT.global}
-              </span>
-              <div className="space-y-2 text-xs text-studio-caption font-light">
-                <div className="flex items-center space-x-2">
-                  <MapPin size={11} className="text-studio-muted" />
-                  <span>TOKYO // Shibuya-ku</span>
-                </div>
-                <div className="flex items-center space-x-2">
-                  <MapPin size={11} className="text-studio-muted" />
-                  <span>GENEVA // Place des Bergues</span>
-                </div>
-                <div className="flex items-center space-x-2">
-                  <MapPin size={11} className="text-studio-muted" />
-                  <span>NEW YORK // Crosby St</span>
-                </div>
-              </div>
-            </div>
-
-            {/* Column 4: Controls & Recency */}
+            {/* Column 3: Controls & Recency */}
             <div className="space-y-4 flex flex-col justify-between">
               <div>
                 <span className="text-[10px] font-mono text-studio-caption tracking-widest uppercase block mb-3">

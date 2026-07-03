@@ -345,9 +345,8 @@ export default function Navigation({ activeSection, onNavigate }: NavigationProp
                 <ArrowUpRight size={14} className="mt-0.5" />
               </button>
 
-              <div className="flex justify-between items-center text-[9px] font-mono text-studio-caption border-t border-studio-border/30 pt-4 w-full">
+              <div className="flex justify-center items-center text-[9px] font-mono text-studio-caption border-t border-studio-border/30 pt-4 w-full">
                 <span>DEEP BRAIN RESET © 2026</span>
-                <span>TOKYO // GENEVA // NEW YORK</span>
               </div>
             </div>
           </motion.div>
