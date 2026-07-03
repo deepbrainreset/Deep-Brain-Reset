@@ -303,7 +303,7 @@ export default function ServicesList() {
                     </div>
                   </div>
 
-                  <p className="text-xs text-studio-caption pl-8 mt-2 line-clamp-1 group-hover:text-studio-secondary transition-colors">
+                  <p className="text-xs text-studio-caption pl-8 mt-2 group-hover:text-studio-secondary transition-colors">
                     {service.tag}
                   </p>
 

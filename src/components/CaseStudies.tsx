@@ -110,9 +110,9 @@ function CaseStudyCard({
       <div className="p-6 flex-1 flex flex-col justify-between space-y-5">
         <div className="space-y-3">
           {/* PROJECT CATEGORY & YEAR */}
-          <div className="flex justify-between items-center text-[10px] font-mono text-studio-muted uppercase tracking-[0.15em]">
-            <span className="truncate max-w-[70%]">{cs.category}</span>
-            <span>{cs.year}</span>
+          <div className="flex justify-between items-center text-[10px] font-mono text-studio-muted uppercase tracking-[0.15em] gap-4">
+            <span className="flex-1 leading-snug">{cs.category}</span>
+            <span className="shrink-0">{cs.year}</span>
           </div>
 
           {/* PROJECT NAME & Short project description */}
@@ -120,7 +120,7 @@ function CaseStudyCard({
             <h3 className="text-base font-display font-medium text-studio-primary uppercase tracking-wider group-hover:text-white transition-colors duration-300">
               {cs.client}
             </h3>
-            <p className="text-xs text-studio-secondary font-light line-clamp-2 leading-relaxed min-h-[36px]">
+            <p className="text-xs text-studio-secondary font-light leading-relaxed min-h-[36px]">
               {cs.subtitle}
             </p>
           </div>

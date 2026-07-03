@@ -76,110 +76,90 @@ export default function CreativeProcess() {
           </div>
         </div>
 
-        {/* Elegant Horizontal Timeline (Scrollable container with custom styling) */}
-        <div className="relative pt-6 pb-12 -mx-6 md:-mx-12 px-6 md:px-12 overflow-x-auto scrollbar-none select-none">
-          {/* Timeline continuous axis rail line */}
-          <div className="absolute top-[32px] left-0 w-[200%] h-[1px] bg-studio-border pointer-events-none z-0" />
+        {/* Responsive, non-truncating Grid of Pipeline Phase Cards */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8 mb-12 relative z-10">
+          {t.phases.map((phase, index) => {
+            const isHovered = hoveredIndex === index;
+            return (
+              <div
+                id={`pipeline-step-${phase.phase}`}
+                key={phase.phase}
+                onMouseEnter={() => setHoveredIndex(index)}
+                onMouseLeave={() => setHoveredIndex(null)}
+                className="w-full flex flex-col"
+              >
+                <div className="relative pt-6 flex flex-col h-full justify-between p-6 premium-interactive rounded-sm border border-studio-border bg-studio-panel/40 hover:border-studio-primary/40 transition-all duration-300 group">
+                  
+                  {/* Floating connection node dot */}
+                  <div className={`w-3 h-3 rounded-full border-2 absolute -top-1.5 left-6 transition-all duration-300 ${
+                    isHovered ? "bg-studio-primary border-studio-primary scale-110" : "bg-studio-panel border-studio-border"
+                  }`} />
 
-          <div className="flex space-x-6 min-w-max relative z-10">
-            {t.phases.map((phase, index) => {
-              const isHovered = hoveredIndex === index;
-              return (
-                <div
-                  id={`pipeline-step-${phase.phase}`}
-                  key={phase.phase}
-                  onMouseEnter={() => setHoveredIndex(index)}
-                  onMouseLeave={() => setHoveredIndex(null)}
-                  className="transition-all duration-500 ease-[0.16,1,0.3,1]"
-                  style={{
-                    width: isHovered ? "380px" : "180px"
-                  }}
-                >
-                  <div className="relative pt-6 flex flex-col h-[320px] justify-between p-6 premium-interactive rounded-sm">
+                  {/* Step Header */}
+                  <div className="space-y-4">
+                    <div className="flex justify-between items-center">
+                      <span className="text-[10px] font-mono text-studio-muted">
+                        {phase.phase}
+                      </span>
+                      <span className={`text-[8px] font-mono px-1.5 py-0.5 border uppercase rounded-sm transition-all duration-300 ${
+                        isHovered 
+                          ? "text-studio-primary border-studio-primary/20 bg-studio-primary/5" 
+                          : "text-studio-caption border-studio-border bg-white/[0.01]"
+                      }`}>
+                        {isHovered ? labels.activeScan : labels.compiling}
+                      </span>
+                    </div>
                     
-                    {/* Floating connection node dot */}
-                    <div className={`w-3 h-3 rounded-full border-2 absolute -top-[34px] left-6 transition-all duration-500 ${
-                      isHovered ? "bg-studio-primary border-studio-primary scale-125" : "bg-studio-panel border-studio-border"
-                    }`} />
-
-                    {/* Step Header */}
-                    <div className="space-y-3">
-                      <div className="flex justify-between items-start">
-                        <span className="text-[10px] font-mono text-studio-muted">
-                          {phase.phase}
-                        </span>
-                        {isHovered && (
-                          <motion.span 
-                            initial={{ opacity: 0, scale: 0.8 }}
-                            animate={{ opacity: 1, scale: 1 }}
-                            className="text-[8px] font-mono text-studio-primary px-1.5 py-0.5 border border-studio-primary/20 bg-studio-primary/5 uppercase rounded-sm"
-                          >
-                            {labels.activeScan}
-                          </motion.span>
-                        )}
-                      </div>
-                      <h3 className="text-sm md:text-base font-display uppercase tracking-wider text-studio-primary font-medium truncate">
+                    <div>
+                      <h3 className="text-sm md:text-base font-display uppercase tracking-wider text-studio-primary font-medium leading-snug">
                         {phase.title}
                       </h3>
-                      <p className="text-[10px] font-mono text-studio-caption uppercase">
+                      <p className="text-[10px] font-mono text-studio-caption uppercase mt-1">
                         {phase.subtitle}
                       </p>
                     </div>
 
-                    {/* Dynamic Expandable Body */}
-                    <div className="relative h-28 overflow-hidden">
-                      {!isHovered ? (
-                        <p className="text-xs text-studio-caption font-light leading-relaxed line-clamp-3 pt-2">
-                          {phase.description}
-                        </p>
-                      ) : (
-                        <motion.div 
-                          initial={{ opacity: 0, y: 10 }}
-                          animate={{ opacity: 1, y: 0 }}
-                          transition={{ duration: 0.4 }}
-                          className="space-y-3 pt-1"
-                        >
-                          <p className="text-[11px] text-studio-secondary font-light leading-relaxed">
-                            {phase.description}
-                          </p>
-                          <div className="space-y-1 bg-studio-panel/50 p-2.5 rounded-sm border border-studio-border">
-                            <span className="text-[8px] font-mono text-studio-caption uppercase tracking-wider block mb-1">
-                              {labels.deliverables}
-                            </span>
-                            <div className="flex flex-col space-y-1">
-                              {phase.outputs.map((out, i) => (
-                                <div key={i} className="flex items-center space-x-1.5 text-[10px] text-studio-secondary font-light">
-                                  <CheckSquare size={10} className="text-studio-caption shrink-0" />
-                                  <span className="truncate">{out}</span>
-                                </div>
-                              ))}
-                            </div>
-                          </div>
-                        </motion.div>
-                      )}
-                    </div>
-
-                    {/* Expand micro indicator */}
-                    <div className="pt-4 border-t border-studio-border flex justify-between items-center text-[9px] font-mono text-studio-muted">
-                      <span>{isHovered ? labels.compiling : labels.hover}</span>
-                      <span>/11</span>
-                    </div>
-
+                    <p className="text-xs text-studio-caption font-light leading-relaxed">
+                      {phase.description}
+                    </p>
                   </div>
+
+                  {/* Deliverables section - ALWAYS VISIBLE */}
+                  <div className="mt-6 pt-4 border-t border-studio-border/50">
+                    <div className="bg-studio-panel/50 p-3 rounded-sm border border-studio-border/30">
+                      <span className="text-[8px] font-mono text-studio-caption uppercase tracking-wider block mb-2">
+                        {labels.deliverables}
+                      </span>
+                      <div className="flex flex-col space-y-1.5">
+                        {phase.outputs.map((out, i) => (
+                          <div key={i} className="flex items-start space-x-1.5 text-[10px] text-studio-secondary font-light leading-snug">
+                            <CheckSquare size={10} className="text-studio-caption mt-0.5 shrink-0" />
+                            <span className="break-words">{out}</span>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Expand micro indicator */}
+                  <div className="mt-4 pt-4 border-t border-studio-border/50 flex justify-between items-center text-[9px] font-mono text-studio-muted">
+                    <span>{isHovered ? "PIPELINE // RUNNING" : "PIPELINE // ACTIVE"}</span>
+                    <span>{(index + 1).toString().padStart(2, '0')}/04</span>
+                  </div>
+
                 </div>
-              );
-            })}
-          </div>
+              </div>
+            );
+          })}
         </div>
 
-        {/* Visual Scroll momentum clue */}
-        <div className="flex justify-between items-center text-[10px] font-mono text-studio-muted pt-4 border-t border-studio-border">
+        {/* Visual progress track info */}
+        <div className="flex justify-between items-center text-[10px] font-mono text-studio-muted pt-6 border-t border-studio-border mt-12">
           <span className="uppercase flex items-center space-x-1.5">
-            <span>{labels.scroll}</span>
-            <ArrowRight size={10} className="animate-pulse" />
+            <span>{labels.lifecycle}</span>
           </span>
-          <span className="uppercase hidden md:inline">
-            {labels.lifecycle}
+          <span className="uppercase">
+            VERIFIED_METHODOLOGY // SYSTEM_ACTIVE
           </span>
         </div>
 
