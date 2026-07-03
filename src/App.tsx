@@ -9,7 +9,6 @@ import TechStack from "./components/TechStack";
 import WhyChooseUs from "./components/WhyChooseUs";
 import Testimonials from "./components/Testimonials";
 import FAQ from "./components/FAQ";
-import FinalCTA from "./components/FinalCTA";
 import BriefConsultant from "./components/BriefConsultant";
 import { ArrowUp } from "lucide-react";
 import { AnimatePresence } from "motion/react";
@@ -82,7 +81,6 @@ export default function App() {
       "why-us", 
       "testimonials", 
       "faq", 
-      "final-cta", 
       "consultant", 
       "contact"
     ];
@@ -243,9 +241,6 @@ export default function App() {
 
         {/* 07. Interactive AI Consultant diagnostic layer */}
         <BriefConsultant />
-
-        {/* 08. Book Strategy Session (Final Call To Action) */}
-        <FinalCTA />
       </main>
 
       {/* Luxury Editorial Footer */}
