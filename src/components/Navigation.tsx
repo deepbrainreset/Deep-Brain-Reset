@@ -32,9 +32,10 @@ export default function Navigation({ activeSection, onNavigate }: NavigationProp
 
   useEffect(() => {
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 50);
+      setIsScrolled(window.scrollY > 10);
     };
-    window.addEventListener("scroll", handleScroll);
+    handleScroll();
+    window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
@@ -60,9 +61,13 @@ export default function Navigation({ activeSection, onNavigate }: NavigationProp
         transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
         className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 ${
           isScrolled
-            ? "py-4 bg-studio-bg/80 backdrop-blur-md border-b border-studio-border"
-            : "py-6 bg-transparent"
+            ? "py-3 md:py-4 bg-[#0A0A0A]/92 border-b border-white/[0.08] shadow-2xl shadow-black/80"
+            : "py-5 md:py-6 bg-transparent"
         }`}
+        style={{
+          backdropFilter: isScrolled ? "blur(20px) saturate(180%)" : "none",
+          WebkitBackdropFilter: isScrolled ? "blur(20px) saturate(180%)" : "none",
+        }}
       >
         <div className="max-w-7xl mx-auto px-6 md:px-12 flex items-center justify-between">
           {/* Logo / Brand Mark */}
@@ -140,7 +145,11 @@ export default function Navigation({ activeSection, onNavigate }: NavigationProp
                       animate={{ opacity: 1, y: 0 }}
                       exit={{ opacity: 0, y: 5 }}
                       transition={{ duration: 0.2 }}
-                      className="absolute right-0 mt-2 py-2 w-32 bg-studio-bg border border-studio-border rounded-sm shadow-xl z-50 flex flex-col"
+                      className="absolute right-0 mt-2 py-2 w-32 bg-[#0D0D11]/95 border border-white/15 rounded-sm shadow-2xl z-50 flex flex-col"
+                      style={{
+                        backdropFilter: "blur(20px)",
+                        WebkitBackdropFilter: "blur(20px)",
+                      }}
                     >
                       {[
                         { code: "en", label: "English" },
@@ -204,7 +213,11 @@ export default function Navigation({ activeSection, onNavigate }: NavigationProp
                       animate={{ opacity: 1, y: 0 }}
                       exit={{ opacity: 0, y: 5 }}
                       transition={{ duration: 0.2 }}
-                      className="absolute right-0 mt-2 py-1.5 w-32 bg-studio-bg border border-studio-border rounded-sm shadow-xl z-50 flex flex-col"
+                      className="absolute right-0 mt-2 py-1.5 w-32 bg-[#0D0D11]/95 border border-white/15 rounded-sm shadow-2xl z-50 flex flex-col"
+                      style={{
+                        backdropFilter: "blur(20px)",
+                        WebkitBackdropFilter: "blur(20px)",
+                      }}
                     >
                       {[
                         { code: "en", label: "English" },
