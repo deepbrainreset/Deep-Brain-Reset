@@ -1,0 +1,33 @@
+# Robots.txt for Deep Brain Reset
+# https://deepbrainreset.com/
+
+User-agent: *
+Allow: /
+
+# Explicitly Allow Major Search Engine & AI Crawlers
+User-agent: Googlebot
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+User-agent: GPTBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Applebot-Extended
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+# Sitemap Location
+Sitemap: https://deepbrainreset.com/sitemap.xml

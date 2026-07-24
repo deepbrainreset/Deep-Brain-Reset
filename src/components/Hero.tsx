@@ -210,27 +210,31 @@ export default function Hero({ onExploreClick }: HeroProps) {
               transition={{ duration: 1.2, delay: 0.7, ease: [0.16, 1, 0.3, 1] }}
               className="flex flex-col sm:flex-row items-start justify-start gap-6 pt-4 w-full sm:w-auto"
             >
-              <button
+              <a
                 id="hero-explore-work"
-                onClick={() => {
+                href="#work"
+                onClick={(e) => {
+                  e.preventDefault();
                   const el = document.getElementById("work");
                   if (el) el.scrollIntoView({ behavior: "smooth" });
                 }}
-                className="px-10 py-4 border border-white text-[10px] uppercase tracking-[0.25em] text-white hover:bg-white hover:text-black transition-all duration-300 font-mono font-medium rounded-sm w-48 sm:w-auto text-center cursor-pointer bg-transparent"
+                className="px-10 py-4 border border-white text-[10px] uppercase tracking-[0.25em] text-white hover:bg-white hover:text-black transition-all duration-300 font-mono font-medium rounded-sm w-48 sm:w-auto text-center cursor-pointer bg-transparent inline-block"
               >
                 <span>{t.exploreButton}</span>
-              </button>
+              </a>
               
-              <button
+              <a
                 id="hero-start-project"
-                onClick={() => {
+                href="#contact"
+                onClick={(e) => {
+                  e.preventDefault();
                   const el = document.getElementById("contact");
                   if (el) el.scrollIntoView({ behavior: "smooth" });
                 }}
-                className="px-10 py-4 bg-zinc-900 border border-zinc-800 text-[10px] uppercase tracking-[0.25em] text-zinc-300 hover:border-white hover:text-white transition-all duration-300 font-mono rounded-sm w-48 sm:w-auto text-center cursor-pointer"
+                className="px-10 py-4 bg-zinc-900 border border-zinc-800 text-[10px] uppercase tracking-[0.25em] text-zinc-300 hover:border-white hover:text-white transition-all duration-300 font-mono rounded-sm w-48 sm:w-auto text-center cursor-pointer inline-block"
               >
                 <span>{t.contactButton}</span>
-              </button>
+              </a>
             </motion.div>
           </div>
         </div>

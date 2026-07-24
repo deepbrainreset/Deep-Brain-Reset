@@ -102,10 +102,14 @@ export default function Navigation({ activeSection, onNavigate }: NavigationProp
           {/* Desktop Navigation */}
           <nav id="desktop-nav" className="hidden xl:flex items-center space-x-8">
             {navItems.map((item) => (
-              <button
+              <a
                 id={`nav-item-${item.id}`}
                 key={item.id}
-                onClick={() => handleLinkClick(item.id)}
+                href={`#${item.id}`}
+                onClick={(e) => {
+                  e.preventDefault();
+                  handleLinkClick(item.id);
+                }}
                 className={`text-[10px] font-mono uppercase tracking-[0.2em] font-semibold transition-colors duration-300 relative py-1 cursor-pointer bg-transparent border-0 ${
                   activeSection === item.id
                     ? "text-studio-primary"
@@ -120,7 +124,7 @@ export default function Navigation({ activeSection, onNavigate }: NavigationProp
                     transition={{ type: "spring", stiffness: 380, damping: 30 }}
                   />
                 )}
-              </button>
+              </a>
             ))}
 
             {/* Desktop Language Switcher Dropdown */}
@@ -315,10 +319,11 @@ export default function Navigation({ activeSection, onNavigate }: NavigationProp
                 { id: "philosophy", label: t.philosophy },
                 { id: "consultant", label: t.consultant },
                 { id: "contact", label: t.cta }
-              ].map((item, index) => (
-                <motion.button
+              ].map((item) => (
+                <motion.a
                   id={`mobile-nav-item-${item.id}`}
                   key={item.id}
+                  href={`#${item.id}`}
                   variants={{
                     hidden: { opacity: 0, y: 15, filter: "blur(5px)" },
                     visible: { 
@@ -331,11 +336,14 @@ export default function Navigation({ activeSection, onNavigate }: NavigationProp
                       }
                     }
                   }}
-                  onClick={() => handleLinkClick(item.id)}
+                  onClick={(e) => {
+                    e.preventDefault();
+                    handleLinkClick(item.id);
+                  }}
                   className="text-center text-xl sm:text-2xl font-display font-light uppercase tracking-widest py-1 flex items-center justify-center text-studio-secondary hover:text-studio-primary hover:tracking-[0.18em] transition-all duration-300 bg-transparent border-0 cursor-pointer"
                 >
                   <span>{item.label}</span>
-                </motion.button>
+                </motion.a>
               ))}
 
               <motion.div
