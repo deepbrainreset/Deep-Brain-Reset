@@ -6,12 +6,14 @@ import DemoreelModal from "./components/DemoreelModal";
 import AboutPhilosophy from "./components/AboutPhilosophy";
 import CreativeProcess from "./components/CreativeProcess";
 import ServicesList from "./components/ServicesList";
+import ServiceLandingModal from "./components/ServiceLandingModal";
 import CaseStudies from "./components/CaseStudies";
 import TechStack from "./components/TechStack";
 import WhyChooseUs from "./components/WhyChooseUs";
 import Testimonials from "./components/Testimonials";
 import FAQ from "./components/FAQ";
 import BriefConsultant from "./components/BriefConsultant";
+import ContactSection from "./components/ContactSection";
 import { ArrowUp } from "lucide-react";
 import { AnimatePresence } from "motion/react";
 import { useLanguage } from "./LanguageContext";
@@ -26,10 +28,31 @@ import MenuNoirCaseStudy from "./components/MenuNoirCaseStudy";
 export default function App() {
   const [activeSection, setActiveSection] = useState("hero");
   const [activeCaseStudy, setActiveCaseStudy] = useState<string | null>(null);
+  const [activeServiceLanding, setActiveServiceLanding] = useState<string | null>(null);
   const [isDemoreelModalOpen, setIsDemoreelModalOpen] = useState(false);
 
   const { language } = useLanguage();
   const navT = translations.navigation[language];
+
+  // Listen to window location for standalone landing page routes e.g. /es/spots-publicitarios-con-ia
+  useEffect(() => {
+    const handleLocationChange = () => {
+      const path = window.location.pathname.replace(/^\/+/g, '');
+      if (path.includes('spots-publicitarios-con-ia') || path.includes('ai-commercial-production')) {
+        setActiveServiceLanding('spots-publicitarios-con-ia');
+      } else if (path.includes('desarrollo-web') || path.includes('web-development')) {
+        setActiveServiceLanding('desarrollo-web');
+      } else if (path.includes('automatizacion-de-procesos') || path.includes('business-automation')) {
+        setActiveServiceLanding('automatizacion-de-procesos');
+      } else if (path.includes('renderizado-3d') || path.includes('3d-rendering')) {
+        setActiveServiceLanding('renderizado-3d');
+      }
+    };
+
+    handleLocationChange();
+    window.addEventListener('popstate', handleLocationChange);
+    return () => window.removeEventListener('popstate', handleLocationChange);
+  }, []);
 
   // Dynamic document title and metadata updates for SEO & hreflangs
   useEffect(() => {
@@ -80,11 +103,7 @@ export default function App() {
       "services", 
       "process", 
       "philosophy", 
-      "cases", 
-      "tech-stack", 
-      "why-us", 
       "testimonials", 
-      "faq", 
       "consultant", 
       "contact"
     ];
@@ -186,6 +205,24 @@ export default function App() {
       {/* Floating Header */}
       <Navigation activeSection={activeSection} onNavigate={handleNavigate} />
 
+      {/* Standalone Service Landing Page Modal */}
+      <AnimatePresence>
+        {activeServiceLanding && (
+          <ServiceLandingModal
+            serviceSlug={activeServiceLanding}
+            onBack={() => setActiveServiceLanding(null)}
+            onViewCaseStudy={(id) => {
+              setActiveServiceLanding(null);
+              setActiveCaseStudy(id);
+            }}
+            onOpenContact={() => {
+              setActiveServiceLanding(null);
+              handleNavigate("contact");
+            }}
+          />
+        )}
+      </AnimatePresence>
+
       {/* Case Study Fullscreen Overlays */}
       <AnimatePresence>
         {activeCaseStudy === "axon-revolution" && (
@@ -220,7 +257,7 @@ export default function App() {
         )}
       </AnimatePresence>
 
-      {/* Cinematic Studio Body */}
+      {/* Cinematic Studio Body — Reorganized 01-10 Information Architecture */}
       <main id="studio-body">
         {/* 01. Studio Hero Screen */}
         <Hero 
@@ -238,7 +275,7 @@ export default function App() {
         />
 
         {/* 04. Capabilities / Services */}
-        <ServicesList />
+        <ServicesList onSelectServiceLanding={(slug) => setActiveServiceLanding(slug)} />
 
         {/* 05. Unified Creative Methodology Stepper (Process) */}
         <CreativeProcess />
@@ -246,14 +283,17 @@ export default function App() {
         {/* 06. Architectural Creative Philosophy (Studio Philosophy) */}
         <AboutPhilosophy />
 
-        {/* 07. Technology Stack & Strategic Trust Factors */}
+        {/* 07. Technology Stack, Trust Factors & Client Testimonials */}
         <TechStack />
         <WhyChooseUs />
         <Testimonials />
-        <FAQ />
 
         {/* 08. Interactive AI Consultant diagnostic layer */}
         <BriefConsultant />
+
+        {/* 09. Contact and Calendar Booking + Diagnostic FAQ */}
+        <ContactSection />
+        <FAQ />
       </main>
 
       {/* Fullscreen Demoreel Modal */}
@@ -263,7 +303,7 @@ export default function App() {
         onViewCaseStudy={(id) => setActiveCaseStudy(id)}
       />
 
-      {/* Luxury Editorial Footer */}
+      {/* 10. Luxury Editorial Footer */}
       <footer id="studio-footer" className="bg-studio-panel border-t border-studio-border py-20 relative overflow-hidden">
         <div className="absolute inset-0 bg-grid-overlay pointer-events-none opacity-10" />
         
@@ -331,4 +371,3 @@ export default function App() {
     </div>
   );
 }
-

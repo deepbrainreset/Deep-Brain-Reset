@@ -132,7 +132,7 @@ export default function Hero({ onExploreClick, onWatchDemoreel }: HeroProps) {
   return (
     <section
       id="hero"
-      className="relative h-screen w-full flex flex-col justify-between overflow-hidden bg-black text-white"
+      className="relative min-h-[100dvh] lg:h-screen w-full flex flex-col justify-between overflow-hidden bg-black text-white pt-28 sm:pt-32 md:pt-36 lg:pt-32 pb-8 sm:pb-10"
     >
       {/* Layer 01: Background Grid Layer */}
       <div
@@ -208,20 +208,17 @@ export default function Hero({ onExploreClick, onWatchDemoreel }: HeroProps) {
         <div className="absolute inset-0 bg-gradient-to-r from-black/50 via-transparent to-black/50" />
       </div>
 
-      {/* Top spacer for header offset */}
-      <div className="h-28 z-40 relative pointer-events-none" />
-
       {/* Left-Aligned Premium Editorial Content Block */}
-      <div className="relative z-40 flex-grow flex flex-col items-start justify-center max-w-7xl mx-auto px-6 md:px-12 w-full text-left">
-        <div ref={foregroundRef} className="space-y-8 max-w-3xl select-none will-change-transform">
+      <div className="relative z-40 flex-grow flex flex-col items-start justify-start lg:justify-center max-w-7xl mx-auto px-6 md:px-12 w-full text-left py-4 lg:py-0">
+        <div ref={foregroundRef} className="space-y-6 sm:space-y-8 max-w-3xl select-none will-change-transform">
           
           {/* Badge & Headlines */}
-          <div className="space-y-6 flex flex-col items-start">
+          <div className="space-y-4 sm:space-y-6 flex flex-col items-start">
             <motion.div
               initial={{ opacity: 0, y: 15 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 1.0, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
-              className="inline-flex items-center gap-2 px-3 py-1 bg-white/[0.04] border border-white/10 rounded-full text-[10px] font-mono tracking-[0.25em] text-zinc-300 uppercase"
+              className="inline-flex items-center gap-2 px-3 py-1 bg-white/[0.04] border border-white/10 rounded-full text-[9px] sm:text-[10px] font-mono tracking-[0.2em] sm:tracking-[0.25em] text-zinc-300 uppercase"
             >
               <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
               <span>{t.badge}</span>
@@ -231,7 +228,7 @@ export default function Hero({ onExploreClick, onWatchDemoreel }: HeroProps) {
               initial={{ opacity: 0, y: 15 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 1.2, delay: 0.35, ease: [0.16, 1, 0.3, 1] }}
-              className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-display font-light tracking-wider text-white uppercase leading-[1.08]"
+              className="text-2xl sm:text-3xl md:text-5xl lg:text-6xl font-display font-light tracking-wider text-white uppercase leading-[1.12] sm:leading-[1.08] text-balance"
             >
               {t.title}
             </motion.h1>

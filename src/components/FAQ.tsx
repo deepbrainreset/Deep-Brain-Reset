@@ -10,156 +10,136 @@ export default function FAQ() {
   const labels = {
     en: {
       badge: "FREQUENTLY ASKED QUESTIONS",
-      title: "Diagnostic FAQ",
-      description: "Resolve structural uncertainties. Below are objective breakdowns of our pricing structures, remote work parameters, and AI-creative collaboration policies.",
+      title: "PREGUNTAS FRECUENTES // STUDIO FAQ",
+      description: "Direct, objective responses about our capabilities, core services, and international operations.",
       faqs: [
         {
-          q: "How long does a typical project development cycle take?",
-          a: "Our diagnostic sprints usually resolve within 1-2 weeks. Full stack web platforms and campaign productions typically deploy within 6-12 weeks depending on integration density, WebGL requirements, and automation pipeline complexity. We execute using high-frequency sprints with zero operational lag."
+          q: "1. Does Deep Brain Reset produce commercial spots?",
+          a: "Yes. We produce high-end commercial spots combining generative AI, CGI visual effects, 3D animation, and cinematic creative direction for brand launches, product campaigns, and digital advertising."
         },
         {
-          q: "How do you coordinate remote operations and team hand-offs?",
-          a: "We deploy dedicated client portals. Every technical milestone, custom wireframe prototype, and background automation logs are fully transparent and accessible in real-time. Hand-off documentation is prepared modularly so your internal developers can assume full custody smoothly."
+          q: "2. Does Deep Brain Reset develop websites?",
+          a: "Yes. We engineer full-stack corporate websites, high-converting landing pages, e-commerce platforms, web applications, and custom digital portals built for speed, security, and sales performance."
         },
         {
-          q: "Do you collaborate with international corporate clients?",
-          a: "Yes. Our standard systems are engineered for international audiences, with robust CDN routing, global multi-language translation compliance, and local tax integration processors. We operate across European, North American, and Asian coordinate frameworks."
+          q: "3. Does Deep Brain Reset create 3D renders?",
+          a: "Yes. We create architectural 3D renders, interior visualizations, product CGI, 3D motion graphics, and virtual tours designed to present ideas and developments before they are built."
         },
         {
-          q: "Can artificial intelligence replace narrative creative direction?",
-          a: "Never. Artificial intelligence is an exceptional execution accelerator, turning hours of background rendering or data parsing into milliseconds of automatic pipeline flows. However, human strategy, emotional friction, and artistic aesthetic choice remain the sole source of premium branding value."
+          q: "4. Does Deep Brain Reset automate business processes?",
+          a: "Yes. We build custom process automations, server-side AI agent workflows, system integrations, and operational dashboards that eliminate repetitive manual tasks and speed up operations."
         },
         {
-          q: "How are custom software systems and commercials priced?",
-          a: "We price strictly on diagnostic parameters. We identify immediate commercial value leverage, define precise operational specifications, and deliver fixed-fee contracts before commits are made. No hidden Hourly rates, no surprise billing cycles."
-        },
-        {
-          q: "Can you collaborate with our existing in-house engineering teams?",
-          a: "Yes. We operate as a tactical taskforce. We can audit legacy architectures, write high-performance custom API layers, build targeted generative agents, or produce cinematic assets that feed directly into your existing git repository workflows."
+          q: "5. Does Deep Brain Reset work with international clients?",
+          a: "Yes. Deep Brain Reset serves corporate clients across the United States, Europe, Spain, Argentina, and Latin America, operating with multi-language capabilities and global deployment infrastructure."
         }
       ]
     },
     es: {
       badge: "PREGUNTAS FRECUENTES",
-      title: "Preguntas Frecuentes",
-      description: "Resuelva incertidumbres estructurales. A continuación, se desglosan de forma objetiva nuestras estructuras de precios, parámetros de trabajo remoto y políticas de colaboración creativa con IA.",
+      title: "PREGUNTAS FRECUENTES",
+      description: "Respuestas claras sobre nuestras capacidades, servicios principales y modalidades de trabajo.",
       faqs: [
         {
-          q: "¿Cuánto tiempo toma un ciclo típico de desarrollo de proyecto?",
-          a: "Nuestros sprints de diagnóstico suelen completarse en 1 o 2 semanas. Las plataformas web completas y las producciones de campaña generalmente se despliegan en 6 a 12 semanas, dependiendo de la densidad de integración, los requisitos de WebGL y la complejidad de la automatización. Ejecutamos mediante sprints de alta frecuencia sin demoras operativas."
+          q: "1. ¿Deep Brain Reset produce spots publicitarios?",
+          a: "Sí. Producimos spots publicitarios de alta gama combinando inteligencia artificial generativa, efectos visuales CGI, animación 3D y dirección creativa cinematográfica para campañas de marca y lanzamientos."
         },
         {
-          q: "¿Cómo coordinan las operaciones remotas y las entregas de proyectos?",
-          a: "Desplegamos portales de clientes dedicados. Cada hito técnico, prototipo interactivo y registro de automatización es completamente transparente y accesible en tiempo real. La documentación de entrega se prepara de manera modular para que sus desarrolladores internos asuman el control sin fricciones."
+          q: "2. ¿Deep Brain Reset desarrolla páginas web?",
+          a: "Sí. Diseñamos y desarrollamos sitios web corporativos full stack, landing pages de alta conversión, plataformas de e-commerce y aplicaciones web a medida enfocadas en velocidad, seguridad y ventas."
         },
         {
-          q: "¿Colaboran con clientes corporativos internacionales?",
-          a: "Sí. Nuestros sistemas estándar están diseñados para audiencias internacionales, con enrutamiento CDN robusto, cumplimiento global de traducción multiidioma y procesadores de integración fiscal local. Operamos bajo marcos de Europa, América del Norte y América Latina."
+          q: "3. ¿Deep Brain Reset realiza renders 3D?",
+          a: "Sí. Realizamos renderizado 3D arquitectónico, visualizaciones de interiores, CGI de producto, animaciones 3D y recorridos virtuales para presentar proyectos antes de construirlos."
         },
         {
-          q: "¿Puede la inteligencia artificial reemplazar la dirección creativa narrativa?",
-          a: "Jamás. La inteligencia artificial es un acelerador de ejecución excepcional, capaz de transformar horas de renderizado o procesamiento de datos en milisegundos de flujos de automatizados. Sin embargo, la estrategia humana, la tensión emocional y la dirección estética siguen siendo la única fuente de valor para marcas de alta gama."
+          q: "4. ¿Deep Brain Reset automatiza procesos empresariales?",
+          a: "Sí. Creamos automatizaciones de procesos a medida, flujos de agentes de IA, integraciones entre sistemas y dashboards operativos para eliminar tareas manuales repetitivas."
         },
         {
-          q: "¿Cómo se definen los precios de los sistemas de software y los comerciales a medida?",
-          a: "Definimos nuestros precios estrictamente con base en parámetros de diagnóstico. Identificamos puntos de apalancamiento comercial, definimos especificaciones operativas precisas y entregamos contratos de tarifa fija antes de iniciar el trabajo. Sin tarifas por hora ocultas ni ciclos de facturación sorpresa."
-        },
-        {
-          q: "¿Pueden colaborar con nuestros equipos de ingeniería internos?",
-          a: "Sí. Operamos como una fuerza de tareas táctica. Podemos auditar arquitecturas heredadas, escribir capas de API de alto rendimiento, construir agentes generativos específicos o producir activos cinematográficos que se integren directamente en sus flujos de trabajo de repositorios Git existentes."
+          q: "5. ¿Deep Brain Reset trabaja con clientes internacionales?",
+          a: "Sí. Trabajamos con empresas y marcas en Estados Unidos, Europa, España, Argentina y Latinoamérica, con soporte multiidioma y capacidad de despliegue global."
         }
       ]
     },
     de: {
       badge: "HÄUFIG GESTELLTE FRAGEN",
-      title: "Häufig Gestellte Fragen",
-      description: "Lösen Sie strukturelle Unklarheiten. Unten finden Sie sachliche Erklärungen zu unseren Preisstrukturen, Arbeitsmodellen und Richtlinien zur kreativen KI-Zusammenarbeit.",
+      title: "HÄUFIG GESTELLTE FRAGEN",
+      description: "Direkte Antworten auf Ihre Fragen zu unseren Kompetenzen, Kernleistungen und internationaler Zusammenarbeit.",
       faqs: [
         {
-          q: "Wie lange dauert ein typischer Projektentwicklungszyklus?",
-          a: "Unsere Diagnose-Sprints dauern meist 1-2 Wochen. Vollwertige Webplattformen und Kampagnenproduktionen werden in der Regel innerhalb von 6-12 Wochen bereitgestellt – je nach Integrationstiefe, WebGL-Anforderungen und Komplexität der Automatisierungs-Pipeline. Wir arbeiten in hochfrequenten Sprints ohne Verzögerungen."
+          q: "1. Produziert Deep Brain Reset Werbefilme?",
+          a: "Ja. Wir produzieren erstklassige Werbefilme und Spots unter Einsatz von generativer KI, CGI-Visual-Effects, 3D-Animation und filmischer Kreativdirektion."
         },
         {
-          q: "Wie koordinieren Sie die Zusammenarbeit aus der Ferne und Projektübergaben?",
-          a: "Wir stellen dedizierte Kundenportale bereit. Jeder technische Meilenstein, interaktive Prototyp und jedes Automatisierungsprotokoll ist in Echtzeit transparent einsehbar. Die Projektdokumentation ist modular aufgebaut, sodass Ihre internen Entwickler den Code reibungslos übernehmen können."
+          q: "2. Entwickelt Deep Brain Reset Websites?",
+          a: "Ja. Wir entwickeln Full-Stack-Unternehmenswebsites, hochkonvertierende Landingpages, E-Commerce-Plattformen und maßgeschneiderte Webanwendungen."
         },
         {
-          q: "Arbeiten Sie mit internationalen Unternehmenskunden zusammen?",
-          a: "Ja. Unsere Systeme sind standardmäßig auf internationale Zielgruppen ausgelegt – mit robustem CDN-Routing, nativer Mehrsprachigkeit und lokalen Steuerintegrations-Prozessoren. Wir arbeiten für Partner in Europa, Nordamerika und Asien."
+          q: "3. Erstellt Deep Brain Reset 3D-Renderings?",
+          a: "Ja. Wir erstellen Architektur-Renderings, Innenraum-Visualisierungen, Produkt-CGI, 3D-Animationen und virtuelle Touren."
         },
         {
-          q: "Kann künstliche Intelligenz die kreative und narrative Leitung ersetzen?",
-          a: "Niemals. Künstliche Intelligenz ist ein hervorragender Beschleuniger, der stundenlanges Rendern oder Datenanalysen in Millisekunden automatisierter Workflows verwandelt. Menschliche Strategie, emotionale Reibung und ästhetische Entscheidungen bleiben jedoch die einzige Quelle für echten Premium-Markenwert."
+          q: "4. Automatisiert Deep Brain Reset Geschäftsprozesse?",
+          a: "Ja. Wir entwickeln maßgeschneiderte Prozessautomatisierungen, KI-Agenten-Workflows, Systemintegrationen und operative Dashboards."
         },
         {
-          q: "Wie erfolgt die Preisgestaltung für Softwaresysteme und Videoproduktionen?",
-          a: "Unsere Preisgestaltung basiert ausschließlich auf Diagnoseparametern. Wir identifizieren Hebel zur direkten Wertschöpfung, definieren präzise Anforderungen und bieten Festpreisverträge an, bevor wir mit der Arbeit beginnen. Keine versteckten Stundensätze, keine überraschenden Rechnungen."
-        },
-        {
-          q: "Können Sie mit unseren bestehenden internen Entwicklerteams zusammenarbeiten?",
-          a: "Ja. Wir agieren als taktische Taskforce. Wir können bestehende Architekturen prüfen, leistungsstarke API-Schnittstellen schreiben, spezialisierte generative Agenten entwickeln oder filmische Assets erstellen, die sich direkt in Ihre Git-Workflows einfügen."
+          q: "5. Arbeiten Sie mit internationalen Kunden zusammen?",
+          a: "Ja. Wir arbeiten für Unternehmen in den USA, Europa, Spanien, Argentinien und Lateinamerika mit internationaler Infrastruktur."
         }
       ]
     },
     fr: {
       badge: "QUESTIONS FRÉQUENTES",
-      title: "FAQ de Diagnostic",
-      description: "Levez toutes les incertitudes opérationnelles. Voici une présentation objective de nos modèles de tarification, de notre organisation à distance et de nos politiques de création assistée par IA.",
+      title: "QUESTIONS FRÉQUENTES",
+      description: "Réponses directes et objectives sur nos expertises, services et opérations internationales.",
       faqs: [
         {
-          q: "Combien de temps dure un cycle typique de développement ?",
-          a: "Nos sprints de diagnostic durent généralement de 1 à 2 semaines. Les plateformes web complètes et les campagnes de marque sont déployées en 6 à 12 semaines selon la complexité des intégrations, les besoins en WebGL et l'automatisation des flux. Nous travaillons en sprints courts à haute fréquence, sans aucun temps mort."
+          q: "1. Deep Brain Reset produit-il des spots publicitaires ?",
+          a: "Oui. Nous produisons des spots publicitaires haut de gamme combinant IA générative, effets visuels CGI, animation 3D et direction artistique cinématographique."
         },
         {
-          q: "Comment organisez-vous le travail à distance et les transferts de compétences ?",
-          a: "Nous mettons en place des portails clients dédiés. Chaque jalon technique, prototype fonctionnel et journal d'automatisation est accessible en temps réel et en toute transparence. La documentation de transfert est rédigée de façon modulaire afin que vos équipes internes puissent en prendre le contrôle sans difficulté."
+          q: "2. Deep Brain Reset développe-t-il des sites web ?",
+          a: "Oui. Nous développons des sites web d'entreprise full stack, des landing pages à forte conversion, des plateformes e-commerce et des applications web sur mesure."
         },
         {
-          q: "Travaillez-vous avec des clients corporate internationaux ?",
-          a: "Oui. Nos architectures sont conçues pour des audiences mondiales, intégrant un routage CDN robuste, une gestion native du multilinguisme et des passerelles de facturation locales. Nous intervenons pour des clients en Europe, en Amérique du Nord et en Amérique Latine."
+          q: "3. Deep Brain Reset réalise-t-il des rendus 3D ?",
+          a: "Oui. Nous réalisons des rendus 3D architecturaux, de la visualisation d'intérieur, du CGI produit, des animations 3D et des visites virtuelles."
         },
         {
-          q: "L'intelligence artificielle peut-elle remplacer la direction de création ?",
-          a: "Jamais. L'intelligence artificielle est un accélérateur d'exécution exceptionnel, qui convertit des heures de rendu graphique ou de traitement de données en millisecondes de flux automatisés. Néanmoins, la stratégie humaine, la nuance émotionnelle et les choix esthétiques restent l'unique source de valeur d'une marque de prestige."
+          q: "4. Deep Brain Reset automatise-t-il les processus d'entreprise ?",
+          a: "Oui. Nous concevons des automatisations de processus sur mesure, des workflows d'agents IA, des intégrations de systèmes et des tableaux de bord opérationnels."
         },
         {
-          q: "Comment sont définis les tarifs de vos logiciels et vidéos ?",
-          a: "Nos tarifs sont basés sur des paramètres de diagnostic précis. Nous identifions les leviers de valeur ajoutée commerciale, définissons des spécifications rigoureuses et présentons des contrats à montant fixe avant tout engagement. Sans taux horaire masqué ni frais imprévus."
-        },
-        {
-          q: "Pouvez-vous collaborer avec nos équipes internes de développement ?",
-          a: "Oui. Nous intervenons en équipe d'intervention tactique. Nous pouvons auditer des architectures existantes, développer des API sur mesure de haute performance, programmer des agents génératifs dédiés ou produire des créations vidéo s'intégrant directement dans vos dépôts Git."
+          q: "5. Deep Brain Reset travaille-t-il avec des clients internationaux ?",
+          a: "Oui. Nous accompagnons des entreprises aux États-Unis, en Europe, en Espagne, en Argentine et en Amérique latine."
         }
       ]
     },
     it: {
       badge: "DOMANDE FREQUENTI",
-      title: "FAQ di Diagnostica",
-      description: "Risolvete i dubbi strutturali. Di seguito sono riportati i dettagli sulle nostre tariffe, sulle modalità di lavoro a distanza e sulle politiche di collaborazione creativa con l'IA.",
+      title: "DOMANDE FREQUENTI",
+      description: "Risposte chiare e dirette sulle nostre competenze, servizi principali e collaborazioni internazionali.",
       faqs: [
         {
-          q: "Quanto dura un tipico ciclo di sviluppo del progetto?",
-          a: "I nostri sprint diagnostici si completano di norma in 1-2 settimane. Le piattaforme web complesse e le produzioni di campagne pubblicitarie vengono distribuite in 6-12 settimane, a seconda della densità delle integrazioni, dei requisiti WebGL e della complessità dei flussi. Lavoriamo con sprint ad alta frequenza senza ritardi operativi."
+          q: "1. Deep Brain Reset produce spot pubblicitari?",
+          a: "Sì. Produciamo spot pubblicitari di alta gamma combinando IA generativa, effetti visivi CGI, animazione 3D e direzione artistica cinematografica."
         },
         {
-          q: "Come coordinate le attività a distanza e i passaggi di consegne?",
-          a: "Utilizziamo portali dedicati per i clienti. Ogni obiettivo tecnico, prototipo e registro di automazione è completamente trasparente e accessibile in tempo reale. I documenti di consegna sono strutturati in modo modulare per consentire ai vostri sviluppatori interni di assumere il controllo senza intoppi."
+          q: "2. Deep Brain Reset sviluppa siti web?",
+          a: "Sì. Sviluppiamo siti web aziendali full stack, landing page ad alta conversione, piattaforme e-commerce e applicazioni web su misura."
         },
         {
-          q: "Collaborate con clienti societari internazionali?",
-          a: "Sì. I nostri sistemi sono progettati per un pubblico globale, con instradamento CDN ottimizzato, supporto multilingua e sistemi di integrazione fiscale locale. Operiamo per brand in Europa, Nord America e America Latina."
+          q: "3. Deep Brain Reset realizza rendering 3D?",
+          a: "Sì. Realizziamo rendering 3D architettonici, visualizzazioni d'interni, CGI di prodotto, animazioni 3D e tour virtuali."
         },
         {
-          q: "L'intelligenza artificiale può sostituire la direzione artistica narrativa?",
-          a: "Mai. L'intelligenza artificiale rappresenta un formidabile acceleratore esecutivo, riducendo a millisecondi attività complesse di rendering o analisi dati. Tuttavia, la strategia umana, la sensibilità emotiva e le scelte estetiche restano l'unica vera fonte di valore per un brand di alto livello."
+          q: "4. Deep Brain Reset automatizza i processi aziendali?",
+          a: "Sì. Creiamo automazioni di processo su misura, flussi di lavoro con agenti IA, integrazioni di sistema e dashboard operative."
         },
         {
-          q: "Come vengono definiti i prezzi di software e campagne pubblicitarie?",
-          a: "Le nostre tariffe si basano esclusivamente su parametri diagnostici. Identifichiamo il valore strategico, definiamo le specifiche operative e forniamo contratti a tariffa fissa prima dell'inizio delle attività. Nessun costo orario nascosto o fatture impreviste."
-        },
-        {
-          q: "Potete collaborare con il nostro team interno di sviluppatori?",
-          a: "Sì. Operiamo come una task force strategica. Possiamo verificare architetture esistenti, sviluppare API personalizzate ad alte prestazioni, creare agenti generativi mirati o produrre contenuti video pronti per integrarsi nei vostri flussi di lavoro Git."
+          q: "5. Deep Brain Reset collabora con clienti internazionali?",
+          a: "Sì. Collaboriamo con aziende negli Stati Uniti, in Europa, Spagna, Argentina e America Latina."
         }
       ]
     }
@@ -176,7 +156,7 @@ export default function FAQ() {
       <div className="max-w-4xl mx-auto px-6 md:px-12 relative z-10">
         
         {/* Section Header */}
-        <div className="text-center space-y-4 mb-20">
+        <div className="text-center space-y-4 mb-16">
           <span className="text-xs font-mono tracking-widest text-studio-caption uppercase block">
             {labels.badge}
           </span>
@@ -196,38 +176,30 @@ export default function FAQ() {
               <div
                 id={`faq-item-${i}`}
                 key={i}
-                className="bg-studio-bg border border-studio-border rounded-sm transition-all duration-500 overflow-hidden"
+                className="bg-studio-bg border border-studio-border rounded-sm transition-all duration-300 overflow-hidden"
               >
                 <button
                   onClick={() => toggle(i)}
-                  className="w-full px-6 py-5 flex items-center justify-between text-left focus:outline-none cursor-pointer bg-transparent border-0"
+                  className="w-full text-left p-6 flex justify-between items-center space-x-4 cursor-pointer hover:bg-studio-panel/50 transition-colors bg-transparent border-0"
                 >
-                  <div className="flex items-center space-x-3 pr-4">
-                    <HelpCircle size={14} className="text-studio-caption shrink-0" />
-                    <span className="text-xs md:text-sm font-display text-studio-primary uppercase tracking-wide">
-                      {faq.q}
-                    </span>
+                  <span className="text-sm md:text-base font-display tracking-wide uppercase text-studio-primary font-medium">
+                    {faq.q}
+                  </span>
+                  <div className={`p-1.5 rounded-full border border-studio-border text-studio-caption transition-transform duration-300 ${isOpen ? "rotate-180 text-studio-primary border-studio-primary" : ""}`}>
+                    <ChevronDown size={14} />
                   </div>
-                  <ChevronDown
-                    size={14}
-                    className={`text-studio-caption transition-transform duration-300 shrink-0 ${
-                      isOpen ? "rotate-180 text-studio-primary" : ""
-                    }`}
-                  />
                 </button>
 
-                <AnimatePresence initial={false}>
+                <AnimatePresence>
                   {isOpen && (
                     <motion.div
-                      initial={{ height: 0, opacity: 0 }}
-                      animate={{ height: "auto", opacity: 1 }}
-                      exit={{ height: 0, opacity: 0 }}
-                      transition={{ duration: 0.3 }}
+                      initial={{ opacity: 0, height: 0 }}
+                      animate={{ opacity: 1, height: "auto" }}
+                      exit={{ opacity: 0, height: 0 }}
+                      transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
                     >
-                      <div className="px-6 pb-6 pt-1 border-t border-studio-border/30">
-                        <p className="text-xs md:text-sm text-studio-secondary font-light leading-relaxed">
-                          {faq.a}
-                        </p>
+                      <div className="px-6 pb-6 pt-2 text-xs md:text-sm text-studio-secondary font-light leading-relaxed border-t border-studio-border/40 mt-2">
+                        {faq.a}
                       </div>
                     </motion.div>
                   )}
