@@ -4,6 +4,8 @@ export interface NavigationSchema {
   studio: string;
   philosophy: string;
   featured: string;
+  demoreel: string;
+  watchDemoreel: string;
   system: string;
   capabilities: string;
   cases: string;
@@ -23,7 +25,26 @@ export interface HeroSchema {
   subtitle: string;
   exploreButton: string;
   contactButton: string;
+  watchDemoreel: string;
+  viewSelectedWork: string;
   scrollIndicator: string;
+}
+
+export interface DemoreelSchema {
+  sectionLabel: string;
+  mainTitle: string;
+  description: string;
+  watchCta: string;
+  startProjectCta: string;
+  exploreProjectsPrompt: string;
+  modalLikeWhatYouSee: string;
+  modalSubtext: string;
+  modalBookCta: string;
+  errorTitle: string;
+  errorDesc: string;
+  watchOnYoutube: string;
+  viewCaseStudies: string;
+  closeModal: string;
 }
 
 export interface PhilosophySchema {
@@ -134,6 +155,7 @@ export interface TestimonialsSchema {
 export interface TranslationSchema {
   navigation: NavigationSchema;
   hero: HeroSchema;
+  demoreel: DemoreelSchema;
   philosophy: PhilosophySchema;
   featured: FeaturedSchema;
   process: ProcessSchema;
@@ -155,6 +177,8 @@ const rawTranslations: {
       studio: "Studio",
       philosophy: "Studio",
       featured: "Work",
+      demoreel: "Demoreel",
+      watchDemoreel: "WATCH DEMOREEL",
       system: "Process",
       capabilities: "Services",
       cases: "Cases",
@@ -166,6 +190,8 @@ const rawTranslations: {
       studio: "Estudio",
       philosophy: "Estudio",
       featured: "Trabajos",
+      demoreel: "Demoreel",
+      watchDemoreel: "VER DEMOREEL",
       system: "Proceso",
       capabilities: "Servicios",
       cases: "Proyectos",
@@ -177,6 +203,8 @@ const rawTranslations: {
       studio: "Studio",
       philosophy: "Studio",
       featured: "Projekte",
+      demoreel: "Demoreel",
+      watchDemoreel: "DEMOREEL ANSEHEN",
       system: "Prozess",
       capabilities: "Leistungen",
       cases: "Projekte",
@@ -188,6 +216,8 @@ const rawTranslations: {
       studio: "Studio",
       philosophy: "Studio",
       featured: "Projets",
+      demoreel: "Demoreel",
+      watchDemoreel: "VOIR LE DEMOREEL",
       system: "Processus",
       capabilities: "Services",
       cases: "Études",
@@ -199,6 +229,8 @@ const rawTranslations: {
       studio: "Studio",
       philosophy: "Studio",
       featured: "Progetti",
+      demoreel: "Demoreel",
+      watchDemoreel: "GUARDA IL DEMOREEL",
       system: "Processo",
       capabilities: "Servizi",
       cases: "Casi",
@@ -209,69 +241,161 @@ const rawTranslations: {
   },
   hero: {
     en: {
-      badge: "CREATIVE TECHNOLOGY STUDIO",
-      titleTop: "WE FUSE",
-      titleMid: "ART DIRECTION &",
-      titleBot: "HIGH ENGINEERING",
-      description: "Operating at the intersection of cinematic creative direction, custom type-safe software development, and deep cognitive process automation. We build high-prestige digital ecosystems.",
-      cta: "Explore Studio Portfolio",
-      title: "WE FUSE ART DIRECTION & HIGH ENGINEERING",
-      subtitle: "Operating at the intersection of cinematic creative direction, custom type-safe software development, and deep cognitive process automation.",
-      exploreButton: "View Selected Work",
-      contactButton: "Start Your Project",
+      badge: "CREATIVE TECHNOLOGY STUDIO // US • EU • AR • ES",
+      titleTop: "HIGH-END AI & CGI COMMERCIALS",
+      titleMid: "ENTERPRISE FULL-STACK WEB",
+      titleBot: "& AI AGENT WORKFLOWS",
+      description: "We engineer AAA AI & CGI Advertising, Enterprise Full-Stack Web Development, and Autonomous AI Agent Workflows for industry leaders in the United States, Europe, Spain, and Argentina.",
+      cta: "Book a Strategy Call",
+      title: "HIGH-END AI & CGI COMMERCIALS, ENTERPRISE WEB & AI AGENTS",
+      subtitle: "Engineering AAA AI & CGI Commercials, Enterprise Full-Stack Web Architectures, and Autonomous AI Agent Workflows for global leaders in the US, Europe, Argentina, and Spain.",
+      exploreButton: "Explore Capabilities",
+      contactButton: "Book a Strategy Call",
+      watchDemoreel: "WATCH DEMOREEL",
+      viewSelectedWork: "VIEW SELECTED WORK",
       scrollIndicator: "Featured Case Studies"
     },
     es: {
-      badge: "ESTUDIO DE TECNOLOGÍA CREATIVA DE ALTA GAMA",
-      titleTop: "FUSIONAMOS",
-      titleMid: "DIRECCIÓN DE ARTE &",
-      titleBot: "ALTA INGENIERÍA",
-      description: "Operamos en la intersección de la dirección creativa cinematográfica, el desarrollo de software seguro y la automatización cognitiva profunda de procesos. Diseñamos ecosistemas digitales prestigiosos.",
-      cta: "Explorar Portafolio del Estudio",
-      title: "FUSIONAMOS DIRECCIÓN DE ARTE Y ALTA INGENIERÍA",
-      subtitle: "Operamos en la intersección de la dirección creativa cinematográfica, el desarrollo de software seguro y la automatización cognitiva.",
-      exploreButton: "Ver Trabajos",
-      contactButton: "Iniciar Proyecto",
+      badge: "ESTUDIO DE TECNOLOGÍA CREATIVA // US • EU • AR • ES",
+      titleTop: "COMERCIALES IA & CGI AAA",
+      titleMid: "DESARROLLO WEB ENTERPRISE",
+      titleBot: "& FLUJOS DE AGENTES IA",
+      description: "Producimos publicidad AAA con IA y CGI, arquitectura web full-stack corporativa y flujos de trabajo autónomos con agentes de IA para empresas líderes en Argentina, Estados Unidos, España y Europa.",
+      cta: "Solicitar Consulta",
+      title: "COMERCIALES IA & CGI AAA, DESARROLLO WEB ENTERPRISE & AGENTES IA",
+      subtitle: "Producimos publicidad de alto nivel con IA y CGI, arquitectura web full-stack corporativa y flujos de trabajo autónomos con agentes de IA para clientes en Argentina, Estados Unidos, España y Europa.",
+      exploreButton: "Explorar Servicios",
+      contactButton: "Solicitar Consulta",
+      watchDemoreel: "VER DEMOREEL",
+      viewSelectedWork: "VER TRABAJOS SELECCIONADOS",
       scrollIndicator: "Casos de Estudio"
     },
     de: {
-      badge: "STUDIO FÜR KREATIVE TECHNOLOGIE",
-      titleTop: "WIR FUSIONIEREN",
-      titleMid: "KREATIVDIREKTION &",
-      titleBot: "HIGH-END ENGINEERING",
-      description: "Agieren an der Schnittstelle von filmischer Kreativdirektion, typsicherer Softwareentwicklung und tiefer kognitiver Prozessautomatisierung. Wir entwickeln digitale Ökosysteme für höchste Ansprüche.",
-      cta: "Studio-Portfolio entdecken",
-      title: "WIR FUSIONIEREN KREATIVDIREKTION & HIGH-END ENGINEERING",
-      subtitle: "Agieren an der Schnittstelle von filmischer Kreativdirektion, typsicherer Softwareentwicklung und tiefer kognitiver Prozessautomatisierung.",
-      exploreButton: "Projekte ansehen",
-      contactButton: "Projekt Starten",
+      badge: "STUDIO FÜR KREATIVE TECHNOLOGIE // US • EU • AR • ES",
+      titleTop: "HIGH-END KI & CGI WERBEFILME",
+      titleMid: "ENTERPRISE FULL-STACK WEB",
+      titleBot: "& KI-AGENTEN-WORKFLOWS",
+      description: "Wir entwickeln AAA KI- & CGI-Werbefilme, Enterprise Full-Stack Webarchitekturen und autonome KI-Agenten-Prozesse für führende Unternehmen weltweit.",
+      cta: "Strategiegespräch buchen",
+      title: "HIGH-END KI & CGI WERBEFILME, ENTERPRISE WEB & KI-AGENTEN",
+      subtitle: "Erstklassige KI- & CGI-Werbeproduktionen, skalierbare Enterprise Web-Systeme und kognitive Prozessautomatisierung für Spitzenunternehmen.",
+      exploreButton: "Leistungen erkunden",
+      contactButton: "Strategiegespräch buchen",
+      watchDemoreel: "DEMOREEL ANSEHEN",
+      viewSelectedWork: "AUSGEWÄHLTE ARBEITEN ANSEHEN",
       scrollIndicator: "Ausgewählte Fallstudien"
     },
     fr: {
-      badge: "STUDIO DE TECHNOLOGIE CRÉATIVE DE LUXE",
-      titleTop: "NOUS FUSIONNONS",
-      titleMid: "DIRECTION ARTISTIQUE &",
-      titleBot: "HAUTE INGÉNIERIE",
-      description: "Opérant à la confluence d'une direction artistique cinématographique, d'un développement logiciel hautement sécurisé et d'une automatisation cognitive des processus d'affaires. Nous créons des pièces maîtresses.",
-      cta: "Découvrir notre Portfolio",
-      title: "NOUS FUSIONNONS DIRECTION ARTISTIQUE & HAUTE INGÉNIERIE",
-      subtitle: "Opérant à la confluence d'une direction artistique cinématographique, d'un développement logiciel hautement sécurisé et d'une automatisation cognitive.",
-      exploreButton: "Voir les Projets",
-      contactButton: "Lancer un Projet",
+      badge: "STUDIO DE TECHNOLOGIE CRÉATIVE // US • EU • AR • ES",
+      titleTop: "PUBLICITÉ IA & CGI HAUT DE GAMME",
+      titleMid: "DÉVELOPPEMENT WEB ENTERPRISE",
+      titleBot: "& WORKFLOWS D'AGENTS IA",
+      description: "Nous produisons des spots publicitaires IA & CGI AAA, du développement web full-stack d'entreprise et des workflows d'agents IA autonomes pour des leaders mondiaux.",
+      cta: "Réserver une Consultation",
+      title: "PUBLICITÉ IA & CGI HAUT DE GAMME, WEB ENTERPRISE & AGENTS IA",
+      subtitle: "Création de publicités IA & CGI AAA, architectures web d'entreprise résilientes et automatisation par agents IA autonomes.",
+      exploreButton: "Explorer nos Services",
+      contactButton: "Réserver una Consultation",
+      watchDemoreel: "VOIR LE DEMOREEL",
+      viewSelectedWork: "VOIR LES PROJETS SÉLECTIONNÉS",
       scrollIndicator: "Études de Cas"
     },
     it: {
-      badge: "STUDIO DI TECNOLOGIA CREATIVA",
-      titleTop: "FONDIAMO",
-      titleMid: "DIREZIONE ARTISTICA &",
-      titleBot: "ALTO INGEGNERIA",
-      description: "Operiamo all'intersezione tra direzione creativa cinematografica, ingegneria del software orientata alla sicurezza e automazione profonda dei flussi operativi. Sviluppiamo ecosistemi di assoluto prestigio.",
-      cta: "Scopri il Portfolio dello Studio",
-      title: "FONDIAMO DIREZIONE ARTISTICA & ALTO INGEGNERIA",
-      subtitle: "Operiamo all'intersezione tra direzione creativa cinematografica, ingegneria del software e automazione dei flussi.",
-      exploreButton: "Vedi Progetti",
-      contactButton: "Inizia Progetto",
+      badge: "STUDIO DI TECNOLOGIA CREATIVA // US • EU • AR • ES",
+      titleTop: "SPOT IA & CGI DI ALTA GAMMA",
+      titleMid: "SVILUPPO WEB ENTERPRISE",
+      titleBot: "& FLUSSI AGENTI IA",
+      description: "Sviluppiamo spot pubblicitari AAA in IA & CGI, architetture web full-stack aziendali e flussi automatizzati con agenti IA per aziende in USA, Europa, Spagna e Argentina.",
+      cta: "Richiedi Consulenza",
+      title: "SPOT IA & CGI DE ALTA GAMMA, WEB ENTERPRISE & AGENTI IA",
+      subtitle: "Produzione di spot pubblicitari AAA con IA/CGI, ingegneria web enterprise e automazione cognitiva con agenti di IA.",
+      exploreButton: "Scopri i Servizi",
+      contactButton: "Richiedi Consulenza",
+      watchDemoreel: "GUARDA IL DEMOREEL",
+      viewSelectedWork: "GUARDA I LAVORI SELEZIONATI",
       scrollIndicator: "Casi di Studio"
+    }
+  },
+  demoreel: {
+    en: {
+      sectionLabel: "STUDIO DEMOREEL",
+      mainTitle: "CREATIVE TECHNOLOGY IN MOTION",
+      description: "A selected audiovisual overview of Deep Brain Reset’s work across AI-assisted commercial production, cinematic storytelling, digital products, interactive platforms and creative technology.",
+      watchCta: "WATCH DEMOREEL",
+      startProjectCta: "BOOK A STRATEGY SESSION",
+      exploreProjectsPrompt: "EXPLORE THE PROJECTS",
+      modalLikeWhatYouSee: "LIKE WHAT YOU SEE?",
+      modalSubtext: "Let’s discuss what Deep Brain Reset could create for your brand, product or business.",
+      modalBookCta: "BOOK A STRATEGY SESSION",
+      errorTitle: "THE DEMOREEL COULD NOT BE LOADED",
+      errorDesc: "You can watch it directly on YouTube or continue exploring our case studies.",
+      watchOnYoutube: "WATCH ON YOUTUBE",
+      viewCaseStudies: "VIEW CASE STUDIES",
+      closeModal: "Close video player"
+    },
+    es: {
+      sectionLabel: "DEMOREEL DEL ESTUDIO",
+      mainTitle: "TECNOLOGÍA CREATIVA EN MOVIMIENTO",
+      description: "Un resumen audiovisual seleccionado del trabajo de Deep Brain Reset en producción comercial asistida por IA, narrativa cinematográfica, productos digitales, plataformas interactivas y tecnología creativa.",
+      watchCta: "VER DEMOREEL",
+      startProjectCta: "AGENDAR SESIÓN ESTRATÉGICA",
+      exploreProjectsPrompt: "EXPLORAR LOS PROYECTOS",
+      modalLikeWhatYouSee: "¿QUERÉS HACER ALGO ASÍ?",
+      modalSubtext: "Conversemos sobre lo que Deep Brain Reset puede crear para tu marca, producto o empresa.",
+      modalBookCta: "AGENDAR UNA SESIÓN ESTRATÉGICA",
+      errorTitle: "EL DEMOREEL NO PUDO CARGARSE",
+      errorDesc: "Podés verlo directamente en YouTube o continuar explorando nuestros casos de estudio.",
+      watchOnYoutube: "VER EN YOUTUBE",
+      viewCaseStudies: "VER CASOS DE ESTUDIO",
+      closeModal: "Cerrar reproductor de video"
+    },
+    de: {
+      sectionLabel: "STUDIO DEMOREEL",
+      mainTitle: "KREATIVE TECHNOLOGIE IN BEWEGUNG",
+      description: "Ein ausgewählter audiovisueller Überblick über die Arbeiten von Deep Brain Reset in den Bereichen KI-gestützte Werbeproduktion, filmisches Storytelling, digitale Produkte, interaktive Plattformen und kreative Technologie.",
+      watchCta: "DEMOREEL ANSEHEN",
+      startProjectCta: "STRATEGIEGESPRÄCH BUCHEN",
+      exploreProjectsPrompt: "PROJEKTE ENTDECKEN",
+      modalLikeWhatYouSee: "GEFÄLLT IHNEN, WAS SIE SEHEN?",
+      modalSubtext: "Lassen Sie uns darüber sprechen, was Deep Brain Reset für Ihre Marke, Ihr Produkt oder Ihr Unternehmen erschaffen kann.",
+      modalBookCta: "STRATEGIEGESPRÄCH BUCHEN",
+      errorTitle: "DAS DEMOREEL KONNTE NICHT GELADEN WERDEN",
+      errorDesc: "Sie können es direkt auf YouTube ansehen oder unsere Fallstudien erkunden.",
+      watchOnYoutube: "AUF YOUTUBE ANSEHEN",
+      viewCaseStudies: "FALLSTUDIEN ANSEHEN",
+      closeModal: "Videoplayer schließen"
+    },
+    fr: {
+      sectionLabel: "DEMOREEL DU STUDIO",
+      mainTitle: "LA TECHNOLOGIE CRÉATIVE EN MOUVEMENT",
+      description: "Un aperçu audiovisuel sélectionné du travail de Deep Brain Reset à travers la production publicitaire assistée par IA, la narration cinématographique, les produits numériques, les plateformes interactives et la technologie créative.",
+      watchCta: "VOIR LE DEMOREEL",
+      startProjectCta: "RÉSERVER UNE SESSION STRATÉGIQUE",
+      exploreProjectsPrompt: "EXPLORER LES PROJETS",
+      modalLikeWhatYouSee: "VOUS AIMEZ CE QUE VOUS VOYEZ ?",
+      modalSubtext: "Discutons de ce que Deep Brain Reset pourrait créer pour votre marque, votre produit ou votre entreprise.",
+      modalBookCta: "RÉSERVER UNE SESSION STRATÉGIQUE",
+      errorTitle: "LE DEMOREEL N'A PAS PU ÊTRE CHARGÉ",
+      errorDesc: "Vous pouvez le visionner directement sur YouTube ou continuer à explorer nos études de cas.",
+      watchOnYoutube: "REGARDER SUR YOUTUBE",
+      viewCaseStudies: "VOIR LES ÉTUDES DE CAS",
+      closeModal: "Fermer le lecteur vidéo"
+    },
+    it: {
+      sectionLabel: "DEMOREEL DELLO STUDIO",
+      mainTitle: "TECNOLOGIA CREATIVA IN MOVIMENTO",
+      description: "Una panoramica audiovisiva selezionata del lavoro di Deep Brain Reset tra produzione pubblicitaria assistita da IA, narrazione cinematografica, prodotti digitali, piattaforme interattive e tecnologia creativa.",
+      watchCta: "GUARDA IL DEMOREEL",
+      startProjectCta: "PRENOTA UNA SESSIONE STRATEGICA",
+      exploreProjectsPrompt: "ESPLORA I PROGETTI",
+      modalLikeWhatYouSee: "TI PIACE QUELLO CHE VEDI?",
+      modalSubtext: "Discutiamo di cosa Deep Brain Reset potrebbe creare per il tuo brand, prodotto o azienda.",
+      modalBookCta: "PRENOTA UNA SESSIONE STRATEGICA",
+      errorTitle: "IMPOSSIBILE CARICARE IL DEMOREEL",
+      errorDesc: "Puoi guardarlo direttamente su YouTube o continuare a esplorare i nostri casi di studio.",
+      watchOnYoutube: "GUARDA SU YOUTUBE",
+      viewCaseStudies: "VEDI CASI DI STUDIO",
+      closeModal: "Chiudi il lettore video"
     }
   },
   philosophy: {

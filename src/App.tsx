@@ -1,6 +1,8 @@
 import { useState, useEffect } from "react";
 import Navigation from "./components/Navigation";
 import Hero from "./components/Hero";
+import DemoreelSection from "./components/DemoreelSection";
+import DemoreelModal from "./components/DemoreelModal";
 import AboutPhilosophy from "./components/AboutPhilosophy";
 import CreativeProcess from "./components/CreativeProcess";
 import ServicesList from "./components/ServicesList";
@@ -24,6 +26,7 @@ import MenuNoirCaseStudy from "./components/MenuNoirCaseStudy";
 export default function App() {
   const [activeSection, setActiveSection] = useState("hero");
   const [activeCaseStudy, setActiveCaseStudy] = useState<string | null>(null);
+  const [isDemoreelModalOpen, setIsDemoreelModalOpen] = useState(false);
 
   const { language } = useLanguage();
   const navT = translations.navigation[language];
@@ -72,10 +75,11 @@ export default function App() {
   useEffect(() => {
     const sections = [
       "hero", 
-      "philosophy", 
-      "work", 
-      "process", 
+      "work",
+      "demoreel", 
       "services", 
+      "process", 
+      "philosophy", 
       "cases", 
       "tech-stack", 
       "why-us", 
@@ -219,29 +223,45 @@ export default function App() {
       {/* Cinematic Studio Body */}
       <main id="studio-body">
         {/* 01. Studio Hero Screen */}
-        <Hero onExploreClick={() => handleNavigate("work")} />
+        <Hero 
+          onExploreClick={() => handleNavigate("work")} 
+          onWatchDemoreel={() => setIsDemoreelModalOpen(true)}
+        />
 
-        {/* 02. Featured Work Portals & Modular Case Study Record Showcase (Portfolio) */}
+        {/* 02. Selected Case Studies / Portfolio */}
         <CaseStudies onViewCaseStudy={(id) => setActiveCaseStudy(id)} />
 
-        {/* 03. Pillars & Capabilities list (Services) */}
+        {/* 03. Dedicated Studio Demoreel */}
+        <DemoreelSection 
+          onWatchDemoreel={() => setIsDemoreelModalOpen(true)}
+          onViewCaseStudy={(id) => setActiveCaseStudy(id)}
+        />
+
+        {/* 04. Capabilities / Services */}
         <ServicesList />
 
-        {/* 04. Unified Creative Methodology Stepper (Process) */}
+        {/* 05. Unified Creative Methodology Stepper (Process) */}
         <CreativeProcess />
 
-        {/* 05. Architectural Creative Philosophy (Studio Philosophy) */}
+        {/* 06. Architectural Creative Philosophy (Studio Philosophy) */}
         <AboutPhilosophy />
 
-        {/* 06. Technology Stack & Strategic Trust Factors */}
+        {/* 07. Technology Stack & Strategic Trust Factors */}
         <TechStack />
         <WhyChooseUs />
         <Testimonials />
         <FAQ />
 
-        {/* 07. Interactive AI Consultant diagnostic layer */}
+        {/* 08. Interactive AI Consultant diagnostic layer */}
         <BriefConsultant />
       </main>
+
+      {/* Fullscreen Demoreel Modal */}
+      <DemoreelModal 
+        isOpen={isDemoreelModalOpen} 
+        onClose={() => setIsDemoreelModalOpen(false)} 
+        onViewCaseStudy={(id) => setActiveCaseStudy(id)}
+      />
 
       {/* Luxury Editorial Footer */}
       <footer id="studio-footer" className="bg-studio-panel border-t border-studio-border py-20 relative overflow-hidden">

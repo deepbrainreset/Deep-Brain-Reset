@@ -1,21 +1,26 @@
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { motion } from "motion/react";
-import { ArrowDown } from "lucide-react";
+import { ArrowDown, Volume2, VolumeX, Play, Pause } from "lucide-react";
 import { useLanguage } from "../LanguageContext";
 import { translations } from "../translations";
 import { Logo } from "./Logo";
 
 interface HeroProps {
   onExploreClick: () => void;
+  onWatchDemoreel: () => void;
 }
 
-export default function Hero({ onExploreClick }: HeroProps) {
+export default function Hero({ onExploreClick, onWatchDemoreel }: HeroProps) {
+  const videoRef = useRef<HTMLVideoElement>(null);
   const layer1Ref = useRef<HTMLDivElement>(null);
   const layer2Ref = useRef<HTMLDivElement>(null);
   const layer3Ref = useRef<HTMLDivElement>(null);
   const layer4Ref = useRef<HTMLDivElement>(null);
   const foregroundRef = useRef<HTMLDivElement>(null);
   const { language } = useLanguage();
+
+  const [isMuted, setIsMuted] = useState(true);
+  const [isPlaying, setIsPlaying] = useState(true);
 
   const t = translations.hero[language];
 
@@ -55,22 +60,17 @@ export default function Hero({ onExploreClick }: HeroProps) {
         layer1Ref.current.style.transform = `translate3d(${l1MouseX}px, ${l1MouseY + l1Scroll}px, 0)`;
       }
 
-      // Layer 02: Main Artwork (Official banner, object-contain, no cropping)
+      // Layer 02: Main Artwork / Video Layer
       if (layer2Ref.current) {
         const l2MouseX = mouseX * 4;
         const l2MouseY = mouseY * 6;
         const l2Scroll = scrollY * 0.10;
         layer2Ref.current.style.transform = `translate3d(${l2MouseX}px, ${l2MouseY + l2Scroll}px, 0)`;
         
-        // As the user scrolls, the banner darkens slightly, and subtle grid fades in
+        // As the user scrolls, the video darkens slightly
         const mask = layer2Ref.current.querySelector(".banner-darken-mask") as HTMLDivElement | null;
         if (mask) {
-          mask.style.opacity = `${scrollRatio * 0.65}`;
-        }
-        
-        const scrollGrid = layer2Ref.current.querySelector(".banner-scroll-grid") as HTMLDivElement | null;
-        if (scrollGrid) {
-          scrollGrid.style.opacity = `${scrollRatio * 0.12}`;
+          mask.style.opacity = `${scrollRatio * 0.75}`;
         }
       }
 
@@ -111,8 +111,23 @@ export default function Hero({ onExploreClick }: HeroProps) {
     };
   }, []);
 
-  // Safe client-side check for loading state of prefers-reduced-motion to avoid flash of scaling
-  const prefersReducedMotion = typeof window !== "undefined" ? window.matchMedia("(prefers-reduced-motion: reduce)").matches : false;
+  const toggleMute = () => {
+    if (videoRef.current) {
+      videoRef.current.muted = !isMuted;
+      setIsMuted(!isMuted);
+    }
+  };
+
+  const togglePlay = () => {
+    if (videoRef.current) {
+      if (isPlaying) {
+        videoRef.current.pause();
+      } else {
+        videoRef.current.play();
+      }
+      setIsPlaying(!isPlaying);
+    }
+  };
 
   return (
     <section
@@ -124,27 +139,45 @@ export default function Hero({ onExploreClick }: HeroProps) {
         ref={layer1Ref}
         className="absolute inset-0 z-0 bg-black overflow-hidden pointer-events-none select-none will-change-transform"
       >
-        <div className="absolute inset-0 bg-grid-overlay opacity-[0.015]" />
+        <div className="absolute inset-0 bg-grid-overlay opacity-[0.02]" />
       </div>
 
-      {/* Layer 02: Main Artwork Layer (Unobstructed Animated Logo as Background Artwork) */}
+      {/* Layer 02: Cloudinary Video Hero / Demo Reel Background Loop */}
       <div
         ref={layer2Ref}
-        className="absolute inset-0 z-10 pointer-events-none select-none will-change-transform flex items-center justify-end overflow-hidden"
+        className="absolute inset-0 z-10 pointer-events-none select-none will-change-transform overflow-hidden"
       >
-        {/* Scroll-driven overlays */}
-        <div className="banner-darken-mask absolute inset-0 bg-black opacity-0 transition-opacity duration-300 pointer-events-none" />
-        <div className="banner-scroll-grid absolute inset-0 bg-grid-overlay opacity-0 transition-opacity duration-300 pointer-events-none" />
-        
-        {/* Cinematic Vignettes */}
-        <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-black/70" />
-        <div className="absolute inset-0 bg-gradient-to-b from-black/20 via-transparent to-black/30" />
-        <div className="absolute inset-x-0 bottom-0 h-48 bg-gradient-to-t from-black via-black/85 to-transparent" />
+        {/* Background Demo Reel Video (Cloudinary CDN integration ready) */}
+        <div className="absolute inset-0 w-full h-full overflow-hidden">
+          <video
+            ref={videoRef}
+            autoPlay
+            loop
+            muted={isMuted}
+            playsInline
+            poster="https://res.cloudinary.com/dw4k14vmn/image/upload/v1782884366/ChatGPT_Image_1_jul_2026_02_25_30_m795ce.png"
+            className="w-full h-full object-cover opacity-35 filter brightness-75 contrast-125 scale-105"
+          >
+            {/* Cloudinary high-end video loop reel source */}
+            <source
+              src="https://res.cloudinary.com/dw4k14vmn/video/upload/v1782884366/hero_reel.mp4"
+              type="video/mp4"
+            />
+          </video>
+        </div>
 
-        {/* Animated video lens logo positioned on the right side to prevent overlap with the editorial headline */}
-        <div className="absolute lg:relative right-[-10vw] bottom-[60px] lg:right-auto lg:bottom-auto w-[clamp(300px,85vw,420px)] h-[clamp(300px,85vw,420px)] lg:w-[45%] lg:h-full flex items-center justify-center px-4 lg:px-12 opacity-[0.85] lg:opacity-[0.85] pointer-events-none select-none mix-blend-normal filter-none">
+        {/* Scroll-driven darken mask */}
+        <div className="banner-darken-mask absolute inset-0 bg-black opacity-0 transition-opacity duration-300 pointer-events-none" />
+
+        {/* Cinematic Vignettes & Gradient Shields */}
+        <div className="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-black/80" />
+        <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/30 to-black/80" />
+        <div className="absolute inset-x-0 bottom-0 h-56 bg-gradient-to-t from-black via-black/90 to-transparent" />
+
+        {/* Animated Brand Emblem positioned subtly in background right */}
+        <div className="absolute right-[-5vw] bottom-[10vh] lg:right-[2vw] lg:bottom-auto lg:top-1/2 lg:-translate-y-1/2 w-[clamp(280px,50vw,460px)] h-[clamp(280px,50vw,460px)] opacity-20 pointer-events-none select-none mix-blend-screen filter blur-[0.5px]">
           <Logo
-            className="w-full h-full max-w-full max-h-full lg:w-[75%] lg:h-[75%] lg:max-w-[75%] lg:max-h-[75%] aspect-square pointer-events-none opacity-100 select-none"
+            className="w-full h-full aspect-square pointer-events-none opacity-100 select-none"
             isDecorative={true}
           />
         </div>
@@ -155,11 +188,10 @@ export default function Hero({ onExploreClick }: HeroProps) {
         ref={layer3Ref}
         className="absolute inset-0 z-20 pointer-events-none select-none will-change-transform overflow-hidden"
       >
-        {/* Soft atmospheric blue highlights (low opacity) */}
-        <div className="absolute top-1/4 left-1/4 w-[40vw] h-[40vh] bg-blue-500/[0.025] rounded-full filter blur-[140px]" />
-        <div className="absolute bottom-1/4 right-1/4 w-[35vw] h-[35vh] bg-blue-600/[0.015] rounded-full filter blur-[140px]" />
+        <div className="absolute top-1/4 left-1/4 w-[45vw] h-[45vh] bg-blue-500/[0.03] rounded-full filter blur-[150px]" />
+        <div className="absolute bottom-1/4 right-1/4 w-[40vw] h-[40vh] bg-indigo-600/[0.025] rounded-full filter blur-[150px]" />
         
-        {/* Subtle physical floating dust particles */}
+        {/* Physical dust particles */}
         <div className="absolute inset-0 opacity-40">
           <div className="particle particle-1" />
           <div className="particle particle-2" />
@@ -173,23 +205,33 @@ export default function Hero({ onExploreClick }: HeroProps) {
         ref={layer4Ref}
         className="absolute inset-0 z-30 pointer-events-none select-none will-change-transform overflow-hidden"
       >
-        <div className="absolute inset-0 bg-gradient-to-r from-black/30 via-transparent to-black/30" />
+        <div className="absolute inset-0 bg-gradient-to-r from-black/50 via-transparent to-black/50" />
       </div>
 
-      {/* Top spacer (to prevent header overlaps) */}
-      <div className="h-24 z-40 relative pointer-events-none" />
+      {/* Top spacer for header offset */}
+      <div className="h-28 z-40 relative pointer-events-none" />
 
       {/* Left-Aligned Premium Editorial Content Block */}
       <div className="relative z-40 flex-grow flex flex-col items-start justify-center max-w-7xl mx-auto px-6 md:px-12 w-full text-left">
-        <div ref={foregroundRef} className="space-y-8 max-w-2xl select-none will-change-transform">
+        <div ref={foregroundRef} className="space-y-8 max-w-3xl select-none will-change-transform">
           
-          {/* Typography & Interactive Actions */}
+          {/* Badge & Headlines */}
           <div className="space-y-6 flex flex-col items-start">
+            <motion.div
+              initial={{ opacity: 0, y: 15 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 1.0, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
+              className="inline-flex items-center gap-2 px-3 py-1 bg-white/[0.04] border border-white/10 rounded-full text-[10px] font-mono tracking-[0.25em] text-zinc-300 uppercase"
+            >
+              <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
+              <span>{t.badge}</span>
+            </motion.div>
+
             <motion.h1
               initial={{ opacity: 0, y: 15 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 1.2, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
-              className="text-4xl sm:text-5xl lg:text-6xl font-display font-light tracking-widest text-white uppercase leading-none"
+              transition={{ duration: 1.2, delay: 0.35, ease: [0.16, 1, 0.3, 1] }}
+              className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-display font-light tracking-wider text-white uppercase leading-[1.08]"
             >
               {t.title}
             </motion.h1>
@@ -198,50 +240,83 @@ export default function Hero({ onExploreClick }: HeroProps) {
               initial={{ opacity: 0, y: 15 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 1.2, delay: 0.5, ease: [0.16, 1, 0.3, 1] }}
-              className="text-xs sm:text-sm font-light text-zinc-400 tracking-[0.25em] max-w-xl leading-relaxed uppercase"
+              className="text-xs sm:text-sm font-light text-zinc-300 tracking-[0.18em] max-w-2xl leading-relaxed uppercase"
             >
               {t.subtitle}
             </motion.p>
 
-            {/* Action Buttons */}
+            {/* Core Pillars Bullet Highlights */}
+            <motion.div
+              initial={{ opacity: 0, y: 15 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 1.2, delay: 0.6, ease: [0.16, 1, 0.3, 1] }}
+              className="grid grid-cols-1 sm:grid-cols-3 gap-3 pt-2 text-[10px] font-mono tracking-widest text-zinc-400 uppercase w-full"
+            >
+              <div className="flex items-center gap-2 bg-black/40 border border-white/10 px-3 py-2 rounded-sm backdrop-blur-md">
+                <span className="text-white font-bold">01.</span> High-End AI/CGI
+              </div>
+              <div className="flex items-center gap-2 bg-black/40 border border-white/10 px-3 py-2 rounded-sm backdrop-blur-md">
+                <span className="text-white font-bold">02.</span> Enterprise Web
+              </div>
+              <div className="flex items-center gap-2 bg-black/40 border border-white/10 px-3 py-2 rounded-sm backdrop-blur-md">
+                <span className="text-white font-bold">03.</span> Autonomous AI
+              </div>
+            </motion.div>
+
+            {/* Primary & Secondary Hero CTAs */}
             <motion.div
               initial={{ opacity: 0, y: 15 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 1.2, delay: 0.7, ease: [0.16, 1, 0.3, 1] }}
-              className="flex flex-col sm:flex-row items-start justify-start gap-6 pt-4 w-full sm:w-auto"
+              className="flex flex-col sm:flex-row items-stretch sm:items-center justify-start gap-4 pt-4 w-full sm:w-auto"
             >
-              <a
-                id="hero-explore-work"
-                href="#work"
-                onClick={(e) => {
-                  e.preventDefault();
-                  const el = document.getElementById("work");
-                  if (el) el.scrollIntoView({ behavior: "smooth" });
-                }}
-                className="px-10 py-4 border border-white text-[10px] uppercase tracking-[0.25em] text-white hover:bg-white hover:text-black transition-all duration-300 font-mono font-medium rounded-sm w-48 sm:w-auto text-center cursor-pointer bg-transparent inline-block"
+              <button
+                id="hero-view-selected-work"
+                onClick={onExploreClick}
+                className="px-8 py-4 bg-white text-black hover:bg-zinc-200 transition-all duration-300 font-mono text-[11px] uppercase tracking-[0.2em] font-semibold rounded-sm text-center shadow-[0_0_30px_rgba(255,255,255,0.15)] cursor-pointer inline-flex items-center justify-center gap-2 border-0"
               >
-                <span>{t.exploreButton}</span>
-              </a>
-              
-              <a
-                id="hero-start-project"
-                href="#contact"
-                onClick={(e) => {
-                  e.preventDefault();
-                  const el = document.getElementById("contact");
-                  if (el) el.scrollIntoView({ behavior: "smooth" });
-                }}
-                className="px-10 py-4 bg-zinc-900 border border-zinc-800 text-[10px] uppercase tracking-[0.25em] text-zinc-300 hover:border-white hover:text-white transition-all duration-300 font-mono rounded-sm w-48 sm:w-auto text-center cursor-pointer inline-block"
+                <span>{t.viewSelectedWork}</span>
+                <span className="text-xs">→</span>
+              </button>
+
+              <button
+                id="hero-watch-demoreel"
+                onClick={onWatchDemoreel}
+                className="px-8 py-4 border border-white/30 hover:border-white text-white bg-black/40 hover:bg-white/10 transition-all duration-300 font-mono text-[11px] uppercase tracking-[0.2em] rounded-sm text-center cursor-pointer inline-flex items-center justify-center gap-2.5 backdrop-blur-sm border-0"
               >
-                <span>{t.contactButton}</span>
-              </a>
+                <Play size={13} className="fill-white text-white" />
+                <span>{t.watchDemoreel}</span>
+              </button>
             </motion.div>
           </div>
         </div>
       </div>
 
-      {/* Bottom Informational bar */}
-      <div className="max-w-7xl mx-auto w-full z-40 relative px-6 md:px-12 pb-12 flex flex-col sm:flex-row justify-end items-start sm:items-center text-[9px] font-mono tracking-[0.35em] text-zinc-500 uppercase gap-4 sm:gap-0 select-none pointer-events-none">
+      {/* Bottom Controls Bar: Video Reel Toggle + Scroll Indicator */}
+      <div className="max-w-7xl mx-auto w-full z-40 relative px-6 md:px-12 pb-10 flex flex-row justify-between items-center text-[9px] font-mono tracking-[0.3em] text-zinc-400 uppercase select-none">
+        {/* Video Reel Controls (Play/Pause & Sound) */}
+        <div className="flex items-center gap-3">
+          <button
+            onClick={togglePlay}
+            className="p-2 bg-white/5 border border-white/10 hover:border-white/40 rounded-full text-zinc-300 hover:text-white transition-colors cursor-pointer flex items-center justify-center"
+            title={isPlaying ? "Pause Reel" : "Play Reel"}
+          >
+            {isPlaying ? <Pause size={12} /> : <Play size={12} />}
+          </button>
+
+          <button
+            onClick={toggleMute}
+            className="p-2 bg-white/5 border border-white/10 hover:border-white/40 rounded-full text-zinc-300 hover:text-white transition-colors cursor-pointer flex items-center justify-center"
+            title={isMuted ? "Unmute Audio" : "Mute Audio"}
+          >
+            {isMuted ? <VolumeX size={12} /> : <Volume2 size={12} />}
+          </button>
+          <span className="hidden sm:inline text-zinc-500 text-[8px] tracking-[0.2em]">
+            [ DEMO REEL // CLOUDINARY CDN ]
+          </span>
+        </div>
+
+        {/* Scroll indicator */}
         <div 
           className="flex items-center space-x-2 text-zinc-400 hover:text-white transition-colors cursor-pointer pointer-events-auto" 
           onClick={onExploreClick}
@@ -256,17 +331,8 @@ export default function Hero({ onExploreClick }: HeroProps) {
         </div>
       </div>
 
-      {/* Embedded High-Performance CSS Animations (Hardware-accelerated) */}
+      {/* Embedded High-Performance CSS Animations */}
       <style>{`
-        @keyframes cinematic-zoom {
-          0% {
-            transform: scale(1.0);
-          }
-          100% {
-            transform: scale(1.02);
-          }
-        }
-
         .particle {
           position: absolute;
           background: rgba(255, 255, 255, 0.15);

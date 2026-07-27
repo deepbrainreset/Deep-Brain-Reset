@@ -41,6 +41,7 @@ export default function Navigation({ activeSection, onNavigate }: NavigationProp
 
   const navItems = [
     { id: "work", label: t.featured },
+    { id: "demoreel", label: t.demoreel },
     { id: "services", label: t.capabilities },
     { id: "process", label: t.system },
     { id: "philosophy", label: t.philosophy },
@@ -61,12 +62,12 @@ export default function Navigation({ activeSection, onNavigate }: NavigationProp
         transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
         className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 ${
           isScrolled
-            ? "py-3 md:py-4 bg-[#0A0A0A]/92 border-b border-white/[0.08] shadow-2xl shadow-black/80"
-            : "py-5 md:py-6 bg-transparent"
+            ? "py-3 md:py-4 bg-[#060608]/92 border-b border-white/15 shadow-[0_10px_35px_rgba(0,0,0,0.95)]"
+            : "py-4 md:py-5 bg-[#060608]/82 border-b border-white/10 shadow-[0_4px_20px_rgba(0,0,0,0.6)]"
         }`}
         style={{
-          backdropFilter: isScrolled ? "blur(20px) saturate(180%)" : "none",
-          WebkitBackdropFilter: isScrolled ? "blur(20px) saturate(180%)" : "none",
+          backdropFilter: "blur(28px) saturate(180%)",
+          WebkitBackdropFilter: "blur(28px) saturate(180%)",
         }}
       >
         <div className="max-w-7xl mx-auto px-6 md:px-12 flex items-center justify-between">
@@ -314,6 +315,7 @@ export default function Navigation({ activeSection, onNavigate }: NavigationProp
             >
               {[
                 { id: "work", label: t.featured },
+                { id: "demoreel", label: t.watchDemoreel },
                 { id: "services", label: t.capabilities },
                 { id: "process", label: t.system },
                 { id: "philosophy", label: t.philosophy },

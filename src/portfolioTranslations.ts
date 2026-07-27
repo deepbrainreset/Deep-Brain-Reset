@@ -13,159 +13,159 @@ export const getLocalizedServices = (lang: Language): TranslatedService[] => {
   const data = {
     en: [
       {
+        id: "ai-commercial",
+        title: "High-End AI & CGI Commercials",
+        category: "CGI & Advertising",
+        tag: "Photorealistic AAA Commercial Spots",
+        description: "We combine generative diffusion models, 3D virtual production in Unreal Engine 5, physical camera lens simulation, and fluid dynamics to produce photorealistic television commercials and filmic advertising campaigns.",
+        bulletPoints: [
+          "Generative AI video frame-diffusion & camera simulation",
+          "Unreal Engine 5 & 3D CGI virtual production sets",
+          "High-fidelity liquid physics & particle simulations",
+          "Mastered 4K cinematic color-grading & sound design"
+        ]
+      },
+      {
+        id: "full-stack-dev",
+        title: "Enterprise Full-Stack Web Development",
+        category: "Engineering",
+        tag: "Military-grade high-performance web systems",
+        description: "We engineer low-latency web platforms, custom e-commerce engines, and type-safe backend microservices. Designed for sub-100ms response times and seamless scaling across global edge networks.",
+        bulletPoints: [
+          "Type-safe React / Next.js & Node.js/Go backend microservices",
+          "High-conversion luxury e-commerce & customer portals",
+          "Durable SQL database schematics & queue handling",
+          "Global Cloudinary & Edge CDN content optimization"
+        ]
+      },
+      {
+        id: "process-automation",
+        title: "AI Agent Workflows & Automation for Businesses",
+        category: "Cognitive AI",
+        tag: "Autonomous cognitive orchestrations",
+        description: "We deploy autonomous cognitive agents, custom LLM pipelines, RAG semantic search engines, and automated back-office workflows that eliminate manual operational drag and supercharge efficiency.",
+        bulletPoints: [
+          "Autonomous cognitive AI agents & RAG search pipelines",
+          "Custom CRM, ERP & back-office system integrations",
+          "Real-time operational dashboards & predictive telemetry",
+          "Workflow bottleneck audits & AI readiness diagnostics"
+        ]
+      },
+      {
         id: "creative-advertising",
-        title: "Creative Advertising",
+        title: "Creative Direction & Campaign Storytelling",
         category: "Advertising",
         tag: "High-impact narrative vision",
         description: "We define precise creative copy, storyboard immersive narrative concepts, and design strategic campaign themes that command absolute consumer attention and build high-end brand equity.",
         bulletPoints: [
           "Narrative copy & campaign art direction",
-          "Multi-channel advertising strategy",
-          "Conceptual print & out-of-home themes",
+          "Multi-channel advertising strategy across US, EU, AR, ES",
+          "Conceptual print & out-of-home cinematic themes",
           "Brand voice and positioning architectures"
         ]
       },
       {
-        id: "ai-commercial",
-        title: "AI Commercial Production",
-        category: "Advertising",
-        tag: "Cinematic machine-learning systems",
-        description: "We combine generative diffusion models with state-of-the-art camera simulation and advanced 3D render pipelines to produce photorealistic television commercials and filmic social campaigns.",
-        bulletPoints: [
-          "AI-driven visual frame-generation",
-          "Unreal Engine / 3D virtual production",
-          "High-fidelity simulation and fluid physics",
-          "Color-grading & cinematic sound design"
-        ]
-      },
-      {
-        id: "full-stack-dev",
-        title: "Full Stack Development",
-        category: "Engineering",
-        tag: "Production-ready enterprise architectures",
-        description: "We engineer performant, low-latency applications with type-safe backend microservices. Our codebases are designed for military-grade stability, scaling seamlessly from launch to millions of queries.",
-        bulletPoints: [
-          "Type-safe Node.js & Go API microservices",
-          "React/Next.js single page applications",
-          "Durable SQL database schematics & queue handling",
-          "Optimized load-balanced cloud structures"
-        ]
-      },
-      {
-        id: "process-automation",
-        title: "Process Automation",
-        category: "Automation",
-        tag: "Custom cognitive orchestrations",
-        description: "We program custom background scripts, API pipelines, and automated intelligence layers that eliminate manual data entry, optimize inventory tracking, and streamline repetitive enterprise tasks.",
-        bulletPoints: [
-          "Proprietary API pipeline integrations",
-          "CRM and ERP automated orchestrations",
-          "Custom administrative dashboard designs",
-          "Workflow bottleneck diagnostic audits"
-        ]
-      },
-      {
         id: "brand-experiences",
-        title: "Brand Experiences",
-        category: "Strategy",
+        title: "Luxury Brand Digital Experiences",
+        category: "Design & UX",
         tag: "High-prestige spatial & web design",
         description: "We design and build bespoke, high-contrast, editorial web interfaces and interactive products that reflect the true intellectual gravity and artistic prestige of your brand.",
         bulletPoints: [
-          "Grid-aligned high-end UI/UX designs",
-          "Bespoke motion languages and transitions",
-          "Immersive single-page-app architectures",
+          "Grid-aligned high-end UI/UX designs with zero clutter",
+          "Bespoke motion languages and micro-interactions",
+          "Immersive single-page-app web architectures",
           "Web design systems and brand style-guides"
         ]
       },
       {
         id: "fractional-cto",
-        title: "Fractional CTO & Strategy",
-        category: "Strategy",
-        tag: "Executive technical counsel",
-        description: "We act as your unified Fractional Chief Technology and Creative Directors. We audit existing systems, outline immediate leverage points, and draft complete execution plans.",
+        title: "Fractional CTO & Strategic AI Advisory",
+        category: "Executive Counsel",
+        tag: "Executive technical leadership",
+        description: "We act as your unified Fractional Chief Technology and Creative Officers. We audit existing systems, identify high-leverage AI opportunities, and draft complete execution plans.",
         bulletPoints: [
-          "Tech stack architecture audits",
-          "Aesthetic and communication consulting",
-          "Technical feasibility mapping & cost-containment",
+          "Tech stack architecture & security audits",
+          "Aesthetic and communication strategy consulting",
+          "Technical feasibility mapping & cost containment",
           "Generative workflow integration workshops"
         ]
       }
     ],
     es: [
       {
+        id: "ai-commercial",
+        title: "Comerciales de Alto Nivel con IA & CGI (AAA)",
+        category: "CGI & Publicidad",
+        tag: "Publicidad Fotorrealista AAA",
+        description: "Combinamos modelos de difusión generativa, producción virtual 3D en Unreal Engine 5, simulación física de lentes cinematográficos y dinámica de fluidos para producir comerciales fotorrealistas para televisión y redes.",
+        bulletPoints: [
+          "Generación de video secuencial con IA y simulación física",
+          "Escenarios virtuales 3D en Unreal Engine 5 y CGI",
+          "Simulación de partículas y fluidos de alta fidelidad",
+          "Masterización en 4K, corrección de color y diseño sonoro"
+        ]
+      },
+      {
+        id: "full-stack-dev",
+        title: "Desarrollo Web Full-Stack Enterprise",
+        category: "Ingeniería Web",
+        tag: "Arquitecturas de alto rendimiento corporativo",
+        description: "Desarrollamos plataformas web de baja latencia, motores de e-commerce a medida y microservicios tipados. Diseñados para responder en menos de 100ms y escalar en redes globales de borde.",
+        bulletPoints: [
+          "Microservicios en React / Next.js, Node.js y Go",
+          "Portales e-commerce corporativos de alta conversión",
+          "Bases de datos SQL estructuradas y colas de procesos",
+          "Optimización de contenido global con Cloudinary y CDN Edge"
+        ]
+      },
+      {
+        id: "process-automation",
+        title: "Agentes de IA & Automatización para Empresas",
+        category: "IA Cognitiva",
+        tag: "Orquestación autónoma de procesos",
+        description: "Desplegamos agentes cognitivos autónomos, flujos con LLMs a medida, motores de búsqueda semántica RAG y automatizaciones operativas que suprimen la carga manual de trabajo empresarial.",
+        bulletPoints: [
+          "Agentes de IA autónomos y sistemas RAG de búsqueda",
+          "Integración de CRM, ERP y sistemas administrativos",
+          "Paneles de control en tiempo real y métricas operativas",
+          "Auditorías de diagnóstico y preparación para IA"
+        ]
+      },
+      {
         id: "creative-advertising",
-        title: "Publicidad Creativa",
+        title: "Dirección Creativa & Narrativa de Campaña",
         category: "Publicidad",
         tag: "Visión narrativa de alto impacto",
         description: "Definimos copys creativos de alta precisión, elaboramos guiones gráficos inmersivos y diseñamos campañas estratégicas que capturan la atención y construyen valor de marca de alta gama.",
         bulletPoints: [
-          "Redacción publicitaria y dirección de arte",
-          "Estrategia publicitaria omnicanal",
+          "Redacción publicitaria y dirección de arte cinematográfica",
+          "Estrategia publicitaria omnicanal para AR, US, ES y EU",
           "Conceptos de vía pública y gráfica de autor",
           "Voz de marca y arquitectura de posicionamiento"
         ]
       },
       {
-        id: "ai-commercial",
-        title: "Producción de Comerciales con IA",
-        category: "Publicidad",
-        tag: "Sistemas cinematográficos de aprendizaje automático",
-        description: "Fusionamos modelos de difusión con simulación física de cámaras y flujos de render en 3D para producir comerciales televisivos fotorrealistas y campañas fílmicas memorables.",
-        bulletPoints: [
-          "Generación de video secuencial con IA",
-          "Entornos virtuales 3D en Unreal Engine",
-          "Simulaciones de alta fidelidad y fluidos",
-          "Corrección de color y diseño sonoro envolvente"
-        ]
-      },
-      {
-        id: "full-stack-dev",
-        title: "Desarrollo Full Stack",
-        category: "Ingeniería",
-        tag: "Arquitecturas corporativas listas para producción",
-        description: "Desarrollamos aplicaciones rápidas con microservicios robustos y tipado estricto. Diseñadas para una estabilidad máxima, escalando sin fricción ante grandes volúmenes de usuarios.",
-        bulletPoints: [
-          "Microservicios de API seguros en Node.js y Go",
-          "Aplicaciones de pantalla única con React / Next.js",
-          "Esquemas SQL duraderos y manejo de colas",
-          "Estructuras en la nube balanceadas y optimizadas"
-        ]
-      },
-      {
-        id: "process-automation",
-        title: "Automatización de Procesos",
-        category: "Automatización",
-        tag: "Orquestación cognitiva personalizada",
-        description: "Programamos scripts de fondo personalizados, canales de API e inteligencia aplicada que suprimen la carga manual de datos, optimizan inventarios y agilizan tareas empresariales complejas.",
-        bulletPoints: [
-          "Integraciones de canales API propios",
-          "Orquestaciones automatizadas de CRM y ERP",
-          "Paneles de administración y reporteo a medida",
-          "Auditorías de cuellos de botella operativos"
-        ]
-      },
-      {
         id: "brand-experiences",
-        title: "Experiencias de Marca",
-        category: "Estrategia",
-        tag: "Diseño web y espacial de alta gama",
-        description: "Diseñamos y programamos portales web de estilo editorial, con grículas perfectas e interacciones que reflejan la seriedad y el prestigio artístico de su organización.",
+        title: "Experiencias Digitales de Marca de Lujo",
+        category: "Diseño & UX",
+        tag: "Diseño web y editorial de élite",
+        description: "Diseñamos y programamos portales web de estilo editorial, con grillas perfectas e interacciones que reflejan la seriedad y el prestigio artístico de su organización.",
         bulletPoints: [
           "Diseño UI/UX premium alineado a retículas",
           "Sistemas de movimiento interactivos y elegantes",
-          "Arquitecturas de aplicaciones de pantalla única",
+          "Arquitecturas de aplicaciones web de pantalla única",
           "Sistemas de diseño y guías de estilo exclusivas"
         ]
       },
       {
         id: "fractional-cto",
-        title: "CTO Fraccional & Estrategia",
-        category: "Estrategia",
+        title: "CTO Fraccional & Consultoría Estratégica de IA",
+        category: "Dirección Ejecutiva",
         tag: "Consejo tecnológico ejecutivo",
         description: "Ofrecemos servicios integrados de Dirección Tecnológica y Creativa Externa. Auditamos plataformas existentes, localizamos oportunidades críticas y redactamos planes de ejecución viables.",
         bulletPoints: [
-          "Auditoría de arquitectura de sistemas",
-          "Consultoría estética y de comunicación",
+          "Auditoría de arquitectura de sistemas y seguridad",
+          "Consultoría estética y de comunicación corporativa",
           "Viabilidad técnica y optimización de costos",
           "Talleres de integración de procesos con IA"
         ]
