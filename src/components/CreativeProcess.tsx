@@ -153,13 +153,20 @@ export default function CreativeProcess() {
           })}
         </div>
 
+        {/* Scope Commitment Note */}
+        <div className="mt-8 p-4 bg-white/[0.02] border border-white/10 rounded-sm text-xs text-zinc-400 font-mono leading-relaxed">
+          <p>
+            <span className="text-white font-semibold uppercase">Scope Commitment:</span> We commit to the agreed scope and deliverables. Business outcomes depend on factors beyond any studio’s control, including offer, market, traffic, sales process and client operations.
+          </p>
+        </div>
+
         {/* Visual progress track info */}
-        <div className="flex justify-between items-center text-[10px] font-mono text-studio-muted pt-6 border-t border-studio-border mt-12">
+        <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center text-[10px] font-mono text-studio-muted pt-6 border-t border-studio-border mt-8 gap-2">
           <span className="uppercase flex items-center space-x-1.5">
             <span>{labels.lifecycle}</span>
           </span>
           <span className="uppercase">
-            VERIFIED_METHODOLOGY // SYSTEM_ACTIVE
+            METHODOLOGY // CLEAR SCOPE & DELIVERABLES
           </span>
         </div>
 

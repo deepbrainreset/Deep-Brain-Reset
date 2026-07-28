@@ -28,6 +28,7 @@ export interface HeroSchema {
   watchDemoreel: string;
   viewSelectedWork: string;
   scrollIndicator: string;
+  trustStatement?: string;
 }
 
 export interface DemoreelSchema {
@@ -241,79 +242,84 @@ const rawTranslations: {
   },
   hero: {
     en: {
-      badge: "CREATIVE TECHNOLOGY STUDIO // US • EU • AR • ES",
-      titleTop: "HIGH-END AI & CGI COMMERCIALS",
-      titleMid: "ENTERPRISE FULL-STACK WEB",
-      titleBot: "& AI AGENT WORKFLOWS",
-      description: "We engineer AAA AI & CGI Advertising, Enterprise Full-Stack Web Development, and Autonomous AI Agent Workflows for industry leaders in the United States, Europe, Spain, and Argentina.",
-      cta: "Book a Strategy Call",
-      title: "HIGH-END AI & CGI COMMERCIALS, ENTERPRISE WEB & AI AGENTS",
-      subtitle: "Engineering AAA AI & CGI Commercials, Enterprise Full-Stack Web Architectures, and Autonomous AI Agent Workflows for global leaders in the US, Europe, Argentina, and Spain.",
+      badge: "CREATIVE TECHNOLOGY STUDIO",
+      titleTop: "CINEMATIC CONTENT",
+      titleMid: "PREMIUM WEBSITES",
+      titleBot: "& PRACTICAL AI SYSTEMS",
+      description: "Deep Brain Reset creates AI-assisted commercials, CGI and 3D visuals, conversion-focused websites and tailored automations. Every project starts with a clear business need, a defined scope and work you can actually review.",
+      cta: "Discuss your project",
+      title: "Cinematic content, premium websites and practical AI systems for businesses ready to look and work better.",
+      subtitle: "Deep Brain Reset creates AI-assisted commercials, CGI and 3D visuals, conversion-focused websites and tailored automations. Every project starts with a clear business need, a defined scope and work you can actually review.",
       exploreButton: "Explore Capabilities",
-      contactButton: "Book a Strategy Call",
+      contactButton: "Discuss your project",
       watchDemoreel: "WATCH DEMOREEL",
       viewSelectedWork: "VIEW SELECTED WORK",
-      scrollIndicator: "Featured Case Studies"
+      scrollIndicator: "Featured Case Studies",
+      trustStatement: "Clear scope. Visible milestones. Technical quality checks before launch."
     },
     es: {
-      badge: "ESTUDIO DE TECNOLOGÍA CREATIVA // US • EU • AR • ES",
-      titleTop: "COMERCIALES IA & CGI AAA",
-      titleMid: "DESARROLLO WEB ENTERPRISE",
-      titleBot: "& FLUJOS DE AGENTES IA",
-      description: "Producimos publicidad AAA con IA y CGI, arquitectura web full-stack corporativa y flujos de trabajo autónomos con agentes de IA para empresas líderes en Argentina, Estados Unidos, España y Europa.",
-      cta: "Solicitar Consulta",
-      title: "COMERCIALES IA & CGI AAA, DESARROLLO WEB ENTERPRISE & AGENTES IA",
-      subtitle: "Producimos publicidad de alto nivel con IA y CGI, arquitectura web full-stack corporativa y flujos de trabajo autónomos con agentes de IA para clientes en Argentina, Estados Unidos, España y Europa.",
+      badge: "ESTUDIO DE TECNOLOGÍA CREATIVA",
+      titleTop: "CONTENIDO CINEMATOGRÁFICO",
+      titleMid: "SITIOS WEB DE ALTA GAMA",
+      titleBot: "& SISTEMAS PRÁCTICOS DE IA",
+      description: "Deep Brain Reset crea comerciales asistidos por IA, CGI y visuales 3D, sitios web enfocados en conversión y automatizaciones a medida. Cada proyecto inicia con una necesidad clara, un alcance definido y avances revisables.",
+      cta: "Conversar sobre tu proyecto",
+      title: "Contenido cinematográfico, sitios web de alta gama y sistemas prácticos de IA para empresas listas para destacar y operar mejor.",
+      subtitle: "Deep Brain Reset crea comerciales asistidos por IA, CGI y visuales 3D, sitios web enfocados en conversión y automatizaciones a medida. Cada proyecto inicia con una necesidad clara, un alcance definido y avances revisables.",
       exploreButton: "Explorar Servicios",
-      contactButton: "Solicitar Consulta",
+      contactButton: "Conversar sobre tu proyecto",
       watchDemoreel: "VER DEMOREEL",
       viewSelectedWork: "VER TRABAJOS SELECCIONADOS",
-      scrollIndicator: "Casos de Estudio"
+      scrollIndicator: "Casos de Estudio",
+      trustStatement: "Alcance claro. Hitos visibles. Controles de calidad técnica antes del lanzamiento."
     },
     de: {
-      badge: "STUDIO FÜR KREATIVE TECHNOLOGIE // US • EU • AR • ES",
-      titleTop: "HIGH-END KI & CGI WERBEFILME",
-      titleMid: "ENTERPRISE FULL-STACK WEB",
-      titleBot: "& KI-AGENTEN-WORKFLOWS",
-      description: "Wir entwickeln AAA KI- & CGI-Werbefilme, Enterprise Full-Stack Webarchitekturen und autonome KI-Agenten-Prozesse für führende Unternehmen weltweit.",
-      cta: "Strategiegespräch buchen",
-      title: "HIGH-END KI & CGI WERBEFILME, ENTERPRISE WEB & KI-AGENTEN",
-      subtitle: "Erstklassige KI- & CGI-Werbeproduktionen, skalierbare Enterprise Web-Systeme und kognitive Prozessautomatisierung für Spitzenunternehmen.",
+      badge: "STUDIO FÜR KREATIVE TECHNOLOGIE",
+      titleTop: "FILMISCHER CONTENT",
+      titleMid: "PREMIUM WEBSITES",
+      titleBot: "& PRAKTISCHE KI-SYSTEME",
+      description: "Deep Brain Reset erstellt KI-gestützte Werbespots, CGI- und 3D-Visualisierungen, konversionsstarke Websites und maßgeschneiderte Automatisierungen. Jedes Projekt beginnt mit einem klaren Geschäftszweck, definiertem Umfang und überprüfbaren Arbeitsergebnissen.",
+      cta: "Projekt besprechen",
+      title: "Filmischer Content, erstklassige Websites und praktische KI-Systeme für Unternehmen, die besser aussehen und arbeiten wollen.",
+      subtitle: "Deep Brain Reset erstellt KI-gestützte Werbespots, CGI- und 3D-Visualisierungen, konversionsstarke Websites und maßgeschneiderte Automatisierungen. Jedes Projekt beginnt mit einem klaren Geschäftszweck, definiertem Umfang und überprüfbaren Arbeitsergebnissen.",
       exploreButton: "Leistungen erkunden",
-      contactButton: "Strategiegespräch buchen",
+      contactButton: "Projekt besprechen",
       watchDemoreel: "DEMOREEL ANSEHEN",
       viewSelectedWork: "AUSGEWÄHLTE ARBEITEN ANSEHEN",
-      scrollIndicator: "Ausgewählte Fallstudien"
+      scrollIndicator: "Ausgewählte Fallstudien",
+      trustStatement: "Klarer Umfang. Sichtbare Meilensteine. Technische Qualitätsprüfungen vor dem Launch."
     },
     fr: {
-      badge: "STUDIO DE TECHNOLOGIE CRÉATIVE // US • EU • AR • ES",
-      titleTop: "PUBLICITÉ IA & CGI HAUT DE GAMME",
-      titleMid: "DÉVELOPPEMENT WEB ENTERPRISE",
-      titleBot: "& WORKFLOWS D'AGENTS IA",
-      description: "Nous produisons des spots publicitaires IA & CGI AAA, du développement web full-stack d'entreprise et des workflows d'agents IA autonomes pour des leaders mondiaux.",
-      cta: "Réserver une Consultation",
-      title: "PUBLICITÉ IA & CGI HAUT DE GAMME, WEB ENTERPRISE & AGENTS IA",
-      subtitle: "Création de publicités IA & CGI AAA, architectures web d'entreprise résilientes et automatisation par agents IA autonomes.",
+      badge: "STUDIO DE TECHNOLOGIE CRÉATIVE",
+      titleTop: "CONTENU CINÉMATOGRAPHIQUE",
+      titleMid: "SITES WEB PRESTIGE",
+      titleBot: "& SYSTÈMES IA PRATIQUES",
+      description: "Deep Brain Reset crée des spots publicitaires assistés par IA, des visuels CGI et 3D, des sites web axés sur la conversion et des automatisations sur mesure. Chaque projet débute par un besoin métier clair, un périmètre défini et des livrables vérifiables.",
+      cta: "Discuter de votre projet",
+      title: "Contenu cinématographique, sites web haut de gamme et systèmes d'IA pratiques pour les entreprises prêtes à mieux paraître et mieux fonctionner.",
+      subtitle: "Deep Brain Reset crée des spots publicitaires assistés par IA, des visuels CGI et 3D, des sites web axés sur la conversion et des automatisations sur mesure. Chaque projet débute par un besoin métier clair, un périmètre défini et des livrables vérifiables.",
       exploreButton: "Explorer nos Services",
-      contactButton: "Réserver una Consultation",
+      contactButton: "Discuter de votre projet",
       watchDemoreel: "VOIR LE DEMOREEL",
       viewSelectedWork: "VOIR LES PROJETS SÉLECTIONNÉS",
-      scrollIndicator: "Études de Cas"
+      scrollIndicator: "Études de Cas",
+      trustStatement: "Périmètre clair. Jalons visibles. Contrôles de qualité technique avant le lancement."
     },
     it: {
-      badge: "STUDIO DI TECNOLOGIA CREATIVA // US • EU • AR • ES",
-      titleTop: "SPOT IA & CGI DI ALTA GAMMA",
-      titleMid: "SVILUPPO WEB ENTERPRISE",
-      titleBot: "& FLUSSI AGENTI IA",
-      description: "Sviluppiamo spot pubblicitari AAA in IA & CGI, architetture web full-stack aziendali e flussi automatizzati con agenti IA per aziende in USA, Europa, Spagna e Argentina.",
-      cta: "Richiedi Consulenza",
-      title: "SPOT IA & CGI DE ALTA GAMMA, WEB ENTERPRISE & AGENTI IA",
-      subtitle: "Produzione di spot pubblicitari AAA con IA/CGI, ingegneria web enterprise e automazione cognitiva con agenti di IA.",
+      badge: "STUDIO DI TECNOLOGIA CREATIVA",
+      titleTop: "CONTENUTI CINEMATOGRAFICI",
+      titleMid: "SITI WEB PRESTIGIOSI",
+      titleBot: "& SISTEMI IA PRATICI",
+      description: "Deep Brain Reset crea spot pubblicitari assistiti da IA, visual CGI e 3D, siti web orientati alla conversione e automazioni su misura. Ogni progetto parte da una necessità chiara, un perimetro definito e risultati verificabili.",
+      cta: "Discuti il tuo progetto",
+      title: "Contenuti cinematografici, siti web di alto livello e sistemi IA pratici per aziende pronte a distinguersi e lavorare meglio.",
+      subtitle: "Deep Brain Reset crea spot pubblicitari assistiti da IA, visual CGI e 3D, siti web orientati alla conversione e automazioni su misura. Ogni progetto parte da una necessità chiara, un perimetro definido e risultati verificabili.",
       exploreButton: "Scopri i Servizi",
-      contactButton: "Richiedi Consulenza",
+      contactButton: "Discuti il tuo progetto",
       watchDemoreel: "GUARDA IL DEMOREEL",
       viewSelectedWork: "GUARDA I LAVORI SELEZIONATI",
-      scrollIndicator: "Casi di Studio"
+      scrollIndicator: "Casi di Studio",
+      trustStatement: "Perimetro chiaro. Tappe visibili. Controlli di qualità tecnica prima del lancio."
     }
   },
   demoreel: {
@@ -550,176 +556,176 @@ const rawTranslations: {
   process: {
     en: {
       badge: "METHODOLOGY",
-      title: "The Unified Production Pipeline.",
-      description: "Our operational pipeline is structured to eliminate risk, maximize throughput, and achieve mathematical predictability across every stage of creative production.",
+      title: "Our Production Method.",
+      description: "We commit to the agreed scope and deliverables. Every project follows a clear, four-step structure with visible checkpoints.",
       phases: [
         {
-          phase: "PHASE 01",
-          title: "Strategic Diagnostic",
-          subtitle: "Risk and bottleneck dissection",
-          description: "We audit operational pipelines, map legacy bottlenecks, and define precise functional metrics before drawing a single line. The resulting Technical Brief serves as a complete strategic guarantee.",
-          outputs: ["Operational Architecture Map", "Integration Audit Report", "SaaS Technical Brief"]
+          phase: "01",
+          title: "Understand",
+          subtitle: "Goal, audience & deliverables",
+          description: "We define the goal, audience, deliverables, timeline and the real problem the project needs to solve.",
+          outputs: ["Project Brief", "Defined Scope & Timeline", "Deliverable Roadmap"]
         },
         {
-          phase: "PHASE 02",
-          title: "Artistic Conceptualization",
-          subtitle: "Swiss precision and cinematic vision",
-          description: "We design complete visual worlds, typography pairings, grid structures, and interactive motion languages. No placeholder text, no generic templates. Absolute custom aesthetic identity.",
-          outputs: ["High-fidelity Figma Layouts", "Cinematic Campaign Storyboard", "Micro-interaction Specifications"]
+          phase: "02",
+          title: "Visualize",
+          subtitle: "Direction, references & structure",
+          description: "We create the creative direction, references, structure and—when relevant—a preliminary website concept.",
+          outputs: ["Moodboards & References", "Homepage Visual Concept", "Structural Layout"]
         },
         {
-          phase: "PHASE 03",
-          title: "Type-Safe Engineering",
-          subtitle: "Robust backend, ultra-low latency",
-          description: "We compile all custom software with static type checking, modular architectures, and highly optimized server-side rendering, ensuring sub-100ms response times and total platform stability.",
-          outputs: ["React / TypeScript Codebase", "Secure Node.js / Go API Router", "Custom Database Schemas"]
+          phase: "03",
+          title: "Build",
+          subtitle: "Production & progress checkpoints",
+          description: "We produce the agreed assets, website or workflow with progress checkpoints that keep the work visible.",
+          outputs: ["Code & Asset Production", "Staging Environment", "Milestone Demos"]
         },
         {
-          phase: "PHASE 04",
-          title: "Cognitive Process Automation",
-          subtitle: "Operational workflows and AI pipelines",
-          description: "We deploy secure, custom AI microservices, automated pipelines, and intelligent interfaces to eliminate manual administrative burdens and turn complex operational procedures into single-click workflows.",
-          outputs: ["Automated Business Pipelines", "Custom LLM Integration Layer", "Unified Admin Dashboard"]
+          phase: "04",
+          title: "Review & Launch",
+          subtitle: "Testing, refinement & delivery",
+          description: "We test the agreed functionality, refine the final details and deliver or launch the finished project.",
+          outputs: ["Functional & Mobile Audit", "Final Handover & Launch", "Post-Launch Verification"]
         }
       ]
     },
     es: {
       badge: "METODOLOGÍA",
-      title: "El Pipeline Unificado de Producción.",
-      description: "Nuestro flujo de trabajo está estructurado para eliminar riesgos, maximizar el rendimiento y alcanzar una predictibilidad matemática en cada etapa de la producción creativa.",
+      title: "Nuestro Método de Producción.",
+      description: "Nos comprometemos con el alcance y los entregables acordados. Cada proyecto sigue una estructura clara de cuatro pasos con hitos visibles.",
       phases: [
         {
-          phase: "FASE 01",
-          title: "Diagnóstico Estratégico",
-          subtitle: "Disección de riesgos y cuellos de botella",
-          description: "Auditamos flujos operativos, mapeamos ineficiencias del sistema y definimos métricas de rendimiento claras antes de trazar un solo pixel. El pliego técnico resultante actúa como una garantía estratégica.",
-          outputs: ["Mapa de Arquitectura Operativa", "Reporte de Auditoría de Sistemas", "Pliego Técnico de Desarrollo"]
+          phase: "01",
+          title: "Comprender",
+          subtitle: "Objetivos, audiencia y entregables",
+          description: "Definimos el objetivo, la audiencia, los entregables, los plazos y el problema real que el proyecto debe resolver.",
+          outputs: ["Pliego del Proyecto", "Alcance y Cronograma", "Hoja de Ruta de Entregables"]
         },
         {
-          phase: "FASE 02",
-          title: "Conceptualización Artística",
-          subtitle: "Precisión suiza y visión cinematográfica",
-          description: "Diseñamos mundos visuales completos, combinaciones tipográficas finas, retículas estructuradas e interacciones elegantes. Sin plantillas genéricas. Identidad estética de autor absoluta.",
-          outputs: ["Maquetas Figma de Alta Fidelidad", "Guión Gráfico de Campaña", "Especificaciones de Micro-interacción"]
+          phase: "02",
+          title: "Visualizar",
+          subtitle: "Dirección estética, referencias y estructura",
+          description: "Creamos la dirección creativa, referencias, estructura y, cuando corresponde, un concepto preliminar para el sitio web.",
+          outputs: ["Moodboards y Referencias", "Concepto Visual de Portada", "Estructura de Layout"]
         },
         {
-          phase: "FASE 03",
-          title: "Ingeniería Con Tipado Seguro",
-          subtitle: "Backend robusto y latencia ultra baja",
-          description: "Compilamos cada componente con análisis estático de tipos, arquitecturas modulares y optimización profunda para garantizar tiempos de respuesta inferiores a 100ms y estabilidad absoluta.",
-          outputs: ["Base de Código React / TypeScript", "Servicio Seguro de APIs en Node.js", "Esquemas de Base de Datos Optimizados"]
+          phase: "03",
+          title: "Construir",
+          subtitle: "Producción e hitos de revisión",
+          description: "Producimos los activos, el sitio web o el flujo de trabajo acordado con hitos de revisión que mantienen el avance visible.",
+          outputs: ["Desarrollo de Código y Assets", "Entorno de Pruebas", "Demostraciones de Avance"]
         },
         {
-          phase: "FASE 04",
-          title: "Automatización de Procesos Cognitivos",
-          subtitle: "Flujos operativos y canalizaciones de IA",
-          description: "Desplegamos microservicios de IA robustos, automatizaciones seguras e interfaces inteligentes para eliminar tareas manuales y convertir procedimientos complejos en flujos de un solo clic.",
-          outputs: ["Flujos Automatizados de Negocio", "Capa Personalizada de Conectividad IA", "Panel Unificado de Control Administrativo"]
+          phase: "04",
+          title: "Revisar y Lanzar",
+          subtitle: "Pruebas, refinamiento y entrega",
+          description: "Probamos la funcionalidad acordada, afinamos los detalles finales y entregamos o lanzamos el proyecto finalizado.",
+          outputs: ["Auditoría Funcional y Mobile", "Entrega Final y Publicación", "Verificación Post-Lanzamiento"]
         }
       ]
     },
     de: {
       badge: "METHODIK",
-      title: "Die integrierte Produktionspipeline.",
-      description: "Unsere Pipeline is so strukturiert, dass Risiken eliminiert, Durchsätze maximiert und mathematische Vorhersagbarkeit in jeder Phase der kreativen Produktion erreicht wird.",
+      title: "Unsere Produktionsmethode.",
+      description: "Wir verpflichten uns zu dem vereinbarten Umfang und den zugesagten Ergebnissen. Jedes Projekt folgt einer klaren vierstufigen Struktur.",
       phases: [
         {
-          phase: "PHASE 01",
-          title: "Strategische Diagnose",
-          subtitle: "Risiko- und Engpassanalyse",
-          description: "Wir auditieren operative Abläufe, kartieren Systemengpässe und definieren präzise funktionale Kennzahlen, bevor wir codieren. Das resultierende technische Pflichtenheft dient als absolute strategische Garantie.",
-          outputs: ["Prozessarchitektur-Diagramm", "System-Schnittstellen-Audit", "Technisches Lastenheft"]
+          phase: "01",
+          title: "Verstehen",
+          subtitle: "Ziel, Zielgruppe & Ergebnisse",
+          description: "Wir definieren das Ziel, die Zielgruppe, die Ergebnisse, den Zeitplan und die echte Herausforderung des Projekts.",
+          outputs: ["Projekt-Briefing", "Definierter Umfang & Zeitplan", "Meilenstein-Roadmap"]
         },
         {
-          phase: "PHASE 02",
-          title: "Künstlerische Konzeption",
-          subtitle: "Schweizer Präzision und filmische Vision",
-          description: "Wir entwerfen vollständige visuelle Welten, feinste Typografie-Kombinationen, präzise Grid-Strukturen und interaktive Motion-Konzepte. Keine Standard-Vorlagen. Einzigartige ästhetische Identität.",
-          outputs: ["High-Fidelity-Prototypen in Figma", "Film-Kampagnen-Storyboard", "Interaktions-Spezifikationen"]
+          phase: "02",
+          title: "Visualisieren",
+          subtitle: "Richtung, Referenzen & Struktur",
+          description: "Wir erstellen die kreative Richtung, Referenzen, Struktur und – wo relevant – ein erstes Startseiten-Konzept.",
+          outputs: ["Moodboards & Referenzen", "Visuelles Startseiten-Konzept", "Strukturelles Layout"]
         },
         {
-          phase: "PHASE 03",
-          title: "Typsicheres Engineering",
-          subtitle: "Robustes Backend, extrem niedrige Latenz",
-          description: "Wir programmieren alle Softwarekomponenten mit statischer Typisierung, modularen Architekturen und serverseitigem Rendering, um Antwortzeiten unter 100ms und maximale Plattformstabilität zu garantieren.",
-          outputs: ["React / TypeScript Codebasis", "Sichere Node.js / Go API-Schnittstellen", "Optimierte Datenbankschemata"]
+          phase: "03",
+          title: "Bauen",
+          subtitle: "Produktion & Überprüfungsphasen",
+          description: "Wir produzieren die vereinbarten Medien, die Website oder Automatisierung mit transparenten Fortschrittskontrollen.",
+          outputs: ["Code- & Medienproduktion", "Test-Umgebung", "Fortschritts-Demos"]
         },
         {
-          phase: "PHASE 04",
-          title: "Kognitive Prozessautomatisierung",
-          subtitle: "Operative Workflows und KI-Pipelines",
-          description: "Wir implementieren sichere, maßgeschneiderte KI-Dienste, automatisierte Datenströme und intelligente Dashboards, um manuelle Prozesse zu eliminieren und komplexe Abläufe mit einem Klick zu steuern.",
-          outputs: ["Automatisierte Geschäftsabläufe", "Eigene LLM-Integrationsschicht", "Zentrales Administrations-Dashboard"]
+          phase: "04",
+          title: "Prüfen & Launch",
+          subtitle: "Testen, Verfeinern & Übergabe",
+          description: "Wir testen die vereinbarte Funktionalität, verfeinern finale Details und übergeben oder launchen das fertige Projekt.",
+          outputs: ["Funktionaler & Mobile Test", "Finale Übergabe & Launch", "Prüfung nach dem Start"]
         }
       ]
     },
     fr: {
       badge: "MÉTHODOLOGIE",
-      title: "Le Pipeline de Production Unifié.",
-      description: "Notre processus opérationnel est structuré pour éradiquer les risques de livraison, maximiser l'efficacité opérationnelle et atteindre une prévisibilité mathématique à chaque étape de la création.",
+      title: "Notre Méthode de Production.",
+      description: "Nous nous engageons sur le périmètre et les livrables convenus. Chaque projet suit une structure claire en quatre étapes.",
       phases: [
         {
-          phase: "PHASE 01",
-          title: "Diagnostic Stratégique",
-          subtitle: "Dissymétrie des risques et goulots d'étranglement",
-          description: "Nous auditons vos processus, cartographions les dépendances de vos systèmes existants et fixons des indicateurs précis de performance. Le Brief Technique rédigé fait foi de contrat de performance.",
-          outputs: ["Schéma d'Architecture Opérationnelle", "Rapport d'Audit Technique", "Brief de Spécification Fonctionnelle"]
+          phase: "01",
+          title: "Comprendre",
+          subtitle: "Objectif, audience & livrables",
+          description: "Nous définissons l'objectif, l'audience, les livrables, le calendrier et le vrai problème que le projet doit résoudre.",
+          outputs: ["Brief de Projet", "Périmètre & Calendrier", "Feuille de Route des Livrables"]
         },
         {
-          phase: "PHASE 02",
-          title: "Conceptualisation Artistique",
-          subtitle: "Précision helvétique et vision cinématographique",
-          description: "Nous dessinons des territoires graphiques exclusifs, des jeux de caractères rigoureux, des grilles structurées et des mouvements interactifs fluides. Zéro modèle prédéfini. Haute couture numérique.",
-          outputs: ["Maquettes Figma Haute Définition", "Storyboard Cinématographique", "Chartes de Mouvement & Transitions"]
+          phase: "02",
+          title: "Visualiser",
+          subtitle: "Direction, références & structure",
+          description: "Nous créons la direction créative, les références, la structure et — le cas échéant — un concept visuel de page d'accueil.",
+          outputs: ["Moodboards & Références", "Concept Visuel de Page d'Accueil", "Plan de Structure"]
         },
         {
-          phase: "PHASE 03",
-          title: "Ingénierie Typsichere",
-          subtitle: "Backend ultra-sécurisé, latence imperceptible",
-          description: "Nous assemblons nos architectures logicielles avec typage statique, patrons modulaires et rendu optimisé sur le serveur. Nous garantissons des temps d'accès sous les 100ms et une stabilité absolue.",
-          outputs: ["Codebase React / TypeScript", "Microservices d'API Node.js / Go", "Modèles de Données Structurés"]
+          phase: "03",
+          title: "Construire",
+          subtitle: "Production & jalons de suivi",
+          description: "Nous produisons les contenus, le site web ou les automatisations prévus avec des jalons de validation réguliers.",
+          outputs: ["Production de Code & Médias", "Environnement de Recette", "Démonstrations d'Étape"]
         },
         {
-          phase: "PHASE 04",
-          title: "Automatisation de Processus",
-          subtitle: "Workflows métiers et pipelines d'intelligence artificielle",
-          description: "We déployons des passerelles d'IA sur mesure, des agents automatisés et des tableaux de bord analytiques afin de supprimer les interventions humaines répétitives et de fluidifier vos processus en un clic.",
-          outputs: ["Automatisations de Flux d'Affaires", "Connecteurs d'IA Générative Dédiés", "Console d'Administration Unifiée"]
+          phase: "04",
+          title: "Réviser & Lancer",
+          subtitle: "Tests, ajustements & livraison",
+          description: "Nous testons les fonctionnalités convenues, ajustons les derniers détails et livrons ou lançons le projet finalisé.",
+          outputs: ["Audit Fonctionnel & Mobile", "Livraison Finale & Lancement", "Vérification Post-Lancement"]
         }
       ]
     },
     it: {
       badge: "METODOLOGIA",
-      title: "Il Flusso di Produzione Unificato.",
-      description: "Il nostro metodo operativo è strutturato per eliminare i rischi di sviluppo, ottimizzare le prestazioni e assicurare la massima prevedibilità in ogni fase della creazione digitale.",
+      title: "Il Nostro Metodo di Produzione.",
+      description: "Ci impegniamo sul perimetro e sui risultati concordati. Ogni progetto segue una struttura chiara in quattro fasi.",
       phases: [
         {
-          phase: "FASE 01",
-          title: "Diagnosi Strategica",
-          subtitle: "Analisi dei punti critici e dei processi",
-          description: "Analizziamo l'efficienza operativa, mappiamo i vincoli tecnologici storici e definiamo metriche funzionali chiare prima di scrivere codice. Il documento strategico risultante garantisce il successo del progetto.",
-          outputs: ["Mappa dell'Architettura Operativa", "Report di Audit dei Sistemi", "Brief Tecnico di Sviluppo"]
+          phase: "01",
+          title: "Comprendere",
+          subtitle: "Obiettivo, pubblico e risultati",
+          description: "Definiamo l'obiettivo, il pubblico, i deliverable, le tempistiche e la reale esigenza del progetto.",
+          outputs: ["Brief di Progetto", "Perimetro e Tempistiche", "Roadmap dei Deliverable"]
         },
         {
-          phase: "FASE 02",
-          title: "Concettualizzazione Artistica",
-          subtitle: "Precisione svizzera e visione cinematografica",
-          description: "Delineiamo mondi visivi unici, layout tipografici pregiati, griglie strutturate e micro-interazioni eleganti. Nessun template predefinito. Identità di design d'autore esclusiva.",
-          outputs: ["Interfacce Figma ad Alta Fedeltà", "Storyboard di Campagna Visiva", "Specifiche di Animazione e Transizione"]
+          phase: "02",
+          title: "Visualizzare",
+          subtitle: "Direzione, riferimenti e struttura",
+          description: "Creiamo la direzione creativa, i riferimenti, la struttura e — ove pertinente — un concetto visivo per la homepage.",
+          outputs: ["Moodboard e Riferimenti", "Concetto Visivo Homepage", "Layout Strutturale"]
         },
         {
-          phase: "FASE 03",
-          title: "Ingegneria a Tipizzazione Sicura",
-          subtitle: "Backend robusto e latenza ridotta ai minimi",
-          description: "Sviluppiamo il software con linguaggi a tipizzazione statica, architetture modulari e ottimizzazione lato server per offrire tempi di caricamento inferiori a 100ms e massima stabilità.",
-          outputs: ["Codice Sorgente React / TypeScript", "Router API Node.js / Go Sicuro", "Schemi di Database Optimizzati"]
+          phase: "03",
+          title: "Costruire",
+          subtitle: "Produzione e verifiche intermedie",
+          description: "Produciamo i contenuti, il sito web o i flussi concordati con verifiche intermedie per mantenere il lavoro trasparente.",
+          outputs: ["Sviluppo Codice e Asset", "Ambiente di Prova", "Demo dei Progressi"]
         },
         {
-          phase: "FASE 04",
-          title: "Automazione Cognitiva dei Processi",
-          subtitle: "Flussi operativi ed integrazione di intelligenza artificiale",
-          description: "Implementiamo microservizi di IA protetti, flussi di automazione sicuri e interfacce intelligenti per eliminare operazioni manuali ripetitive e concentrare l'azione su flussi istantanei.",
-          outputs: ["Flussi di Lavoro Automatizzati", "Integrazione Dati LLM su Misura", "Console di Controllo Amministrativa"]
+          phase: "04",
+          title: "Revisione e Lancio",
+          subtitle: "Test, rifinitura e consegna",
+          description: "Verifichiamo la funzionalità concordata, rifiniamo i dettagli e consegniamo o pubblichiamo il progetto finito.",
+          outputs: ["Audit Funzionale e Mobile", "Consegna Finale e Lancio", "Verifica Post-Lancio"]
         }
       ]
     }

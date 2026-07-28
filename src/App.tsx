@@ -6,6 +6,7 @@ import DemoreelModal from "./components/DemoreelModal";
 import AboutPhilosophy from "./components/AboutPhilosophy";
 import CreativeProcess from "./components/CreativeProcess";
 import ServicesList from "./components/ServicesList";
+import WebConceptOffer from "./components/WebConceptOffer";
 import ServiceLandingModal from "./components/ServiceLandingModal";
 import CaseStudies from "./components/CaseStudies";
 import TechStack from "./components/TechStack";
@@ -276,6 +277,7 @@ export default function App() {
 
         {/* 04. Capabilities / Services */}
         <ServicesList onSelectServiceLanding={(slug) => setActiveServiceLanding(slug)} />
+        <WebConceptOffer />
 
         {/* 05. Unified Creative Methodology Stepper (Process) */}
         <CreativeProcess />

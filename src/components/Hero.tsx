@@ -265,25 +265,43 @@ export default function Hero({ onExploreClick, onWatchDemoreel }: HeroProps) {
               initial={{ opacity: 0, y: 15 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 1.2, delay: 0.7, ease: [0.16, 1, 0.3, 1] }}
-              className="flex flex-col sm:flex-row items-stretch sm:items-center justify-start gap-4 pt-4 w-full sm:w-auto"
+              className="space-y-3 pt-4 w-full"
             >
-              <button
-                id="hero-view-selected-work"
-                onClick={onExploreClick}
-                className="px-8 py-4 bg-white text-black hover:bg-zinc-200 transition-all duration-300 font-mono text-[11px] uppercase tracking-[0.2em] font-semibold rounded-sm text-center shadow-[0_0_30px_rgba(255,255,255,0.15)] cursor-pointer inline-flex items-center justify-center gap-2 border-0"
-              >
-                <span>{t.viewSelectedWork}</span>
-                <span className="text-xs">→</span>
-              </button>
+              <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-start gap-4 w-full sm:w-auto">
+                <button
+                  id="hero-discuss-project"
+                  onClick={() => {
+                    const el = document.getElementById("contact");
+                    if (el) el.scrollIntoView({ behavior: "smooth" });
+                  }}
+                  className="px-8 py-4 bg-white text-black hover:bg-zinc-200 transition-all duration-300 font-mono text-[11px] uppercase tracking-[0.2em] font-semibold rounded-sm text-center shadow-[0_0_30px_rgba(255,255,255,0.15)] cursor-pointer inline-flex items-center justify-center gap-2 border-0"
+                >
+                  <span>{t.contactButton}</span>
+                  <span className="text-xs">→</span>
+                </button>
 
-              <button
-                id="hero-watch-demoreel"
-                onClick={onWatchDemoreel}
-                className="px-8 py-4 border border-white/30 hover:border-white text-white bg-black/40 hover:bg-white/10 transition-all duration-300 font-mono text-[11px] uppercase tracking-[0.2em] rounded-sm text-center cursor-pointer inline-flex items-center justify-center gap-2.5 backdrop-blur-sm border-0"
-              >
-                <Play size={13} className="fill-white text-white" />
-                <span>{t.watchDemoreel}</span>
-              </button>
+                <button
+                  id="hero-view-selected-work"
+                  onClick={onExploreClick}
+                  className="px-8 py-4 border border-white/30 hover:border-white text-white bg-black/40 hover:bg-white/10 transition-all duration-300 font-mono text-[11px] uppercase tracking-[0.2em] rounded-sm text-center cursor-pointer inline-flex items-center justify-center gap-2 backdrop-blur-sm border-0"
+                >
+                  <span>{t.viewSelectedWork}</span>
+                </button>
+
+                <button
+                  id="hero-watch-demoreel"
+                  onClick={onWatchDemoreel}
+                  className="px-6 py-4 border border-white/20 hover:border-white/60 text-zinc-300 hover:text-white bg-black/30 hover:bg-white/10 transition-all duration-300 font-mono text-[11px] uppercase tracking-[0.2em] rounded-sm text-center cursor-pointer inline-flex items-center justify-center gap-2 backdrop-blur-sm border-0"
+                >
+                  <Play size={13} className="fill-white text-white" />
+                  <span>{t.watchDemoreel}</span>
+                </button>
+              </div>
+
+              {/* Small trust statement below CTAs */}
+              <p className="text-[10px] font-mono text-zinc-400 tracking-wider uppercase pt-1">
+                ✓ {t.trustStatement}
+              </p>
             </motion.div>
           </div>
         </div>
