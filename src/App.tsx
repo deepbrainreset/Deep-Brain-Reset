@@ -9,7 +9,7 @@ import ServicesList from "./components/ServicesList";
 import WebConceptOffer from "./components/WebConceptOffer";
 import ServiceLandingModal from "./components/ServiceLandingModal";
 import CaseStudies from "./components/CaseStudies";
-import BlackVectorInvestors from "./components/BlackVectorInvestors";
+import VenturePortfolio from "./components/VenturePortfolio";
 import TechStack from "./components/TechStack";
 import WhyChooseUs from "./components/WhyChooseUs";
 import Testimonials from "./components/Testimonials";
@@ -269,7 +269,7 @@ export default function App() {
 
         {/* 02. Selected Case Studies / Portfolio */}
         <CaseStudies onViewCaseStudy={(id) => setActiveCaseStudy(id)} />
-        <BlackVectorInvestors />
+        <VenturePortfolio />
 
         {/* 03. Dedicated Studio Demoreel */}
         <DemoreelSection 
